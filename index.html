@@ -1,0 +1,1427 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://www.levimurombo.space/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Levison Murombo">
+<meta property="og:url" content="https://www.levimurombo.space/">
+<meta property="og:title" content="Levison Murombo · Designer and art director, Harare">
+<meta property="og:description" content="Levison Murombo is a designer and art director in Harare. Identities, campaigns, 3D and product for brands in nine countries.">
+<meta property="og:image" content="https://www.levimurombo.space/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="I design brands you can't scroll past. Levison Murombo portfolio.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Levison Murombo · Designer and art director, Harare">
+<meta name="twitter:description" content="Levison Murombo is a designer and art director in Harare. Identities, campaigns, 3D and product for brands in nine countries.">
+<meta name="twitter:image" content="https://www.levimurombo.space/og.jpg">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Person", "name": "Levison T. Murombo", "alternateName": "Levi Murombo", "jobTitle": "Designer and art director", "url": "https://www.levimurombo.space/", "email": "mailto:levimurombo@gmail.com", "address": {"@type": "PostalAddress", "addressLocality": "Harare", "addressCountry": "ZW"}}</script>
+<title>Levison Murombo</title>
+<meta name="description" content="Levison Murombo is a designer and art director in Harare. Identities, campaigns, 3D and product for brands in nine countries.">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a designer's reel with an engineer's toolkit. Boot-sequence loader, giant variable-weight hero over a live GLSL contour field with a cursor image trail, velocity marquees, scroll-lit statement, pinned horizontal case reel with tilt cards, a live three.js Great Enclosure that assembles as you scroll, the NHAKA dial zoom, hover-preview brand index, parallax poster wall with lightbox, motion reel, a working terminal, lab notes, a marigold contact block and a cursor-reactive wordmark. Command palette on Ctrl/Cmd+K. Dark by choice. */
+:root{
+  --bg:#0E0D0B;
+  --bg-2:#181612;
+  --bg-3:#201D18;
+  --ink:#F1ECE2;
+  --mute:#9A9488;
+  --line:#2B2823;
+  --zuva:#F4B52C;
+  --on-zuva:#14110A;
+  --ok:#7CFC9A;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;
+  --f-serif:"Instrument Serif",Georgia,"Times New Roman",serif;
+  --f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+  --pad:max(16px,env(safe-area-inset-left,0px));
+  --padr:max(16px,env(safe-area-inset-right,0px));
+  --ease:cubic-bezier(.16,1,.3,1);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:90;background:var(--bg)}
+img,video{display:block;max-width:100%}
+[hidden]{display:none!important}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit;color:inherit}
+::selection{background:var(--zuva);color:var(--on-zuva)}
+:focus-visible{outline:2px solid var(--zuva);outline-offset:4px}
+.wrap{padding-left:var(--pad);padding-right:var(--padr);max-width:1600px;margin:0 auto}
+.mono{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
+.serif{font-family:var(--f-serif);font-style:italic;font-weight:400;text-transform:none;letter-spacing:-.01em}
+.mute{color:var(--mute)}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.grain{pointer-events:none;position:fixed;inset:0;z-index:70;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+@media (prefers-reduced-motion:no-preference){.grain{animation:grain 1s steps(6) infinite}}
+@keyframes grain{0%{background-position:0 0}20%{background-position:-30px 20px}40%{background-position:20px -30px}60%{background-position:-20px -10px}80%{background-position:30px 30px}100%{background-position:0 0}}
+.prog{position:fixed;left:0;top:env(safe-area-inset-top,0px);height:2px;width:100%;background:var(--zuva);transform-origin:left;transform:scaleX(0);z-index:65;pointer-events:none}
+
+/* Loader */
+.loader{display:none}
+html.js .loader{display:flex;position:fixed;inset:0;z-index:100;background:var(--zuva);color:var(--on-zuva);flex-direction:column;justify-content:space-between;padding:calc(20px + env(safe-area-inset-top,0px)) var(--padr) calc(20px + env(safe-area-inset-bottom,0px)) var(--pad);cursor:pointer}
+@media (prefers-reduced-motion:reduce){html.js .loader{display:none}}
+.ld-top{display:flex;justify-content:space-between}
+.ld-log{margin:0;font-family:var(--f-mono);font-size:clamp(.78rem,1.2vw,.95rem);line-height:1.7;white-space:pre-wrap;min-height:9em}
+.ld-log b{font-weight:500}
+.ld-bot{display:grid;gap:10px}
+.ld-count{font-family:var(--f-display);font-weight:900;font-size:clamp(7rem,28vw,24rem);line-height:.8;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.ld-bar{height:3px;background:rgba(20,17,10,.2)}
+.ld-bar i{display:block;height:100%;background:var(--on-zuva);transform-origin:left;transform:scaleX(0)}
+.ld-skip{opacity:.6}
+
+/* Nav */
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:60;mix-blend-mode:difference;color:#fff;pointer-events:none;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.nav.up{transform:translateY(-115%)}.nav:focus-within{transform:none}
+.nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:16px;max-width:none}
+.nav a,.nav button{pointer-events:auto}
+.brand{font-family:var(--f-display);font-weight:800;font-size:1.35rem;letter-spacing:.01em;text-transform:uppercase}
+.nav ul{display:flex;gap:24px;list-style:none;margin:0;padding:0}
+.nav li a{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;display:inline-block}
+.nav li a[aria-current="true"]{text-decoration:underline;text-underline-offset:6px}
+.status{display:flex;gap:14px;align-items:center}
+.status b{font-weight:500;font-variant-numeric:tabular-nums}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--ok);display:inline-block;margin-right:8px;vertical-align:middle}
+@media (prefers-reduced-motion:no-preference){.dot{animation:pulse 2s infinite}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(124,252,154,.6)}70%{box-shadow:0 0 0 8px rgba(124,252,154,0)}100%{box-shadow:0 0 0 0 rgba(124,252,154,0)}}
+.kbtn,.menu-btn{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:7px 10px;border:1px solid rgba(255,255,255,.5);border-radius:4px;background:transparent;cursor:pointer;color:#fff}
+.menu-btn{display:none}
+.mnav{position:fixed;inset:0;z-index:58;background:var(--bg);padding:calc(90px + env(safe-area-inset-top,0px)) var(--padr) 30px var(--pad);display:flex;flex-direction:column;gap:4px}
+.mnav[hidden]{display:none}
+.mnav a{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(2.6rem,12vw,4.4rem);line-height:1;padding:8px 0;border-bottom:1px solid var(--line)}
+.mnav a span{font-family:var(--f-mono);font-size:.72rem;color:var(--zuva);vertical-align:top;margin-right:10px;letter-spacing:.06em}
+
+/* Cursor */
+.cur,.cur-ring{display:none}
+@media (hover:hover) and (pointer:fine){
+  html.js body.has-cursor,html.js body.has-cursor a,html.js body.has-cursor button{cursor:none}
+  html.js body.has-cursor input{cursor:text}
+  html.js .cur{display:block;position:fixed;left:0;top:0;width:8px;height:8px;margin:-4px 0 0 -4px;border-radius:50%;background:var(--zuva);z-index:96;pointer-events:none}
+  html.js .cur-ring{display:grid;place-items:center;position:fixed;left:0;top:0;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:1px solid rgba(241,236,226,.45);z-index:95;pointer-events:none;transition:width .45s var(--ease),height .45s var(--ease),margin .45s var(--ease),background .3s,border-color .3s}
+  .cur-ring span{font-family:var(--f-mono);font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--on-zuva);opacity:0;transition:opacity .2s}
+  .cur-ring.big{width:104px;height:104px;margin:-52px 0 0 -52px;background:var(--zuva);border-color:var(--zuva)}
+  .cur-ring.big span{opacity:1}
+}
+
+/* Hero */
+.hero{position:relative;min-height:min(100svh,1000px);display:flex;flex-direction:column;justify-content:flex-end;padding-top:calc(96px + env(safe-area-inset-top,0px));padding-bottom:26px;overflow:hidden;isolation:isolate}
+.gl{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.trail{position:absolute;inset:0;pointer-events:none;z-index:1}
+.trail img{position:absolute;left:0;top:0;width:clamp(150px,15vw,240px);height:auto;border-radius:4px;opacity:0;will-change:transform,opacity;box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.hero>.wrap{position:relative;z-index:2;width:100%}
+.hero-meta{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px 30px;margin-bottom:clamp(14px,2vw,24px)}
+.hello{margin:0 0 6px;font-size:clamp(1.3rem,2.4vw,2.2rem);line-height:1}
+.hello .serif{color:var(--zuva)}
+.hello small{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);margin-left:10px;vertical-align:middle}
+.hero h1{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(3.6rem,12.6vw,15rem);line-height:.82;letter-spacing:-.015em}
+.hero h1 .ln{display:block;overflow:hidden;padding-bottom:.04em}
+.hero h1 .ln>span{display:inline-block}
+.hero h1 .ch{display:inline-block;will-change:transform}
+.hero h1 .serif{font-size:.86em;color:var(--zuva);letter-spacing:-.03em;padding-right:.05em}
+.hero h1 .r{text-align:right}
+.hero-foot{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:20px;align-items:end;margin-top:clamp(20px,3vw,36px)}
+.hero-foot p{max-width:40ch;font-size:1.05rem;margin:0}
+.scroll-cue{display:flex;flex-direction:column;align-items:center;gap:10px}
+.scroll-cue i{display:block;width:1px;height:46px;background:linear-gradient(var(--ink),transparent);transform-origin:top}
+@media (prefers-reduced-motion:no-preference){.scroll-cue i{animation:cue 1.8s var(--ease) infinite}}
+@keyframes cue{0%{transform:scaleY(0)}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.roles{justify-self:end;text-align:right;display:grid;gap:4px}
+.roles b{font-family:var(--f-serif);font-style:italic;font-weight:400;font-size:1.7rem;line-height:1.1;color:var(--ink);min-height:1.1em}
+.hint{color:var(--zuva)}
+
+/* Marquee */
+.clients{padding-block:34px;border-block:1px solid var(--line);overflow:hidden;position:relative}
+.mq{display:flex;width:max-content;will-change:transform}
+.mq+.mq{margin-top:10px}
+.mq span{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(2.2rem,5.6vw,5rem);line-height:1;white-space:nowrap;padding-right:.5em;display:inline-flex;align-items:center;gap:.5em}
+.mq span::after{content:"";width:.28em;height:.28em;border-radius:50%;background:var(--zuva);flex:none}
+.mq.out span{color:transparent;-webkit-text-stroke:1px var(--ink)}
+.mq.out span::after{background:transparent;border:1px solid var(--ink)}
+.clients .lbl{position:absolute;left:var(--pad);top:10px}
+
+/* Statement */
+.statement{padding-block:clamp(90px,14vw,190px)}
+.statement p{font-family:var(--f-display);font-weight:700;text-transform:uppercase;font-size:clamp(2.2rem,5.4vw,5.4rem);line-height:.98;margin:0;max-width:20ch}
+.statement .serif{text-transform:none;color:var(--zuva)}
+.pill{display:inline-block;vertical-align:middle;width:1.9em;height:.92em;border-radius:999px;overflow:hidden;margin:0 .12em}
+.pill img{width:100%;height:100%;object-fit:cover}
+.sig{margin-top:40px;display:flex;gap:24px;flex-wrap:wrap}
+
+/* Section heads */
+.shead{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:clamp(28px,4vw,52px)}
+.shead .eb{display:block;margin-bottom:14px}
+.shead h2{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(3rem,9vw,8.5rem);line-height:.85;letter-spacing:-.01em}
+.shead h2 .serif{color:var(--zuva);font-size:.9em}
+.shead p{max-width:38ch;color:var(--mute);margin:0}
+
+/* Reel */
+.reel{padding-top:clamp(40px,6vw,80px)}
+.reel-pin{overflow-x:auto;scrollbar-width:none}
+.reel-pin::-webkit-scrollbar{display:none}
+.reel-pin.pinned{overflow:hidden}
+.track{display:flex;gap:clamp(16px,2vw,28px);padding:10px var(--padr) 30px var(--pad);width:max-content}
+.card{position:relative;flex:none;width:clamp(290px,42vw,700px);background:none;border:0;padding:0;text-align:left;cursor:pointer;display:grid;gap:16px;perspective:1000px}
+.card:nth-child(even){margin-top:clamp(0px,6vw,90px)}
+.ph{position:relative;overflow:hidden;aspect-ratio:4/3;border-radius:6px;background:var(--bg-2);transform-style:preserve-3d;transition:transform .5s var(--ease);will-change:transform}
+.ph img{position:absolute;inset:-6% -10%;width:120%;height:112%;object-fit:cover;max-width:none}
+.ph .tagl{position:absolute;left:14px;top:14px;background:var(--bg);color:var(--ink);padding:6px 10px;border-radius:999px;z-index:2}
+.ph .glare{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(600px circle at var(--gx,50%) var(--gy,50%),rgba(255,236,190,.22),transparent 40%);opacity:0;transition:opacity .3s}
+.card:hover .ph .glare{opacity:1}
+.card .row{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px;align-items:baseline}
+.card .n{font-family:var(--f-mono);font-size:.78rem;color:var(--zuva)}
+.card h3{margin:0;font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(1.7rem,2.8vw,2.7rem);line-height:.95}
+.card .k{font-family:var(--f-mono);font-size:.72rem;color:var(--mute);letter-spacing:.05em;text-transform:uppercase;text-align:right}
+.card .d{color:var(--mute);font-size:.95rem;max-width:48ch;padding-left:calc(.78rem * 2.4)}
+.reel-bar{margin:6px var(--padr) 0 var(--pad);height:2px;background:var(--line);position:relative}
+.reel-bar i{position:absolute;inset:0;background:var(--zuva);transform-origin:left;transform:scaleX(0)}
+.reel-end{flex:none;width:clamp(260px,30vw,460px);display:flex;flex-direction:column;justify-content:center;gap:18px}
+.reel-end b{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(2.6rem,5vw,5rem);line-height:.9}
+
+/* Enclosure (three.js) */
+.enc{position:relative;height:100svh;min-height:620px;overflow:hidden;background:#0b0a08;margin-top:clamp(90px,12vw,170px);border-block:1px solid var(--line)}
+.enc canvas{position:absolute;inset:0;width:100%;height:100%;display:block;touch-action:pan-y}
+.enc-fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.6}
+.hud{position:absolute;inset:0;z-index:2;pointer-events:none;display:grid;grid-template-rows:auto 1fr auto;padding:calc(84px + env(safe-area-inset-top,0px)) var(--padr) 32px var(--pad)}
+.hud-top{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.readout{display:grid;grid-template-columns:auto auto;gap:4px 18px;font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute)}
+.readout b{color:var(--ink);font-weight:500;text-align:right;font-variant-numeric:tabular-nums}
+.hud-bot{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap}
+.hud-copy{max-width:520px;background:linear-gradient(90deg,rgba(11,10,8,.85),rgba(11,10,8,.4));padding:18px 20px;border-left:2px solid var(--zuva)}
+.hud-copy h2{margin:0 0 10px;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(2.6rem,6vw,5.6rem);line-height:.86}
+.hud-copy h2 .serif{color:var(--zuva)}
+.hud-copy p{margin:0;color:var(--ink);opacity:.85;font-size:1rem}
+.hud-ctrl{display:flex;gap:10px;pointer-events:auto}
+.tbtn{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-radius:999px;border:1px solid rgba(241,236,226,.4);background:rgba(11,10,8,.6);cursor:pointer}
+.tbtn[aria-pressed="true"]{background:var(--zuva);color:var(--on-zuva);border-color:var(--zuva)}
+.crosshair{position:absolute;left:50%;top:50%;width:22px;height:22px;margin:-11px;z-index:1;pointer-events:none;opacity:.35}
+.crosshair::before,.crosshair::after{content:"";position:absolute;background:var(--zuva)}
+.crosshair::before{left:10px;top:0;width:1px;height:22px}
+.crosshair::after{top:10px;left:0;height:1px;width:22px}
+
+/* NHAKA zoom */
+.zoom{position:relative;height:100svh;min-height:600px;overflow:hidden;display:grid;place-items:center;background:#0b0907}
+.zoom .zimg{position:absolute;inset:0;clip-path:circle(22% at 50% 50%)}
+.zoom .zimg img{width:100%;height:100%;object-fit:cover}
+.zoom .zt{position:relative;z-index:2;text-align:center;pointer-events:none;padding-inline:16px}
+.zoom .zt h2{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(3.6rem,14vw,14rem);line-height:.8;mix-blend-mode:difference;color:#fff}
+.zoom .zt .serif{display:block;font-size:clamp(1.4rem,2.6vw,2.4rem);margin-top:14px;color:#fff;mix-blend-mode:difference}
+.zoom .callout{position:absolute;z-index:3;max-width:250px;background:rgba(14,13,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(241,236,226,.15);border-radius:6px;padding:14px 16px;font-size:.92rem}
+.zoom .callout b{display:block;font-family:var(--f-mono);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--zuva);margin-bottom:6px}
+.zoom .c1{left:max(16px,6vw);top:18%}
+.zoom .c2{right:max(16px,6vw);top:40%}
+.zoom .c3{left:max(16px,10vw);bottom:12%}
+.zoom .zbtn{position:absolute;z-index:3;right:max(16px,6vw);bottom:10%}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 24px;border-radius:999px;border:1px solid var(--ink);font-family:var(--f-mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;background:transparent;cursor:pointer;position:relative;overflow:hidden;isolation:isolate}
+.btn::before{content:"";position:absolute;inset:0;background:var(--zuva);transform:translateY(101%);transition:transform .5s var(--ease);z-index:-1;border-radius:inherit}
+.btn:hover{color:var(--on-zuva);border-color:var(--zuva)}
+.btn:hover::before{transform:translateY(0)}
+.btn.solid{background:var(--zuva);color:var(--on-zuva);border-color:var(--zuva)}
+.btn.solid::before{background:var(--ink)}
+
+/* Index */
+.index{padding-block:clamp(90px,12vw,170px)}
+.ix{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.ix li{border-bottom:1px solid var(--line)}
+.ix button{width:100%;display:grid;grid-template-columns:60px minmax(0,1fr) minmax(0,.7fr) 120px;gap:20px;align-items:center;padding:22px 0;position:relative;background:none;border:0;text-align:left;cursor:pointer}
+.ix button::before{content:"";position:absolute;inset:0;background:var(--zuva);transform:scaleY(0);transform-origin:bottom;transition:transform .5s var(--ease);z-index:0}
+.ix button>*{position:relative;z-index:1;transition:color .3s,transform .5s var(--ease)}
+.ix .no{font-family:var(--f-mono);font-size:.74rem;color:var(--mute)}
+.ix .nm{font-family:var(--f-display);font-weight:800;text-transform:uppercase;font-size:clamp(1.8rem,4vw,3.6rem);line-height:.95}
+.ix .ds{color:var(--mute);font-size:.95rem}
+.ix .rg{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);text-align:right}
+.ix .th{display:none}
+@media (hover:hover){
+  .ix button:hover::before,.ix button:focus-visible::before{transform:scaleY(1)}
+  .ix button:hover>*,.ix button:focus-visible>*{color:var(--on-zuva)}
+  .ix button:hover .nm{transform:translateX(18px)}
+}
+.peek{display:none;position:fixed;left:0;top:0;width:min(340px,26vw);aspect-ratio:4/3;z-index:50;pointer-events:none;border-radius:6px;overflow:hidden;opacity:0;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.peek img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s}
+.peek img.on{opacity:1}
+@media (hover:hover) and (pointer:fine){.peek{display:block}}
+
+/* Wall */
+.wall-sec{padding-bottom:clamp(90px,12vw,170px);overflow:hidden}
+.wall{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);padding-inline:var(--pad) var(--padr)}
+.col{display:grid;gap:clamp(10px,1.4vw,20px);align-content:start}
+.col:nth-child(2){margin-top:-12%}
+.col:nth-child(4){margin-top:-6%}
+.tile{display:block;width:100%;padding:0;border:0;border-radius:6px;overflow:hidden;background:var(--bg-2);will-change:transform;cursor:zoom-in}
+.tile img{width:100%;height:auto;transition:transform .6s var(--ease)}
+.tile:hover img{transform:scale(1.04)}
+
+/* Motion */
+.motion{padding-block:clamp(90px,12vw,170px);border-top:1px solid var(--line)}
+.vids{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.4vw,20px)}
+.vids.tall{grid-template-columns:repeat(5,minmax(0,1fr));margin-top:clamp(10px,1.4vw,20px)}
+.vid{margin:0;position:relative;border-radius:6px;overflow:hidden;background:var(--bg-2)}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid.w{grid-column:span 3;aspect-ratio:16/9}
+.vid.s{grid-column:span 2;aspect-ratio:1/1}
+.vid.t{aspect-ratio:9/16}
+.vid figcaption{position:absolute;left:12px;bottom:12px;right:62px;pointer-events:none}
+.vid figcaption span{display:inline-block;background:var(--bg);padding:6px 10px;border-radius:999px}
+.vbtn{position:absolute;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(241,236,226,.4);background:rgba(14,13,11,.72);cursor:pointer;display:grid;place-items:center}
+.vbtn::before{content:"";width:0;height:0;border-left:11px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
+.vbtn[aria-pressed="true"]::before{width:10px;height:12px;border:0;margin:0;background:linear-gradient(90deg,var(--ink) 0 35%,transparent 35% 65%,var(--ink) 65%)}
+
+/* Terminal */
+.term-sec{padding-block:clamp(90px,12vw,170px);border-top:1px solid var(--line);overflow:hidden}
+.term{border:1px solid var(--line);border-radius:8px;background:#0a0908;overflow:hidden;position:relative;box-shadow:0 0 0 1px rgba(244,181,44,.05),0 40px 120px rgba(0,0,0,.45)}
+.term::after{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.025) 0 1px,transparent 1px 3px)}
+.term-bar{display:flex;justify-content:space-between;gap:12px;padding:12px 16px;border-bottom:1px solid var(--line);color:var(--mute)}
+.term-bar i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--zuva);margin-right:8px;vertical-align:middle}
+.term-out{height:min(440px,56vh);overflow-y:auto;padding:18px 18px 6px;font-family:var(--f-mono);font-size:.9rem;line-height:1.65;color:var(--ink);overscroll-behavior:contain}
+.tl{white-space:pre-wrap;word-break:break-word}
+.tl.cmd{color:var(--mute)}
+.tl.cmd b{color:var(--zuva);font-weight:500}
+.tl.acc{color:var(--zuva)}
+.tl.dim{color:var(--mute)}
+.tl button{background:none;border:0;padding:0;color:var(--zuva);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-family:inherit;font-size:inherit}
+.term-in{display:flex;align-items:center;gap:10px;padding:12px 18px 18px;font-family:var(--f-mono)}
+.term-in label{color:var(--zuva);white-space:nowrap;font-size:.9rem}
+.term-in input{flex:1;min-width:0;background:transparent;border:0;outline:none;font-family:var(--f-mono);font-size:16px;color:var(--ink);caret-color:var(--zuva)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips button{font-family:var(--f-mono);font-size:.76rem;padding:8px 12px;border-radius:999px;border:1px solid var(--line);background:var(--bg-2);cursor:pointer}
+.chips button:hover{border-color:var(--zuva);color:var(--zuva)}
+
+/* Numbers */
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.num{padding:30px 22px 34px;border-right:1px solid var(--line);display:grid;gap:10px;align-content:start;min-width:0}
+.num:last-child{border-right:0}
+.num b{font-family:var(--f-display);font-weight:900;font-size:clamp(3.4rem,7vw,6.6rem);line-height:.85;font-variant-numeric:tabular-nums}
+.num b em{font-style:normal;color:var(--zuva)}
+.num p{color:var(--mute);font-size:.95rem;max-width:26ch;margin:0}
+
+/* About */
+.about{padding-block:clamp(90px,12vw,170px)}
+.ab{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(30px,6vw,100px)}
+.ab .big{font-size:clamp(1.3rem,2vw,1.75rem);line-height:1.4;display:grid;gap:22px;align-content:start}
+.ab .big p{margin:0}
+.ab .big .serif{color:var(--zuva);font-size:1.15em}
+.labcard{margin-top:34px;border:1px solid var(--line);border-radius:8px;padding:22px;background:var(--bg-2);display:grid;gap:16px}
+.formula{margin:0;font-family:var(--f-serif);font-size:clamp(1.6rem,2.6vw,2.4rem);line-height:1.2}
+.formula i{color:var(--zuva)}
+.formula sup{font-size:.55em}
+.facts{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 18px;margin:0;font-size:.95rem}
+.facts dt{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--mute);padding-top:3px}
+.facts dd{margin:0;font-variant-numeric:tabular-nums}
+.xp{list-style:none;margin:0;padding:0;border-top:1px solid var(--line)}
+.xp li{display:grid;grid-template-columns:130px minmax(0,1fr);gap:16px;padding:18px 0;border-bottom:1px solid var(--line)}
+.xp .y{font-family:var(--f-mono);font-size:.74rem;color:var(--mute);padding-top:4px}
+.xp h3{margin:0;font-size:1.08rem;font-weight:600}
+.xp p{margin:0;color:var(--mute);font-size:.95rem}
+.tools{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.tools span{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.85rem}
+
+/* Contact */
+.contact{padding-block:clamp(90px,12vw,170px);background:var(--zuva);color:var(--on-zuva);position:relative;overflow:hidden}
+.contact h2{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(4rem,14vw,14rem);line-height:.8;letter-spacing:-.015em}
+.contact h2 .serif{font-size:.82em}
+.c-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px;align-items:end;margin-top:clamp(36px,5vw,60px)}
+.c-row p{font-size:1.2rem;max-width:36ch;margin:0}
+.lines{display:grid;border-top:1px solid rgba(20,17,10,.3)}
+.lines div{display:grid;grid-template-columns:80px minmax(0,1fr) auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid rgba(20,17,10,.3)}
+.lines .k{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;opacity:.7}
+.lines a{font-size:clamp(1.1rem,1.8vw,1.5rem);font-weight:600;overflow-wrap:anywhere;min-width:0}
+.lines a:hover{text-decoration:underline;text-underline-offset:4px}
+.copy{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;padding:9px 14px;border-radius:999px;border:1px solid var(--on-zuva);background:transparent;color:var(--on-zuva);cursor:pointer;min-width:86px}
+.copy:hover{background:var(--on-zuva);color:var(--zuva)}
+.c-time{margin-top:26px;opacity:.75}
+
+/* Footer */
+footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0px));overflow:hidden}
+.foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--mute)}
+.wordmark{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:17.6vw;line-height:.78;letter-spacing:-.02em;margin-top:30px;white-space:nowrap;display:flex;justify-content:space-between;user-select:none}
+.wordmark .ch{display:inline-block}
+
+/* Case view */
+.case{position:fixed;inset:0;z-index:80;background:var(--bg);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch}
+.case[hidden]{display:none}
+.case-bar{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:calc(16px + env(safe-area-inset-top,0px)) var(--padr) 16px var(--pad);background:linear-gradient(var(--bg) 60%,transparent)}
+.close{width:56px;height:56px;border-radius:50%;border:1px solid var(--ink);background:transparent;cursor:pointer;position:relative}
+.close::before,.close::after{content:"";position:absolute;left:50%;top:50%;width:20px;height:1.5px;background:var(--ink);transform:translate(-50%,-50%) rotate(45deg);transition:transform .4s var(--ease)}
+.close::after{transform:translate(-50%,-50%) rotate(-45deg)}
+.close:hover::before{transform:translate(-50%,-50%) rotate(135deg)}
+.close:hover::after{transform:translate(-50%,-50%) rotate(45deg)}
+.case-head{padding:20px var(--padr) 40px var(--pad)}
+.case-head h2{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(3.4rem,11vw,11rem);line-height:.82;letter-spacing:-.01em}
+.case-head h2 .ln{display:block;overflow:hidden}
+.case-head h2 .ln span{display:inline-block}
+.case-meta{display:grid;grid-template-columns:repeat(3,minmax(0,1fr)) minmax(0,1.6fr);gap:24px;margin-top:40px;border-top:1px solid var(--line);padding-top:22px}
+.case-meta div{display:grid;gap:6px;align-content:start}
+.case-meta p{margin:0;font-size:1.08rem;line-height:1.5}
+.gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(10px,1.4vw,20px);padding:0 var(--padr) 40px var(--pad)}
+.gal figure{margin:0;border-radius:6px;overflow:hidden;background:var(--bg-2)}
+.gal figure.full{grid-column:1 / -1}
+.gal img,.gal video{width:100%;height:auto}
+.gal figure.v{display:grid;place-items:center;padding:clamp(12px,2vw,28px)}
+.gal figure.v video{width:auto;max-width:100%;max-height:84vh;border-radius:6px}
+.next{display:block;width:100%;border:0;border-top:1px solid var(--line);background:transparent;cursor:pointer;text-align:left;padding:40px var(--padr) calc(60px + env(safe-area-inset-bottom,0px)) var(--pad)}
+.next b{display:block;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(3rem,9vw,8rem);line-height:.85;transition:color .3s}
+.next:hover b{color:var(--zuva)}
+
+/* Lightbox */
+.lb{position:fixed;inset:0;z-index:82;background:rgba(8,7,6,.97);display:grid;grid-template-rows:auto minmax(0,1fr) auto}
+.lb[hidden]{display:none}
+.lb-bar,.lb-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:calc(14px + env(safe-area-inset-top,0px)) var(--padr) 14px var(--pad)}
+.lb-foot{padding:14px var(--padr) calc(14px + env(safe-area-inset-bottom,0px)) var(--pad);border-top:1px solid var(--line)}
+.lb-foot p{margin:0;color:var(--mute);min-width:0}
+.lb-stage{display:grid;place-items:center;padding:12px var(--padr) 12px var(--pad);min-height:0}
+.lb-stage img{max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain;border-radius:4px}
+.pill-btn{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase;padding:10px 14px;border-radius:999px;border:1px solid var(--line);background:transparent;cursor:pointer}
+.pill-btn:hover{border-color:var(--zuva);color:var(--zuva)}
+
+/* Command palette */
+.cmdk{position:fixed;inset:0;z-index:88;background:rgba(5,5,4,.6);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);display:grid;place-items:start center;padding:calc(12vh + env(safe-area-inset-top,0px)) var(--padr) 16px var(--pad)}
+.cmdk[hidden]{display:none}
+.panel{width:min(580px,100%);background:var(--bg-2);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.panel input{width:100%;background:transparent;border:none;border-bottom:1px solid var(--line);color:var(--ink);font-size:1.05rem;padding:16px 18px;outline:none}
+.panel ul{list-style:none;margin:0;padding:6px;max-height:52vh;overflow:auto}
+.panel li{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:11px 12px;border-radius:6px;cursor:pointer;font-size:.95rem}
+.panel li span{font-family:var(--f-mono);font-size:.7rem;color:var(--mute);flex:none}
+.panel li[aria-selected="true"]{background:var(--zuva);color:var(--on-zuva)}
+.panel li[aria-selected="true"] span{color:rgba(20,17,10,.7)}
+.panel .foot{display:flex;gap:16px;padding:10px 16px;border-top:1px solid var(--line);font-family:var(--f-mono);font-size:.68rem;color:var(--mute)}
+.panel .empty{padding:14px 12px;color:var(--mute)}
+
+/* Responsive */
+@media (max-width:1000px){
+  .nav ul,.status .opt{display:none}
+  .wall{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .nums{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .num:nth-child(2){border-right:0}
+  .num:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .ab,.c-row{grid-template-columns:minmax(0,1fr)}
+  .ix button{grid-template-columns:44px minmax(0,1fr) 100px}
+  .ix .ds{display:none}
+  .case-meta{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .case-meta div:last-child{grid-column:1 / -1}
+  .menu-btn{display:inline-block}
+  .kbtn{display:none}
+}
+@media (max-width:760px){
+  body{font-size:16px}
+  .hint{display:none}
+  .hero-foot{grid-template-columns:minmax(0,1fr)}
+  .scroll-cue{display:none}
+  .roles{justify-self:start;text-align:left}
+  .reel-pin{scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch}
+  .card{width:82vw;scroll-snap-align:start}
+  .card:nth-child(even){margin-top:0}
+  .card .d{padding-left:0}
+  .reel-bar{display:none}
+  .reel-end{width:70vw}
+  .wall{display:block;columns:2;column-gap:10px}
+  .col{display:contents}
+  .tile{margin-bottom:10px;break-inside:avoid}
+  .vids{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vid.w{grid-column:span 2}
+  .vid.s{grid-column:span 1}
+  .vid.s:last-child{grid-column:span 2;aspect-ratio:2/1}
+  .vids.tall{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1 * var(--pad));padding-inline:var(--pad);scrollbar-width:none}
+  .vids.tall::-webkit-scrollbar{display:none}
+  .vids.tall .vid{flex:0 0 58%;scroll-snap-align:start}
+  .zoom .callout{display:none}
+  .zoom .zbtn{left:50%;right:auto;transform:translateX(-50%);bottom:8%}
+  .ix button{grid-template-columns:72px minmax(0,1fr);padding:16px 0}
+  .ix .no,.ix .rg{display:none}
+  .ix .th{display:block;width:72px;aspect-ratio:1;border-radius:4px;overflow:hidden}
+  .ix .th img{width:100%;height:100%;object-fit:cover}
+  .gal{grid-template-columns:minmax(0,1fr)}
+  .lines div{grid-template-columns:minmax(0,1fr) auto}
+  .lines .k{grid-column:1 / -1}
+  .xp li{grid-template-columns:minmax(0,1fr);gap:4px}
+  .hud{padding-top:calc(76px + env(safe-area-inset-top,0px));padding-bottom:20px}
+  .hud-copy{padding:14px 16px}
+  .readout{font-size:.66rem}
+  .term-out{height:min(380px,52vh);font-size:.82rem;padding:14px}
+  .term-in{padding:10px 14px 14px}
+  .term-in label{font-size:.8rem}
+}
+@media (max-width:480px){
+  .nums{grid-template-columns:minmax(0,1fr)}
+  .num{border-right:0;border-bottom:1px solid var(--line)}
+  .case-meta{grid-template-columns:minmax(0,1fr)}
+  .lb-foot{flex-direction:column;align-items:stretch}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms!important}
+}
+</style>
+</head>
+<body>
+<div class="loader" id="loader" aria-hidden="true">
+  <div class="ld-top mono"><span>levi.os</span><span>Harare · build 26.11</span></div>
+  <pre class="ld-log" id="ldlog"></pre>
+  <div class="ld-bot"><div class="ld-count" id="ldc">000</div><div class="ld-bar"><i id="ldb"></i></div><span class="mono ld-skip">Click anywhere to skip</span></div>
+</div>
+<div class="grain" aria-hidden="true"></div>
+<div class="prog" id="prog" aria-hidden="true"></div>
+<div class="cur" id="cur" aria-hidden="true"></div>
+<div class="cur-ring" id="ring" aria-hidden="true"><span id="ringl">View</span></div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top" data-scr>Levison Murombo</a>
+    <ul id="navl">
+      <li><a href="#work" data-scr>Work</a></li>
+      <li><a href="#enclosure" data-scr>3D</a></li>
+      <li><a href="#index" data-scr>Brands</a></li>
+      <li><a href="#motion" data-scr>Motion</a></li>
+      <li><a href="#terminal" data-scr>Terminal</a></li>
+      <li><a href="#about" data-scr>About</a></li>
+      <li><a href="#contact" data-scr>Contact</a></li>
+    </ul>
+    <div class="status mono">
+      <span class="opt">HRE <b id="clock">--:--</b></span>
+      <span class="opt"><b id="fps">--</b> FPS</span>
+      <span class="opt"><i class="dot"></i>Open to work</span>
+      <button class="kbtn" id="kbtn" type="button" aria-haspopup="dialog" aria-label="Open command menu"><span id="kkey">Ctrl K</span></button>
+      <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mnav">Menu</button>
+    </div>
+  </div>
+</header>
+<nav class="mnav" id="mnav" hidden aria-label="Mobile">
+  <a href="#work"><span>01</span>Work</a><a href="#enclosure"><span>02</span>3D</a><a href="#index"><span>03</span>Brands</a><a href="#motion"><span>04</span>Motion</a><a href="#terminal"><span>05</span>Terminal</a><a href="#about"><span>06</span>About</a><a href="#contact"><span>07</span>Contact</a>
+</nav>
+
+<main id="top">
+
+<section class="hero" id="hero" aria-labelledby="h1">
+  <canvas class="gl" id="gl" aria-hidden="true"></canvas>
+  <div class="trail" id="trail" aria-hidden="true"></div>
+  <div class="wrap">
+    <div class="hero-meta mono mute">
+      <span>Designer and art director</span>
+      <span data-scr>Harare · 17.83°S 31.03°E</span>
+      <span>Brands in 9 countries</span>
+      <span class="hint" aria-hidden="true">Live GLSL · move your cursor</span>
+    </div>
+    <p class="hello"><span class="serif">Hi,</span> I'm Levi.</p>
+    <h1 id="h1">
+      <span class="ln"><span>I design</span></span>
+      <span class="ln"><span>brands you</span></span>
+      <span class="ln r"><span><span class="serif">can't</span> scroll</span></span>
+      <span class="ln r"><span>past.</span></span>
+    </h1>
+    <div class="hero-foot">
+      <p>Identities, campaigns, 3D and product. Trained as a chemical engineer, so I build brands like systems: designed to hold up everywhere they show up.</p>
+      <div class="scroll-cue mono mute" aria-hidden="true"><i></i>Scroll</div>
+      <div class="roles"><span class="mono mute">Currently</span><b id="role">Brand designer</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="clients" aria-label="Clients">
+  <span class="lbl mono mute">Clients and collaborators</span>
+  <div class="mq" id="mq1">
+    <span>Axis Solutions</span><span>AURA</span><span>Wakosha Cosmetics</span><span>Alberta Black Therapist Network</span><span>MultiLink Cargo</span><span>Max Unisex Salon</span><span>Distributed Power Africa</span><span>Hurungwe Pharmacy</span><span>The Jaha Tribe</span><span>Soul Avenue by Pub Choir</span><span>263 Culture Fest</span>
+  </div>
+  <div class="mq out" id="mq2">
+    <span>Proactive Finance</span><span>Shasha Logistics</span><span>Ofama Construction</span><span>Kleen Up</span><span>Eva Marie Libraries</span><span>GGF Africa</span><span>Insburg</span><span>NIC</span><span>NASRIA</span><span>SkyStar Airlines</span>
+  </div>
+</section>
+
+<section class="statement" aria-label="Introduction">
+  <div class="wrap">
+    <p id="stmt">Engineer by training. <span class="serif">Designer</span> by obsession. I build identities <span class="pill"><img width="1000" height="1000" src="img/hurungwe-logo.webp" alt=""></span> campaigns <span class="pill"><img width="1000" height="962" src="img/axis-pw.webp" alt=""></span> 3D spaces <span class="pill"><img width="1600" height="900" src="img/dpa-reception.webp" alt=""></span> and products <span class="pill"><img width="1400" height="1400" src="img/nhaka-dial.webp" alt=""></span> for brands from Harare to Alberta.</p>
+    <div class="sig mono mute"><span>Since 2022</span><span>20+ clients</span><span>Zimbabwe · Namibia · South Africa · Canada</span></div>
+  </div>
+</section>
+
+<section class="reel" id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eb mono mute" data-scr>01 / Selected work</span><h2 id="work-h">Selected <span class="serif">work</span></h2></div>
+      <p>Ten projects across identity, campaigns, 3D and product. Open any of them for the full set.</p>
+    </div>
+  </div>
+  <div class="reel-pin" id="reelpin">
+    <div class="track" id="track">
+      <button class="card" type="button" data-case="nhaka" data-cursor="Open">
+        <span class="ph"><img width="1254" height="1254" src="img/nhaka-approved.webp" alt="NHAKA The Enclosure watch with a Great Zimbabwe stonework dial"><span class="glare"></span><span class="tagl mono">Self-initiated</span></span>
+        <span class="row"><span class="n">01</span><h3>NHAKA · The Enclosure</h3><span class="k">2026</span></span>
+        <span class="d">A Zimbabwean watch brand, with the stonework of Great Zimbabwe set into the dial.</span>
+      </button>
+      <button class="card" type="button" data-case="hurungwe" data-cursor="Open">
+        <span class="ph"><img width="1600" height="1067" src="img/hurungwe-store.webp" alt="Hurungwe Pharmacy storefront branding" loading="lazy"><span class="glare"></span><span class="tagl mono">Identity</span></span>
+        <span class="row"><span class="n">02</span><h3>Hurungwe Pharmacy</h3><span class="k">Identity</span></span>
+        <span class="d">A cross mark, a pattern system and a storefront that reads from across the street.</span>
+      </button>
+      <button class="card" type="button" data-case="jaha" data-cursor="Open">
+        <span class="ph"><img width="1600" height="1600" src="img/jaha-headphones.webp" alt="The Jaha Tribe emblem on headphones" loading="lazy"><span class="glare"></span><span class="tagl mono">Identity</span></span>
+        <span class="row"><span class="n">03</span><h3>The Jaha Tribe</h3><span class="k">Music brand</span></span>
+        <span class="d">A masked emblem built for vinyl, stage screens, merch and gold-foil cards.</span>
+      </button>
+      <button class="card" type="button" data-case="soul" data-cursor="Open">
+        <span class="ph"><img width="1403" height="1121" src="img/soul2-selfie.webp" alt="Soul Avenue 300 by Pub Choir campaign image" loading="lazy"><span class="glare"></span><span class="tagl mono">Event brand</span></span>
+        <span class="row"><span class="n">04</span><h3>Soul Avenue 300</h3><span class="k">Pub Choir</span></span>
+        <span class="d">A retro soul identity, campaign, merch and two films for Pub Choir.</span>
+      </button>
+      <button class="card" type="button" data-case="myaura" data-cursor="Open">
+        <span class="ph"><img width="1000" height="1000" src="img/myaura-3.webp" alt="MyAURA mobile app campaign" loading="lazy"><span class="glare"></span><span class="tagl mono">App and launch</span></span>
+        <span class="row"><span class="n">05</span><h3>MyAURA app</h3><span class="k">UI/UX</span></span>
+        <span class="d">A self-service app for Starlink subscribers, with the launch film and campaign around it.</span>
+      </button>
+      <button class="card" type="button" data-case="wakosha" data-cursor="Open">
+        <span class="ph"><img width="1600" height="900" src="img/wakosha-main.webp" alt="Wakosha Cosmetics brand imagery" loading="lazy"><span class="glare"></span><span class="tagl mono">Skincare</span></span>
+        <span class="row"><span class="n">06</span><h3>Wakosha Cosmetics</h3><span class="k">Identity</span></span>
+        <span class="d">A crowned wordmark, packaging and campaign imagery for a skincare brand.</span>
+      </button>
+      <button class="card" type="button" data-case="aura" data-cursor="Open">
+        <span class="ph"><img width="1600" height="1067" src="img/aura-bb-vpn.webp" alt="AURA Technologies Layer 2 VPN billboard" loading="lazy"><span class="glare"></span><span class="tagl mono">Campaigns</span></span>
+        <span class="row"><span class="n">07</span><h3>AURA Technologies</h3><span class="k">Starlink</span></span>
+        <span class="d">Billboards, social, fleet branding and event films for Africa's second-largest Starlink reseller.</span>
+      </button>
+      <button class="card" type="button" data-case="dpa" data-cursor="Open">
+        <span class="ph"><img width="1600" height="900" src="img/dpa-reception.webp" alt="3D render of the Distributed Power Africa office reception" loading="lazy"><span class="glare"></span><span class="tagl mono">3D interior</span></span>
+        <span class="row"><span class="n">08</span><h3>Distributed Power Africa</h3><span class="k">3D</span></span>
+        <span class="d">Reception, feature walls, lounge and boardroom, visualised in 3D before a single wall went up.</span>
+      </button>
+      <button class="card" type="button" data-case="stands" data-cursor="Open">
+        <span class="ph"><img width="1600" height="900" src="img/zitf-angle.webp" alt="3D render of the AURA Technologies expo stand" loading="lazy"><span class="glare"></span><span class="tagl mono">3D spatial</span></span>
+        <span class="row"><span class="n">09</span><h3>AURA expo stands</h3><span class="k">ZITF</span></span>
+        <span class="d">Two exhibition stands, modelled and rendered for sign-off and the build crew.</span>
+      </button>
+      <button class="card" type="button" data-case="max" data-cursor="Open">
+        <span class="ph"><img width="1600" height="1200" src="img/max-lightbox.webp" alt="Max Unisex Salon lightbox sign" loading="lazy"><span class="glare"></span><span class="tagl mono">Identity</span></span>
+        <span class="row"><span class="n">10</span><h3>Max Unisex Salon</h3><span class="k">Identity</span></span>
+        <span class="d">Signage, uniforms and salon merch with one confident monogram.</span>
+      </button>
+      <div class="reel-end">
+        <b>Twelve more in the <span class="serif" style="color:var(--zuva)">index</span></b>
+        <a class="btn" href="#index">See every brand <span aria-hidden="true">↓</span></a>
+      </div>
+    </div>
+    <div class="reel-bar" aria-hidden="true"><i id="reelbar"></i></div>
+  </div>
+</section>
+
+<section class="enc" id="enclosure" aria-labelledby="enc-h">
+  <canvas id="encCanvas" role="img" aria-label="Interactive 3D model of the Great Enclosure at Great Zimbabwe, built from individual stones that assemble as you scroll" data-cursor="Drag"></canvas>
+  <img width="1400" height="1400" class="enc-fallback" id="encFallback" src="img/nhaka-dial.webp" alt="" hidden>
+  <div class="crosshair" aria-hidden="true"></div>
+  <div class="hud">
+    <div class="hud-top">
+      <span class="mono" style="color:var(--zuva)" data-scr>Fig. 02 · Great Enclosure · live WebGL</span>
+      <div class="readout" aria-hidden="true">
+        <span>Stones placed</span><b id="encN">0</b>
+        <span>Total</span><b id="encT">0</b>
+        <span>Courses</span><b id="encC">0</b>
+        <span>Renderer</span><b>three.js r128</b>
+      </div>
+    </div>
+    <div></div>
+    <div class="hud-bot">
+      <div class="hud-copy">
+        <h2 id="enc-h">Built from <span class="serif">heritage.</span></h2>
+        <p id="encCopy">The walls on NHAKA's dial belong to the Great Enclosure at Great Zimbabwe. Here they are again, rebuilt live in your browser from individual stones. Scroll to raise the walls. Drag to look around.</p>
+      </div>
+      <div class="hud-ctrl">
+        <button class="tbtn" id="wireBtn" type="button" aria-pressed="false">Wireframe</button>
+        <button class="tbtn" id="spinBtn" type="button" aria-pressed="true">Auto-orbit</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="zoom" id="dial" aria-labelledby="zoom-h">
+  <div class="zimg" id="zimg"><img width="1400" height="1400" src="img/nhaka-dial.webp" alt="Macro render of the NHAKA dial showing Great Zimbabwe stonework" loading="lazy"></div>
+  <div class="zt"><h2 id="zoom-h">Nhaka</h2><span class="serif">Heritage, worn on the wrist.</span></div>
+  <div class="callout c1"><b>Dial</b>The Great Enclosure's stone walls, rendered in relief on a teal sky.</div>
+  <div class="callout c2"><b>Caseback</b>An exposed rotor framed by more stonework and a chevron engraving.</div>
+  <div class="callout c3"><b>Build</b>Brand, blueprints and every 3D render, done by me.</div>
+  <button class="btn solid zbtn" type="button" data-case="nhaka">Open the project <span aria-hidden="true">→</span></button>
+</section>
+
+<section class="index" id="index" aria-labelledby="ix-h">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eb mono mute" data-scr>02 / Brand index</span><h2 id="ix-h">Brand <span class="serif">index</span></h2></div>
+      <p>Twelve more identities and campaigns. Hover a name to preview it, select it to open.</p>
+    </div>
+    <ul class="ix" id="ix">
+      <li><button type="button" data-case="pfs" data-img="img/pfs-billboard.webp" data-cursor="Open"><span class="th"><img width="1600" height="1067" src="img/pfs-billboard.webp" alt="" loading="lazy"></span><span class="no">11</span><span class="nm">Proactive Finance</span><span class="ds">Identity, billboards, stationery</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="shasha" data-img="img/shasha-truck.webp" data-cursor="Open"><span class="th"><img width="1000" height="693" src="img/shasha-truck.webp" alt="" loading="lazy"></span><span class="no">12</span><span class="nm">Shasha Logistics</span><span class="ds">Logo, fleet, uniforms</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="abtn" data-img="img/abtn-5.webp" data-cursor="Open"><span class="th"><img width="1000" height="1000" src="img/abtn-5.webp" alt="" loading="lazy"></span><span class="no">13</span><span class="nm">Alberta Black Therapist Network</span><span class="ds">Logo system</span><span class="rg">Canada</span></button></li>
+      <li><button type="button" data-case="axis" data-img="img/axis-promise.webp" data-cursor="Open"><span class="th"><img width="1000" height="962" src="img/axis-promise.webp" alt="" loading="lazy"></span><span class="no">14</span><span class="nm">Axis Solutions</span><span class="ds">Social campaigns, brand promise film</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="smart" data-img="img/smart-wall.webp" data-cursor="Open"><span class="th"><img width="1000" height="667" src="img/smart-wall.webp" alt="" loading="lazy"></span><span class="no">15</span><span class="nm">Smart Connect</span><span class="ds">Logo, uniforms, stationery</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="eva" data-img="img/eva-sticker.webp" data-cursor="Open"><span class="th"><img width="1000" height="968" src="img/eva-sticker.webp" alt="" loading="lazy"></span><span class="no">16</span><span class="nm">Eva Marie Libraries</span><span class="ds">Identity, merch, campaign</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="kleen" data-img="img/kleen-ba.webp" data-cursor="Open"><span class="th"><img width="1000" height="1000" src="img/kleen-ba.webp" alt="" loading="lazy"></span><span class="no">17</span><span class="nm">Kleen Up</span><span class="ds">Social campaign</span><span class="rg">South Africa</span></button></li>
+      <li><button type="button" data-case="ofama" data-img="img/ofama-2.webp" data-cursor="Open"><span class="th"><img width="1000" height="1000" src="img/ofama-2.webp" alt="" loading="lazy"></span><span class="no">18</span><span class="nm">Ofama Construction</span><span class="ds">Social campaign</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="tesha" data-img="img/tesha-wall.webp" data-cursor="Open"><span class="th"><img width="1000" height="667" src="img/tesha-wall.webp" alt="" loading="lazy"></span><span class="no">19</span><span class="nm">Tesha Trading Enterprise</span><span class="ds">Monogram, signage</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="thabitha" data-img="img/thabitha.webp" data-cursor="Open"><span class="th"><img width="1000" height="691" src="img/thabitha.webp" alt="" loading="lazy"></span><span class="no">20</span><span class="nm">Thabitha Pharmacy</span><span class="ds">Identity, staff wear</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="godingo" data-img="img/godingo.webp" data-cursor="Open"><span class="th"><img width="1000" height="850" src="img/godingo.webp" alt="" loading="lazy"></span><span class="no">21</span><span class="nm">Godingo</span><span class="ds">Food packaging</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="culture" data-img="img/aura-culture.webp" data-cursor="Open"><span class="th"><img width="1000" height="1000" src="img/aura-culture.webp" alt="" loading="lazy"></span><span class="no">22</span><span class="nm">263 Culture Fest</span><span class="ds">Sponsorship campaign and event films</span><span class="rg">Zimbabwe</span></button></li>
+    </ul>
+  </div>
+</section>
+<div class="peek" id="peek" aria-hidden="true"></div>
+
+<section class="wall-sec" id="wall" aria-labelledby="wall-h">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eb mono mute" data-scr>03 / The wall</span><h2 id="wall-h">The <span class="serif">wall</span></h2></div>
+      <p>Posters, social and print. Football posters are my favourite thing to make. Select any piece to see it full size.</p>
+    </div>
+  </div>
+  <div class="wall" id="wallg">
+    <div class="col" data-speed="-8">
+      <button class="tile" type="button" data-cursor="View"><img width="800" height="1000" src="img/poster-matchday.webp" alt="Matchday football poster" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="1000" src="img/aura-mobile.webp" alt="AURA mobile packages launch post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="962" src="img/axis-kaspersky.webp" alt="Axis Solutions Kaspersky webinar post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="1000" src="img/ofama-14.webp" alt="Ofama Construction campaign post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="1000" src="img/soul-flyer.webp" alt="Soul Avenue flyer" loading="lazy"></button>
+    </div>
+    <div class="col" data-speed="10">
+      <button class="tile" type="button" data-cursor="View"><img width="855" height="1100" src="img/poster-dancer.webp" alt="Poster of a dancer against a red sun" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="707" height="1000" src="img/axis-vr.webp" alt="Axis Solutions campaign cover" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="962" src="img/axis-pw.webp" alt="Axis Predict and Win football post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="705" height="1000" src="img/aura-school.webp" alt="AURA Back to School promotion" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="1000" src="img/kleen-3.webp" alt="Kleen Up campaign post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="1000" src="img/tador-africa.webp" alt="Tador Africa Day post" loading="lazy"></button>
+    </div>
+    <div class="col" data-speed="-14">
+      <button class="tile" type="button" data-cursor="View"><img width="707" height="1000" src="img/poster-springfest.webp" alt="SpringFest event poster" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="1000" src="img/aura-pw.webp" alt="AURA Predict and Win football post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="962" src="img/axis-euro.webp" alt="Axis Euro 2024 Predict and Win post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="962" src="img/axis-revmax.webp" alt="Axis Revmax campaign post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="1000" src="img/ofama-16.webp" alt="Ofama safety campaign post" loading="lazy"></button>
+    </div>
+    <div class="col" data-speed="6">
+      <button class="tile" type="button" data-cursor="View"><img width="879" height="1100" src="img/soul2-portrait.webp" alt="Soul Avenue 300 portrait" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="946" src="img/poster-blackfriday.webp" alt="Black Friday sale poster" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="962" src="img/axis-care.webp" alt="Axis customer care post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="962" src="img/axis-africa.webp" alt="Axis Africa Day post" loading="lazy"></button>
+      <button class="tile" type="button" data-cursor="View"><img width="1000" height="560" src="img/eva-girl.webp" alt="Eva Marie Libraries campaign image" loading="lazy"></button>
+    </div>
+  </div>
+</section>
+
+<section class="motion" id="motion" aria-labelledby="mo-h">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eb mono mute" data-scr>04 / Motion</span><h2 id="mo-h">In <span class="serif">motion</span></h2></div>
+      <p>Launch films, ads, brand loops and explainers. They play while on screen. Silent web cuts, each with its own play and pause.</p>
+    </div>
+    <div class="vids">
+      <figure class="vid w"><video src="img/vid-soul.mp4" poster="img/poster-soul.jpg" muted loop playsinline preload="none" aria-label="Soul Avenue 300 intro film"></video><figcaption class="mono"><span>Soul Avenue 300 · Intro film</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Soul Avenue 300 intro film"></button></figure>
+      <figure class="vid w"><video src="img/vid-zimmap.mp4" poster="img/poster-zimmap.jpg" muted loop playsinline preload="none" aria-label="Zimbabwe map infographic animation"></video><figcaption class="mono"><span>Zimbabwe map · Infographic</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Zimbabwe map infographic"></button></figure>
+      <figure class="vid s"><video src="img/vid-axis.mp4" poster="img/poster-axis.jpg" muted loop playsinline preload="none" aria-label="Axis Solutions brand promise animation"></video><figcaption class="mono"><span>Axis · Brand promise</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Axis brand promise"></button></figure>
+      <figure class="vid s"><video src="img/vid-ggf.mp4" poster="img/poster-ggf.jpg" muted loop playsinline preload="none" aria-label="GGF Africa carbon credits explainer"></video><figcaption class="mono"><span>GGF Africa · Carbon credits</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play GGF Africa carbon credits explainer"></button></figure>
+      <figure class="vid s"><video src="img/vid-iphone.mp4" poster="img/poster-iphone.jpg" muted loop playsinline preload="none" aria-label="iPhone 15 product animation"></video><figcaption class="mono"><span>iPhone 15 · Product spot</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play iPhone 15 product spot"></button></figure>
+    </div>
+    <div class="vids tall">
+      <figure class="vid t"><video src="img/vid-myaura.mp4" poster="img/poster-vid-myaura.jpg" muted loop playsinline preload="none" aria-label="MyAURA app launch film"></video><figcaption class="mono"><span>MyAURA · Launch film</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play MyAURA launch film"></button></figure>
+      <figure class="vid t"><video src="img/vid-infinity.mp4" poster="img/poster-vid-infinity.jpg" muted loop playsinline preload="none" aria-label="AURA Infinity Plus advert"></video><figcaption class="mono"><span>Infinity Plus · Ad</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Infinity Plus advert"></button></figure>
+      <figure class="vid t"><video src="img/vid-roaming.mp4" poster="img/poster-vid-roaming.jpg" muted loop playsinline preload="none" aria-label="AURA roaming packages advert"></video><figcaption class="mono"><span>AURA Roaming · Ad</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play AURA Roaming advert"></button></figure>
+      <figure class="vid t"><video src="img/vid-culture1.mp4" poster="img/poster-vid-culture1.jpg" muted loop playsinline preload="none" aria-label="AURA at 263 Culture Fest social film"></video><figcaption class="mono"><span>263 Culture Fest</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play 263 Culture Fest film"></button></figure>
+      <figure class="vid t"><video src="img/vid-soulrelaunch.mp4" poster="img/poster-vid-soulrelaunch.jpg" muted loop playsinline preload="none" aria-label="Soul Avenue 300 relaunch film"></video><figcaption class="mono"><span>Soul Avenue · Relaunch</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Soul Avenue relaunch film"></button></figure>
+    </div>
+  </div>
+</section>
+
+<section class="term-sec" id="terminal" aria-labelledby="term-h">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eb mono mute" data-scr>05 / Terminal</span><h2 id="term-h">Talk to the <span class="serif">terminal</span></h2></div>
+      <p>Prefer the command line? This one runs the whole site. Type help, or tap a command.</p>
+    </div>
+    <div class="term" id="term">
+      <div class="term-bar mono"><span><i></i>levi@harare: ~/portfolio</span><span>zsh · utf-8</span></div>
+      <div class="term-out" id="tout" role="log" aria-live="polite" aria-label="Terminal output" data-lenis-prevent></div>
+      <form class="term-in" id="tform" autocomplete="off"><label for="tin">levi@harare ~ %</label><input id="tin" type="text" spellcheck="false" autocapitalize="off" autocorrect="off" aria-label="Terminal command" placeholder="type help"></form>
+    </div>
+    <div class="chips" id="chips">
+      <button type="button" data-run="help">help</button><button type="button" data-run="whoami">whoami</button><button type="button" data-run="ls">ls</button><button type="button" data-run="open nhaka">open nhaka</button><button type="button" data-run="clients">clients</button><button type="button" data-run="cv">cv</button><button type="button" data-run="football">football</button><button type="button" data-run="neofetch">neofetch</button><button type="button" data-run="sudo hire levi">sudo hire levi</button>
+    </div>
+  </div>
+</section>
+
+<section aria-label="Numbers">
+  <div class="wrap">
+    <div class="nums">
+      <div class="num"><b data-count="20"><span>20</span><em>+</em></b><p>Clients across identity, campaigns and 3D.</p></div>
+      <div class="num"><b data-count="9"><span>9</span></b><p>Countries my clients operate in.</p></div>
+      <div class="num"><b data-count="10"><span>10</span></b><p>Websites designed and shipped.</p></div>
+      <div class="num"><b><span>2</span><em>nd</em></b><p>Largest Starlink reseller in Africa: AURA, where I lead marketing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="about" id="about" aria-labelledby="ab-h">
+  <div class="wrap">
+    <div class="shead"><div><span class="eb mono mute" data-scr>06 / About</span><h2 id="ab-h">About <span class="serif">me</span></h2></div></div>
+    <div class="ab">
+      <div>
+        <div class="big">
+          <p>I started making movie posters as a teenager on my brother's laptop. Then I studied <span class="serif">chemical and process systems engineering</span> at Harare Institute of Technology and published research in Materials Today.</p>
+          <p>Design kept pulling me back. Since 2022 I've designed for brands in nine countries, and today I lead digital media and advertising at AURA Technologies.</p>
+          <p>On the side I build my own things: a watch brand, a 3D digital twin of Harare, and more posters than I can count.</p>
+        </div>
+        <div class="labcard">
+          <span class="mono mute">Lab notes</span>
+          <p class="formula"><i>Brand</i> = (<i>position</i> × <i>craft</i>)<sup>consistency</sup></p>
+          <dl class="facts">
+            <dt>Uptime</dt><dd id="uptime">Designing since 2022</dd>
+            <dt>Speaks</dt><dd>English, Shona</dd>
+            <dt>Studying</dt><dd>Project Management Professional (PMP)</dd>
+            <dt>Off hours</dt><dd>Football posters, NHAKA, a 3D twin of Harare</dd>
+          </dl>
+        </div>
+      </div>
+      <div>
+        <ul class="xp">
+          <li><span class="y">2024 → now</span><div><h3>Digital Media and Advertising Manager</h3><p>AURA Technologies</p></div></li>
+          <li><span class="y">2025</span><div><h3>ZITF Best First-Time Exhibitor, first runner-up</h3><p>With AURA Technologies</p></div></li>
+          <li><span class="y">2024</span><div><h3>Senior Creative Lead</h3><p>GGF Africa</p></div></li>
+          <li><span class="y">2023</span><div><h3>Senior Graphic Designer</h3><p>Imperium Branding</p></div></li>
+          <li><span class="y">2020</span><div><h3>BTech Honours, Chemical and Process Systems Engineering</h3><p>Harare Institute of Technology</p></div></li>
+        </ul>
+        <div class="tools"><span>Illustrator</span><span>Photoshop</span><span>Figma</span><span>Blender</span><span>After Effects</span><span>Lightroom</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact" aria-labelledby="ct-h">
+  <div class="wrap">
+    <span class="mono" style="opacity:.7">07 / Contact</span>
+    <h2 id="ct-h" style="margin-top:18px">Let's make it <span class="serif">loud.</span></h2>
+    <div class="c-row">
+      <p>Identity, campaign, 3D or a role on your team. Tell me what you're building.</p>
+      <div class="lines">
+        <div><span class="k">Email</span><a href="mailto:levimurombo@gmail.com" id="em">levimurombo@gmail.com</a><button class="copy" type="button" data-copy="em" aria-label="Copy email address">Copy</button></div>
+        <div><span class="k">Phone</span><a href="tel:+263773766393" id="ph">+263 773 766 393</a><button class="copy" type="button" data-copy="ph" aria-label="Copy phone number">Copy</button></div>
+      </div>
+    </div>
+    <p class="c-time mono">It's <b id="ctime">--:--</b> in Harare right now.</p>
+    <p class="sr" id="live" aria-live="polite"></p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top mono"><span>© 2026 Levison Murombo</span><span>Built with GLSL, three.js and GSAP</span><span>levimurombo.space</span><a href="#top">Back to top ↑</a></div>
+  </div>
+  <div class="wordmark" id="wordmark" aria-hidden="true">Murombo</div>
+</footer>
+
+<div class="case" id="case" hidden role="dialog" aria-modal="true" aria-labelledby="case-title" data-lenis-prevent>
+  <div class="case-bar"><span class="mono mute" id="case-n">01 / 22</span><button class="close" id="case-close" type="button" aria-label="Close project"></button></div>
+  <div class="case-head">
+    <h2 id="case-title"></h2>
+    <div class="case-meta">
+      <div><span class="mono mute">Client</span><p id="case-client"></p></div>
+      <div><span class="mono mute">Scope</span><p id="case-scope"></p></div>
+      <div><span class="mono mute">Region</span><p id="case-region"></p></div>
+      <div><span class="mono mute">Story</span><p id="case-desc"></p></div>
+    </div>
+  </div>
+  <div class="gal" id="case-gal"></div>
+  <button class="next" id="case-next" type="button" data-cursor="Next"><span class="mono mute">Next project</span><b id="case-next-t"></b></button>
+</div>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Poster viewer" data-lenis-prevent>
+  <div class="lb-bar"><span class="mono mute" id="lbN">1 / 21</span><button class="close" id="lbClose" type="button" aria-label="Close viewer"></button></div>
+  <div class="lb-stage" id="lbStage"><img id="lbImg" src="data:," alt=""></div>
+  <div class="lb-foot"><p id="lbCap"></p><div style="display:flex;gap:8px"><button class="pill-btn" id="lbPrev" type="button">← Prev</button><button class="pill-btn" id="lbNext" type="button">Next →</button></div></div>
+</div>
+
+<div class="cmdk" id="cmdk" hidden role="dialog" aria-modal="true" aria-label="Command menu">
+  <div class="panel">
+    <input id="cmdq" type="text" placeholder="Jump to a section, open a project, copy my email" autocomplete="off" aria-label="Search commands" aria-controls="cmdlist">
+    <ul id="cmdlist" role="listbox" data-lenis-prevent></ul>
+    <div class="foot"><span>↑↓ navigate</span><span>↵ select</span><span>esc close</span></div>
+  </div>
+</div>
+
+<script type="x-shader/x-fragment" id="fs-hero">
+precision highp float;
+uniform vec2 uRes;
+uniform float uTime;
+uniform vec2 uMouse;
+uniform float uHeat;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+float noise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);
+  return mix(mix(hash(i),hash(i+vec2(1.0,0.0)),u.x),mix(hash(i+vec2(0.0,1.0)),hash(i+vec2(1.0,1.0)),u.x),u.y);}
+float fbm(vec2 p){float v=0.0,a=0.5;mat2 m=mat2(1.6,1.2,-1.2,1.6);
+  for(int i=0;i<5;i++){v+=a*noise(p);p=m*p;a*=0.5;}return v;}
+void main(){
+  vec2 uv=gl_FragCoord.xy/uRes;
+  vec2 p=(gl_FragCoord.xy-0.5*uRes)/uRes.y;
+  vec2 m=(uMouse-0.5*uRes)/uRes.y;
+  float d=length(p-m);
+  p+=(p-m)*0.18*exp(-d*3.5)*uHeat;
+  float t=uTime*0.04;
+  vec2 q=vec2(fbm(p*1.4+t),fbm(p*1.4+vec2(5.2,1.3)-t));
+  vec2 r=vec2(fbm(p*1.4+3.5*q+vec2(1.7,9.2)+t*1.4),fbm(p*1.4+3.5*q+vec2(8.3,2.8)-t));
+  float f=fbm(p*1.4+3.5*r);
+  float lines=abs(fract(f*14.0)-0.5);
+  float ln=smoothstep(0.06,0.0,lines);
+  float near=exp(-d*2.4)*uHeat;
+  vec3 base=vec3(0.055,0.051,0.043);
+  vec3 bronze=vec3(0.36,0.23,0.08);
+  vec3 zuva=vec3(0.957,0.71,0.173);
+  vec3 col=base+bronze*pow(f,3.2)*1.1;
+  col+=zuva*ln*(0.07+0.55*near)*smoothstep(0.25,0.85,f);
+  col+=zuva*0.12*exp(-d*7.0)*uHeat;
+  col*=1.0-0.6*length(uv-vec2(0.5,0.55));
+  col+=(hash(gl_FragCoord.xy+fract(uTime))-0.5)*0.025;
+  gl_FragColor=vec4(col,1.0);
+}
+</script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function(){
+  var $=function(s,c){return (c||document).querySelector(s)};
+  var $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))};
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine=matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var saveData=!!(navigator.connection&&navigator.connection.saveData);
+  var G=window.gsap,ST=window.ScrollTrigger,ok=!!(G&&ST)&&!reduce;
+  var loader=$('#loader'),lenis=null;
+  var mx=innerWidth/2,my=innerHeight/2;
+  addEventListener('pointermove',function(e){mx=e.clientX;my=e.clientY},{passive:true});
+  function clamp(v,a,b){return Math.max(a,Math.min(b,v))}
+  function lerp(a,b,t){return a+(b-a)*t}
+
+  /* ---------- Clock, FPS, uptime ---------- */
+  function hre(){try{return new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Harare',hour:'2-digit',minute:'2-digit'}).format(new Date())}catch(e){return '--:--'}}
+  function tick(){var t=hre();$('#clock').textContent=t;$('#ctime').textContent=t}
+  tick();setInterval(tick,15000);
+  var fpsEl=$('#fps'),frames=0,ft=performance.now(),fpsNow=60;
+  (function fl(now){frames++;if(now-ft>=1000){fpsNow=frames;fpsEl.textContent=frames;frames=0;ft=now}requestAnimationFrame(fl)})(performance.now());
+  var up=$('#uptime'),since=Date.UTC(2022,2,1,6,0,0);
+  function upd(){var s=Math.floor((Date.now()-since)/1000),d=Math.floor(s/86400);s%=86400;var h=Math.floor(s/3600);s%=3600;var m=Math.floor(s/60);s%=60;up.textContent=d.toLocaleString('en-GB')+'d '+String(h).padStart(2,'0')+'h '+String(m).padStart(2,'0')+'m '+String(s).padStart(2,'0')+'s designing'}
+  upd();setInterval(upd,1000);
+  if(!/Mac|iPhone|iPad/.test(navigator.platform||''))$('#kkey').textContent='Ctrl K';else $('#kkey').textContent='⌘K';
+
+  /* ---------- Scroll progress + nav active ---------- */
+  var prog=$('#prog');
+  var navEl=$('.nav'),navY=scrollY;
+  function onScroll(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;prog.style.transform='scaleX('+(h>0?y/h:0)+')';
+    var d=y-navY;if(Math.abs(d)>8){navEl.classList.toggle('up',d>0&&y>innerHeight*.7&&$('#mnav').hidden);navY=y}}
+  addEventListener('scroll',onScroll,{passive:true});onScroll();
+  var navLinks=$$('#navl a');
+  if('IntersectionObserver' in window){
+    var sio=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){navLinks.forEach(function(a){if(a.getAttribute('href')==='#'+e.target.id)a.setAttribute('aria-current','true');else a.removeAttribute('aria-current')})}})},{rootMargin:'-45% 0px -50% 0px'});
+    navLinks.forEach(function(a){var s=document.querySelector(a.getAttribute('href'));s&&sio.observe(s)});
+  }
+
+  /* ---------- Text scramble ---------- */
+  var GLY='!<>-_\\/[]{}=+*^?#ABCDEFXYZ0123456789';
+  function scramble(el,to,dur){
+    if(reduce){el.textContent=to;return}
+    var from=el.textContent,len=Math.max(from.length,to.length),q=[],fr=0,total=Math.round((dur||600)/16);
+    for(var i=0;i<len;i++){var s=Math.floor(Math.random()*total*.4),e=s+Math.floor(Math.random()*total*.6)+4;q.push([from[i]||'',to[i]||'',s,e])}
+    cancelAnimationFrame(el._sr);
+    (function step(){var out='',done=0;for(var i=0;i<q.length;i++){var a=q[i];if(fr>=a[3]){done++;out+=a[1]}else if(fr>=a[2]){out+=a[1]===' '?' ':GLY[Math.floor(Math.random()*GLY.length)]}else out+=a[0]}el.textContent=out;if(done<q.length){fr++;el._sr=requestAnimationFrame(step)}})();
+  }
+  $$('[data-scr]').forEach(function(el){
+    var txt=el.textContent;el.setAttribute('aria-label',txt);
+    if(fine)el.addEventListener('mouseenter',function(){scramble(el,txt,500)});
+    if('IntersectionObserver' in window){var o=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){scramble(el,txt,800);o.disconnect()}})});o.observe(el)}
+  });
+
+  /* ---------- Roles ticker ---------- */
+  var roles=['Brand designer','Art director','3D artist','Campaign lead','Motion designer','Poster obsessive'],ri=0,roleEl=$('#role');
+  if(!reduce)setInterval(function(){ri=(ri+1)%roles.length;scramble(roleEl,roles[ri],700)},2600);
+
+  /* ---------- Copy ---------- */
+  var live=$('#live');
+  function copyText(t,btn){
+    function done(){if(btn){btn.textContent='Copied';setTimeout(function(){btn.textContent='Copy'},1600)}live.textContent=t+' copied to clipboard'}
+    function fb(){live.textContent='Copy failed. Select the text and copy it manually.';if(btn){btn.textContent='Select it';setTimeout(function(){btn.textContent='Copy'},1600)}}
+    try{navigator.clipboard&&navigator.clipboard.writeText?navigator.clipboard.writeText(t).then(done,fb):fb()}catch(e){fb()}
+  }
+  $$('.copy').forEach(function(b){b.addEventListener('click',function(){var el=document.getElementById(b.dataset.copy);copyText(el.textContent.trim(),b);try{var r=document.createRange();r.selectNodeContents(el);var s=getSelection();s.removeAllRanges();s.addRange(r)}catch(e){}})});
+
+  /* ---------- Hero GLSL shader ---------- */
+  (function heroGL(){
+    var c=$('#gl');if(!c)return;
+    var gl=c.getContext('webgl',{antialias:false,alpha:false,powerPreference:'high-performance',preserveDrawingBuffer:false});
+    if(!gl){c.style.background='#0E0D0B';return}
+    function sh(type,src){var s=gl.createShader(type);gl.shaderSource(s,src);gl.compileShader(s);if(!gl.getShaderParameter(s,gl.COMPILE_STATUS)){console.warn(gl.getShaderInfoLog(s));return null}return s}
+    var vs=sh(gl.VERTEX_SHADER,'attribute vec2 p;void main(){gl_Position=vec4(p,0.0,1.0);}'),fs=sh(gl.FRAGMENT_SHADER,$('#fs-hero').textContent);
+    if(!vs||!fs)return;
+    var pr=gl.createProgram();gl.attachShader(pr,vs);gl.attachShader(pr,fs);gl.linkProgram(pr);gl.useProgram(pr);
+    var b=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,b);gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,3,-1,-1,3]),gl.STATIC_DRAW);
+    var loc=gl.getAttribLocation(pr,'p');gl.enableVertexAttribArray(loc);gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    var uRes=gl.getUniformLocation(pr,'uRes'),uTime=gl.getUniformLocation(pr,'uTime'),uMouse=gl.getUniformLocation(pr,'uMouse'),uHeat=gl.getUniformLocation(pr,'uHeat');
+    var scale=Math.min(devicePixelRatio||1,1.5)*(innerWidth<760?.5:.6),W=0,H=0;
+    function size(){var r=c.getBoundingClientRect();W=Math.max(2,Math.round(r.width*scale));H=Math.max(2,Math.round(r.height*scale));c.width=W;c.height=H;gl.viewport(0,0,W,H);gl.uniform2f(uRes,W,H)}
+    size();addEventListener('resize',size);
+    var vis=true,sm={x:W*.62,y:H*.55},heat=0,t0=performance.now();
+    if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(c);
+    function draw(now){
+      var r=c.getBoundingClientRect();
+      var tx=fine?(mx-r.left)*scale:W*(.5+.3*Math.sin(now/3000)),ty=fine?H-(my-r.top)*scale:H*(.5+.2*Math.cos(now/2600));
+      sm.x=lerp(sm.x,tx,.08);sm.y=lerp(sm.y,ty,.08);
+      var inside=fine?(my>=r.top&&my<=r.bottom):true;heat=lerp(heat,inside?1:.25,.05);
+      gl.uniform1f(uTime,(now-t0)/1000);gl.uniform2f(uMouse,sm.x,sm.y);gl.uniform1f(uHeat,heat);
+      gl.drawArrays(gl.TRIANGLES,0,3);
+    }
+    if(reduce){draw(performance.now());return}
+    (function loop(now){if(vis&&!document.hidden)draw(now);requestAnimationFrame(loop)})(performance.now());
+  })();
+
+  /* ---------- Cursor + magnetic ---------- */
+  if(fine&&!reduce){
+    document.body.classList.add('has-cursor');
+    var cd=$('#cur'),cr=$('#ring'),cl=$('#ringl'),rx=mx,ry=my;
+    addEventListener('pointermove',function(e){cd.style.transform='translate('+e.clientX+'px,'+e.clientY+'px)'},{passive:true});
+    (function loop(){rx+=(mx-rx)*.16;ry+=(my-ry)*.16;cr.style.transform='translate('+rx+'px,'+ry+'px)';requestAnimationFrame(loop)})();
+    document.addEventListener('mouseover',function(e){var t=e.target.closest&&e.target.closest('[data-cursor]');if(t){cl.textContent=t.dataset.cursor;cr.classList.add('big')}else cr.classList.remove('big')});
+    $$('.btn,.close,.copy,.tbtn,.kbtn').forEach(function(b){
+      b.addEventListener('mousemove',function(e){var r=b.getBoundingClientRect();b.style.transform='translate('+((e.clientX-r.left-r.width/2)*.25)+'px,'+((e.clientY-r.top-r.height/2)*.35)+'px)'});
+      b.addEventListener('mouseleave',function(){b.style.transition='transform .6s var(--ease)';b.style.transform='';setTimeout(function(){b.style.transition=''},600)});
+    });
+  }
+
+  /* ---------- Hero image trail ---------- */
+  var TRAIL=['nhaka-approved','myaura-3','soul2-selfie','aura-xtrail','aura-bb-vpn','hurungwe-store','jaha-headphones','soul-logo','wakosha-faces','dpa-reception','zitf-angle','max-hoodie','pfs-billboard','poster-matchday','axis-pw','shasha-truck','soul-stereo','nhaka-dial','jaha-vinyl','eva-sticker','pub-crowd','ofama-2','wakosha-opener','dpa-board'];
+  var trail=$('#trail'),hero=$('#hero');
+  if(trail&&!reduce&&G){
+    var pool=TRAIL.map(function(n){var i=new Image();i.src='img/'+n+'.webp';i.alt='';i.decoding='async';trail.appendChild(i);return i});
+    var idx=0,lx=-999,ly=-999,z=1;
+    function spawn(x,y){var im=pool[idx%pool.length];idx++;z++;im.style.zIndex=z;G.killTweensOf(im);
+      G.set(im,{x:x,y:y,xPercent:-50,yPercent:-50,opacity:1,scale:.4,rotate:(Math.random()-.5)*14});
+      G.to(im,{scale:1,duration:.6,ease:'expo.out'});G.to(im,{opacity:0,scale:.85,y:y+40,duration:.8,ease:'power2.in',delay:.55})}
+    if(fine){hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;if(Math.hypot(x-lx,y-ly)>100){lx=x;ly=y;spawn(x,y)}})}
+    else setInterval(function(){var r=hero.getBoundingClientRect();if(r.bottom<0||document.hidden)return;spawn(r.width*(.15+Math.random()*.7),r.height*(.2+Math.random()*.45))},900);
+  }
+
+  /* ---------- Marquees with scroll velocity ---------- */
+  var m1=$('#mq1'),m2=$('#mq2');
+  [m1,m2].forEach(function(m){var n=m.children.length;m.innerHTML+=m.innerHTML;$$('span',m).slice(n).forEach(function(s){s.setAttribute('aria-hidden','true')})});
+  var p1=0,p2=-m2.scrollWidth/4,vel=0,lastY=scrollY,dir=1;
+  (function mq(){var y=scrollY,dy=y-lastY;lastY=y;if(dy)dir=dy>0?1:-1;vel+=(Math.min(Math.abs(dy),80)-vel)*.08;
+    if(!reduce){var s=.7+vel*.25;p1-=s*dir;p2+=s*dir;var h1=m1.scrollWidth/2,h2=m2.scrollWidth/2;if(p1<=-h1)p1+=h1;if(p1>0)p1-=h1;if(p2<=-h2)p2+=h2;if(p2>0)p2-=h2;
+      m1.style.transform='translate3d('+p1+'px,0,0)';m2.style.transform='translate3d('+p2+'px,0,0)'}
+    requestAnimationFrame(mq)})();
+
+  /* ---------- Card tilt + glare ---------- */
+  if(fine&&!reduce){$$('.card .ph').forEach(function(ph){
+    ph.addEventListener('mousemove',function(e){var r=ph.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;ph.style.transform='rotateY('+((x-.5)*10)+'deg) rotateX('+((.5-y)*8)+'deg) scale(1.02)';ph.style.setProperty('--gx',(x*100)+'%');ph.style.setProperty('--gy',(y*100)+'%')});
+    ph.addEventListener('mouseleave',function(){ph.style.transform=''});
+  })}
+
+  /* ---------- Videos ---------- */
+  $$('.vid').forEach(function(f){
+    var v=f.querySelector('video'),btn=f.querySelector('.vbtn'),label=btn.getAttribute('aria-label').replace(/^Play /,'');f._p=false;
+    function sync(){var on=!v.paused;btn.setAttribute('aria-pressed',String(on));btn.setAttribute('aria-label',(on?'Pause ':'Play ')+label)}
+    v.addEventListener('play',sync);v.addEventListener('pause',sync);
+    btn.addEventListener('click',function(){if(v.paused){f._p=false;v.preload='auto';var p=v.play();p&&p.catch&&p.catch(function(){})}else{f._p=true;v.pause()}});
+  });
+  if('IntersectionObserver' in window){var vio=new IntersectionObserver(function(es){es.forEach(function(e){var f=e.target,v=f.querySelector('video');if(e.isIntersecting){if(!reduce&&!saveData&&!f._p){v.preload='auto';var p=v.play();p&&p.catch&&p.catch(function(){})}}else v.pause()})},{threshold:.35});$$('.vid').forEach(function(f){vio.observe(f)})}
+
+  /* ---------- Cases ---------- */
+  var CASES={
+    nhaka:{t:['NHAKA','The Enclosure'],client:'NHAKA (my own brand)',scope:'Brand, dial artwork, 3D build and renders',region:'Zimbabwe',desc:'NHAKA means heritage. The first watch, The Enclosure, carries the stone walls of Great Zimbabwe on its dial and caseback. I designed the brand and the dial artwork, drew the blueprints and built every render in 3D.',img:[['nhaka-hero','full'],['nhaka-dial'],['nhaka-rotor'],['nhaka-approved','full'],['nhaka-side'],['nhaka-exploded']]},
+    hurungwe:{t:['Hurungwe','Pharmacy'],client:'Hurungwe Pharmacy',scope:'Logo, pattern system, signage, stationery, staff wear',region:'Zimbabwe',desc:'A complete identity for a community pharmacy. The cross mark breaks into a repeating pattern that carries across the storefront, billboards, stationery and uniforms.',img:[['hurungwe-store','full'],['hurungwe-logo'],['hurungwe-billboard'],['hurungwe-subway','full'],['hurungwe-stationery'],['hurungwe-shirt'],['hurungwe-tote'],['hurungwe-umbrella']]},
+    jaha:{t:['The Jaha','Tribe'],client:'The Jaha Tribe',scope:'Emblem, identity, merch, print',region:'Zimbabwe',desc:'An identity for a music brand. The masked emblem is drawn to sit as well on a vinyl label and a stage screen as on a jacket or a gold-foil card.',img:[['jaha-headphones','full'],['jaha-cards'],['jaha-stage'],['jaha-vinyl','full'],['jaha-shirt'],['jaha-tee']]},
+    soul:{t:['Soul Avenue','300'],client:'Pub Choir',scope:'Logo, campaign art, invites, merch, intro and relaunch films',region:'Zimbabwe',desc:'A retro soul identity for Pub Choir. Seventies stripes, a warm teal and gold palette and a bold wordmark, carried through the campaign art, the merch and two films.',img:[['soul2-selfie','full'],['soul-logo'],['soul-stereo'],['vid-soul','full','v','poster-soul'],['soul2-singer'],['soul2-choir'],['vid-soulrelaunch','','v','poster-vid-soulrelaunch'],['soul2-mic'],['soul2-disco','full'],['soul2-golden'],['soul2-stage'],['pub-crowd','full'],['soul-lanyard','full'],['pub-ticket'],['soul2-teal'],['soul-tee'],['pub-cap'],['soul2-blue'],['soul-crowd'],['soul-flyer'],['pub-id']]},
+    myaura:{t:['MyAURA','App'],client:'AURA Technologies',scope:'UI/UX design, launch film, campaign',region:'Zimbabwe',desc:'MyAURA lets Starlink subscribers check data, top up, pay and raise tickets from their phone. I designed the interface as UI/UX lead and consultant, then made the launch film and the campaign that introduced it.',img:[['vid-myaura','','v','poster-vid-myaura'],['myaura-3'],['myaura-app'],['myaura-4'],['myaura-status'],['myaura-tip'],['myaura-header','full']]},
+    wakosha:{t:['Wakosha','Cosmetics'],client:'Wakosha Cosmetics',scope:'Wordmark, packaging, campaign imagery',region:'Zimbabwe',desc:'A skincare identity built around a crown. A refined wordmark, warm neutral tones and packaging that keeps the crown front and centre.',img:[['wakosha-main','full'],['wakosha-faces','full'],['wakosha-opener'],['wakosha-bottle']]},
+    aura:{t:['AURA','Technologies'],client:'AURA Technologies',scope:'Campaigns, billboards, social, fleet and office branding, films',region:'Zimbabwe',desc:'I lead marketing at AURA, which became Africa\'s second-largest Starlink reseller. This is a slice of the work: billboards, package launches, an AI assistant launch, vehicle and office branding, and the films for our 263 Culture Fest sponsorship.',img:[['aura-bb-vpn','full'],['aura-bb-impact'],['aura-bb-farmers'],['aura-bb-migration','full'],['aura-infinity'],['vid-infinity','','v','poster-vid-infinity'],['aura-mobile'],['aura-auri'],['aura-l2vpn'],['aura-mini'],['aura-home'],['aura-remote'],['aura-pw'],['aura-heroes'],['aura-xtrail','full'],['aura-hilux'],['aura-fit'],['aura-np200'],['aura-golfcart'],['aura-mural','full'],['vid-roaming','','v','poster-vid-roaming'],['aura-celebration'],['aura-culture'],['vid-culture1','','v','poster-vid-culture1'],['vid-culture2','','v','poster-vid-culture2'],['aura-school'],['aura-edu','full']]},
+    dpa:{t:['Distributed','Power Africa'],client:'Distributed Power Africa (DPA)',scope:'3D interior visualisation, branded walls',region:'Zimbabwe',desc:'A full office fit-out for a solar energy company, visualised in 3D: the reception desk, a branded solar feature wall, the lounge and the boardroom, rendered so the client could sign off before anything was built.',img:[['dpa-reception','full'],['dpa-wall'],['dpa-lounge'],['dpa-board','full'],['dpa-meeting']]},
+    stands:{t:['AURA','Expo stands'],client:'AURA Group and AURA Technologies',scope:'Stand design, 3D modelling, renders',region:'Zimbabwe',desc:'Two exhibition stands for the Zimbabwe International Trade Fair, designed and rendered in 3D for sign-off and for the build team. AURA placed first runner-up for Best First-Time Exhibitor at ZITF 2025.',img:[['zitf-angle','full'],['zitf-front'],['zitf-close'],['zitf-angle2','full'],['stand-front'],['stand-top'],['stand-mine','full']]},
+    max:{t:['Max','Unisex Salon'],client:'Max Unisex Salon',scope:'Logo, signage, uniforms, merch',region:'Zimbabwe',desc:'One confident monogram, applied to a lightbox sign, hoodies, aprons and staff uniforms. Simple enough to read from the street, strong enough to wear.',img:[['max-lightbox','full'],['max-hoodie','full'],['max-apron'],['max-uniform']]},
+    pfs:{t:['Proactive','Finance'],client:'Proactive Finance',scope:'Logo, billboards, business cards, signage',region:'Zimbabwe',desc:'An identity for a finance company: a stacked mark that holds up on billboards, illuminated wall signage and business cards.',img:[['pfs-billboard','full'],['pfs-wall'],['pfs-cards']]},
+    shasha:{t:['Shasha','Logistics'],client:'Shasha Logistics',scope:'Logo, fleet, uniforms, signage',region:'Zimbabwe',desc:'A logistics identity carried across the fleet, uniforms and signage.',img:[['shasha-truck','full'],['shasha-wall'],['shasha-polo']]},
+    abtn:{t:['Alberta Black','Therapist Network'],client:'Alberta Black Therapist Network',scope:'Logo system',region:'Canada',desc:'A logo system for a therapist network, built around the line "Helping you find your tribe", with versions for different formats.',img:[['abtn-5'],['abtn-1'],['abtn-4']]},
+    axis:{t:['Axis','Solutions'],client:'Axis Solutions',scope:'Social campaigns, brand promise film',region:'Zimbabwe',desc:'Ongoing social content for a technology company: campaigns, customer care, partner webinars, football Predict and Win posts and a brand promise film.',img:[['axis-promise'],['axis-vr'],['vid-axis','','v','poster-axis'],['axis-pw'],['axis-euro'],['axis-kaspersky'],['axis-revmax'],['axis-care'],['axis-africa']]},
+    smart:{t:['Smart','Connect'],client:'Smart Connect',scope:'Logo, uniforms, signage',region:'Zimbabwe',desc:'A bold wordmark applied to illuminated signage and uniforms.',img:[['smart-wall','full'],['smart-polo']]},
+    eva:{t:['Eva Marie','Libraries'],client:'Eva Marie Libraries',scope:'Identity, merch, campaign',region:'Zimbabwe',desc:'A friendly community identity for a library, carried onto bags, stickers and campaign imagery.',img:[['eva-sticker'],['eva-girl'],['eva-bags']]},
+    kleen:{t:['Kleen','Up'],client:'Kleen Up',scope:'Social campaign',region:'South Africa',desc:'A before-and-after social campaign for a property cleaning and maintenance company.',img:[['kleen-ba'],['kleen-3']]},
+    ofama:{t:['Ofama','Construction'],client:'Ofama Construction',scope:'Social campaign',region:'Zimbabwe',desc:'A bold red social campaign for a brick and paving supplier.',img:[['ofama-2'],['ofama-14'],['ofama-16']]},
+    tesha:{t:['Tesha Trading','Enterprise'],client:'Tesha Trading Enterprise',scope:'Monogram, signage',region:'Zimbabwe',desc:'An interlocking monogram, shown here as illuminated wall signage.',img:[['tesha-wall','full']]},
+    thabitha:{t:['Thabitha','Pharmacy'],client:'Thabitha Pharmacy',scope:'Identity, staff wear',region:'Zimbabwe',desc:'A clean pharmacy identity applied to staff wear and in-store imagery.',img:[['thabitha','full']]},
+    godingo:{t:['Godingo'],client:'Godingo',scope:'Food packaging',region:'Zimbabwe',desc:'Packaging design for a soya chunks product.',img:[['godingo','full']]},
+    culture:{t:['263 Culture','Fest'],client:'AURA Technologies at 263 Culture Fest',scope:'Sponsorship campaign, social films',region:'Zimbabwe',desc:'AURA was the connectivity partner for 263 Culture Fest. I made the campaign and the social films that ran before and during the festival.',img:[['aura-culture'],['vid-culture1','','v','poster-vid-culture1'],['vid-culture2','','v','poster-vid-culture2']]}
+  };
+  var ORDER=['nhaka','hurungwe','jaha','soul','myaura','wakosha','aura','dpa','stands','max','pfs','shasha','abtn','axis','smart','eva','kleen','ofama','tesha','thabitha','godingo','culture'];
+  var caseEl=$('#case'),gal=$('#case-gal'),cur=null,lastFocus=null;
+  function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function fillCase(k){
+    var c=CASES[k];cur=k;var i=ORDER.indexOf(k);
+    $('#case-n').textContent=String(i+1).padStart(2,'0')+' / '+ORDER.length;
+    $('#case-title').innerHTML=c.t.map(function(l){return '<span class="ln"><span>'+esc(l)+'</span></span>'}).join('');
+    $('#case-client').textContent=c.client;$('#case-scope').textContent=c.scope;$('#case-region').textContent=c.region;$('#case-desc').textContent=c.desc;
+    gal.innerHTML='';
+    c.img.forEach(function(it){
+      var f=document.createElement('figure');if(it[1]==='full')f.className='full';
+      if(it[2]==='v'){f.classList.add('v');var v=document.createElement('video');v.src='img/'+it[0]+'.mp4';v.poster='img/'+(it[3]||'poster-soul')+'.jpg';v.muted=true;v.loop=true;v.playsInline=true;v.controls=true;v.autoplay=!reduce;v.preload='metadata';v.setAttribute('aria-label',c.client+' film');f.appendChild(v)}
+      else{var im=document.createElement('img');im.src='img/'+it[0]+'.webp';im.alt=c.client+', '+it[0].split('-').slice(1).join(' ');im.loading='lazy';f.appendChild(im)}
+      gal.appendChild(f);
+    });
+    var nk=ORDER[(i+1)%ORDER.length];$('#case-next-t').textContent=CASES[nk].t.join(' ');
+    caseEl.scrollTop=0;
+  }
+  function openCase(k,fromHash){
+    if(!CASES[k])return;if(!caseEl.hidden){fillCase(k);return}
+    lastFocus=document.activeElement;fillCase(k);closeCmdk(true);
+    caseEl.hidden=false;document.body.style.overflow='hidden';if(lenis)lenis.stop();
+    if(!fromHash){try{history.replaceState(null,'','#'+k)}catch(e){}}
+    if(ok){
+      G.fromTo(caseEl,{clipPath:'inset(100% 0% 0% 0%)'},{clipPath:'inset(0% 0% 0% 0%)',duration:.9,ease:'expo.inOut'});
+      G.from('#case-title .ln span',{yPercent:110,duration:1,ease:'expo.out',stagger:.08,delay:.45});
+      G.from('.case-meta div',{y:30,opacity:0,duration:.8,ease:'expo.out',stagger:.06,delay:.6});
+      G.from('#case-gal figure',{y:60,opacity:0,duration:1,ease:'expo.out',stagger:.05,delay:.7});
+    }
+    setTimeout(function(){$('#case-close').focus()},50);
+  }
+  function closeCase(){
+    function done(){caseEl.hidden=true;caseEl.style.clipPath='';document.body.style.overflow='';if(lenis)lenis.start();gal.innerHTML='';if(lastFocus&&lastFocus.focus)lastFocus.focus({preventScroll:true})}
+    try{history.replaceState(null,'',location.pathname+location.search)}catch(e){}
+    if(ok)G.to(caseEl,{clipPath:'inset(0% 0% 100% 0%)',duration:.7,ease:'expo.inOut',onComplete:done});else done();
+  }
+  $$('[data-case]').forEach(function(b){b.addEventListener('click',function(e){e.preventDefault();openCase(b.dataset.case)})});
+  $('#case-close').addEventListener('click',closeCase);
+  $('#case-next').addEventListener('click',function(){
+    var nk=ORDER[(ORDER.indexOf(cur)+1)%ORDER.length];
+    function swap(){fillCase(nk);try{history.replaceState(null,'','#'+nk)}catch(e){}}
+    if(ok){G.to(caseEl,{opacity:0,duration:.25,onComplete:function(){swap();G.to(caseEl,{opacity:1,duration:.35});G.from('#case-title .ln span',{yPercent:110,duration:.9,ease:'expo.out',stagger:.08});G.from('#case-gal figure',{y:50,opacity:0,duration:.9,ease:'expo.out',stagger:.05,delay:.1})}})}else swap();
+    $('#case-close').focus();
+  });
+  window.addEventListener('hashchange',function(){var k=location.hash.slice(1);if(CASES[k])openCase(k,true)});
+
+  /* ---------- Lightbox ---------- */
+  var tiles=$$('#wallg .tile'),lb=$('#lb'),lbImg=$('#lbImg'),li=0,lbRet=null;
+  function lbShow(i){li=(i+tiles.length)%tiles.length;var im=tiles[li].querySelector('img');lbImg.src=im.getAttribute('src');lbImg.alt=im.alt;$('#lbCap').textContent=im.alt;$('#lbN').textContent=(li+1)+' / '+tiles.length}
+  function lbOpen(i){lbRet=document.activeElement;lbShow(i);lb.hidden=false;document.body.style.overflow='hidden';if(lenis)lenis.stop();$('#lbClose').focus();if(ok)G.fromTo(lbImg,{scale:.92,opacity:0},{scale:1,opacity:1,duration:.5,ease:'expo.out'})}
+  function lbClose(){lb.hidden=true;document.body.style.overflow='';if(lenis)lenis.start();lbRet&&lbRet.focus&&lbRet.focus({preventScroll:true})}
+  tiles.forEach(function(t,i){t.setAttribute('aria-label','View '+t.querySelector('img').alt);t.addEventListener('click',function(){lbOpen(i)})});
+  $('#lbClose').addEventListener('click',lbClose);$('#lbPrev').addEventListener('click',function(){lbShow(li-1)});$('#lbNext').addEventListener('click',function(){lbShow(li+1)});
+  $('#lbStage').addEventListener('click',function(e){if(e.target.id==='lbStage')lbClose()});
+
+  /* ---------- Brand index peek ---------- */
+  var peek=$('#peek');
+  if(fine&&peek){
+    var pims={};$$('#ix button').forEach(function(a){var s=a.dataset.img;if(!pims[s]){var i=new Image();i.src=s;i.alt='';peek.appendChild(i);pims[s]=i}});
+    var px=0,py=0,shown=false;
+    (function pl(){var dx=mx-px;px+=dx*.13;py+=(my-py)*.13;var rot=clamp(dx*.05,-12,12);peek.style.transform='translate('+(px+30)+'px,'+(py-120)+'px) rotate('+rot+'deg) scale('+(shown?1:.7)+')';requestAnimationFrame(pl)})();
+    $$('#ix button').forEach(function(a){
+      a.addEventListener('mouseenter',function(){Object.keys(pims).forEach(function(k){pims[k].classList.toggle('on',k===a.dataset.img)});shown=true;peek.style.transition='opacity .3s';peek.style.opacity=1});
+      a.addEventListener('mouseleave',function(){shown=false;peek.style.opacity=0});
+    });
+  }
+
+  /* ---------- Variable-weight proximity type ---------- */
+  function weightField(chars,minW,maxW,radius){
+    if(!fine||reduce||!chars.length)return;
+    var cur=chars.map(function(){return maxW}),rects=[],dirty=true;
+    addEventListener('scroll',function(){dirty=true},{passive:true});addEventListener('resize',function(){dirty=true});
+    (function loop(){
+      if(dirty){rects=chars.map(function(c){var r=c.getBoundingClientRect();return [r.left+r.width/2,r.top+r.height/2,r.top,r.bottom]});dirty=false}
+      var any=false;
+      for(var i=0;i<chars.length;i++){var r=rects[i];if(!r||r[3]<0||r[2]>innerHeight)continue;any=true;var d=Math.hypot(mx-r[0],my-r[1]);var tgt=maxW-(maxW-minW)*Math.max(0,1-d/radius);cur[i]+=(tgt-cur[i])*.18;chars[i].style.fontVariationSettings='"wght" '+cur[i].toFixed(0)}
+      requestAnimationFrame(loop);
+    })();
+  }
+
+  /* ---------- Split helpers ---------- */
+  function splitChars(el){
+    (function walk(node){Array.prototype.slice.call(node.childNodes).forEach(function(c){
+      if(c.nodeType===3){var frag=document.createDocumentFragment();c.textContent.split('').forEach(function(ch){if(/\s/.test(ch))frag.appendChild(document.createTextNode(' '));else{var s=document.createElement('span');s.className='ch';s.textContent=ch;frag.appendChild(s)}});node.replaceChild(frag,c)}
+      else if(c.nodeType===1)walk(c)})})(el);
+    return $$('.ch',el);
+  }
+  function splitWords(el){
+    Array.prototype.slice.call(el.childNodes).forEach(function(c){
+      if(c.nodeType===3){var frag=document.createDocumentFragment();c.textContent.split(/(\s+)/).forEach(function(w){if(!w)return;if(/^\s+$/.test(w))frag.appendChild(document.createTextNode(w));else{var s=document.createElement('span');s.className='w';s.textContent=w;frag.appendChild(s)}});el.replaceChild(frag,c)}
+      else if(c.nodeType===1&&!c.classList.contains('pill'))c.classList.add('w')});
+    return $$('.w,.pill',el);
+  }
+  var heroChars=splitChars($('#h1'));
+  var wmChars=splitChars($('#wordmark'));
+  weightField(heroChars.filter(function(c){return !c.closest('.serif')}),250,900,260);
+  weightField(wmChars,200,900,320);
+
+  /* ---------- three.js Great Enclosure ---------- */
+  var ENC={p:0,setP:function(){}};
+  (function enclosure(){
+    var cv=$('#encCanvas'),sec=$('#enclosure');
+    if(!window.THREE){cv.style.display='none';$('#encFallback').hidden=false;$('#encCopy').textContent='The walls on NHAKA\'s dial belong to the Great Enclosure at Great Zimbabwe. The live 3D model needs WebGL and could not load here.';return}
+    var T=THREE,mob=innerWidth<761;
+    var R;try{R=new T.WebGLRenderer({canvas:cv,antialias:!mob,powerPreference:'high-performance'})}catch(e){cv.style.display='none';$('#encFallback').hidden=false;return}
+    R.setPixelRatio(Math.min(devicePixelRatio||1,mob?1.5:1.75));R.setClearColor(0x0b0a08,1);R.outputEncoding=T.sRGBEncoding;
+    function lin(h){return new T.Color(h).convertSRGBToLinear()}
+    var S=new T.Scene();S.fog=new T.Fog(lin(0x0b0a08),20,46);
+    var C=new T.PerspectiveCamera(mob?44:36,1,.1,120);
+    S.add(new T.HemisphereLight(0xf1ece2,0x1a140c,.85));
+    var key=new T.DirectionalLight(0xf4b52c,1.9);key.position.set(-9,12,7);S.add(key);
+    var rim=new T.DirectionalLight(0x9fb3c8,.55);rim.position.set(10,7,-9);S.add(rim);
+    var glow=new T.PointLight(0xf4b52c,1.4,16,2);glow.position.set(2.2,3.2,-2.2);S.add(glow);
+    var ground=new T.Mesh(new T.CircleGeometry(19,80),new T.MeshStandardMaterial({color:lin(0x17140f),roughness:1,metalness:0}));ground.rotation.x=-Math.PI/2;S.add(ground);
+    var grid=new T.PolarGridHelper(18,24,16,80,lin(0x8a6a2c),lin(0x3a3022));grid.position.y=.01;grid.material.transparent=true;grid.material.opacity=.5;S.add(grid);
+
+    var P=[],h=.3;
+    function rnd(a,b){return a+Math.random()*(b-a)}
+    function angDiff(a,b){var d=a-b;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;return d}
+    function wall(rx,rz,cx,cz,courses,t0,t1,L,D,gapAt,gapW,chev,tone){
+      for(var c=0;c<courses;c++){
+        var t=t0+(c%2)*(L*.5)/((rx+rz)/2);
+        while(t<t1){
+          var dx=-rx*Math.sin(t),dz=rz*Math.cos(t),sp=Math.sqrt(dx*dx+dz*dz),len=L*rnd(.82,1.15),tc=t+(len*.5)/sp;
+          if(tc<t1&&!(gapAt!==null&&Math.abs(angDiff(tc,gapAt))<gapW)){
+            var isChev=chev&&c>=courses-3&&c<courses-0&&tc>chev[0]&&tc<chev[1];
+            P.push({x:cx+rx*Math.cos(tc),y:c*h+h*.5,z:cz+rz*Math.sin(tc),ry:Math.atan2(-dz,dx),rz:isChev?((Math.floor((tc-chev[0])/(L/sp))%2?1:-1)*.5):rnd(-.03,.03),sx:len*.93,sy:h*rnd(.84,.96),sz:D*rnd(.88,1.1),c:c,n:courses,ch:isChev,tone:tone});
+          }
+          t+=len/sp;
+        }
+      }
+    }
+    function tower(cx,cz,courses,r0,r1){
+      for(var c=0;c<courses;c++){var r=lerp(r0,r1,c/courses),n=Math.max(8,Math.floor(2*Math.PI*r/.42)),off=(c%2)*.5;
+        for(var i=0;i<n;i++){var tc=(i+off)/n*Math.PI*2,dx=-r*Math.sin(tc),dz=r*Math.cos(tc);
+          P.push({x:cx+r*Math.cos(tc),y:c*h+h*.5,z:cz+r*Math.sin(tc),ry:Math.atan2(-dz,dx),rz:0,sx:(2*Math.PI*r/n)*.92,sy:h*rnd(.86,.96),sz:.5,c:c*.62,n:courses,ch:false,tone:1})}}
+    }
+    var courses=mob?11:14,L=.62;
+    if(mob){wall(7.2,5.4,0,0,courses,-Math.PI,Math.PI,L,.8,Math.PI/2+.25,.16,[-2.3,-.9],0)}
+    else{wall(7.42,5.62,0,0,courses,-Math.PI,Math.PI,L,.5,Math.PI/2+.25,.16,[-2.3,-.9],0);wall(6.98,5.18,0,0,courses-1,-Math.PI,Math.PI,L,.5,Math.PI/2+.25,.17,null,2)}
+    wall(6.1,4.3,0,0,Math.round(courses*.72),-2.1,-.4,L,.55,null,0,null,2);
+    tower(2.3,-2.3,mob?16:20,1.2,.62);
+    var N=P.length;
+    $('#encT').textContent=N.toLocaleString('en-GB');$('#encC').textContent=courses;
+    $('#encCopy').textContent='The walls on NHAKA\'s dial belong to the Great Enclosure at Great Zimbabwe. Here they are again, rebuilt live in your browser from '+N.toLocaleString('en-GB')+' stones, chevron frieze and conical tower included. Scroll to raise the walls. Drag to look around.';
+    var geo=new T.BoxGeometry(1,1,1);
+    var mat=new T.MeshStandardMaterial({color:0xffffff,roughness:.92,metalness:.02});
+    var wire=new T.MeshBasicMaterial({color:lin(0xf4b52c),wireframe:true,transparent:true,opacity:.6});
+    var mesh=new T.InstancedMesh(geo,mat,N);mesh.instanceMatrix.setUsage(T.DynamicDrawUsage);S.add(mesh);
+    var pal=[lin(0x8a8072),lin(0xa89a84),lin(0xbfae92),lin(0x766c60),lin(0x9a8c78)],col=new T.Color();
+    P.forEach(function(s,i){
+      var th=Math.random()*Math.PI*2,ph=rnd(.2,1.3),rad=rnd(10,24);
+      s.x0=s.x+Math.cos(th)*Math.sin(ph)*rad;s.y0=s.y+rnd(5,16);s.z0=s.z+Math.sin(th)*Math.sin(ph)*rad;
+      s.a0=rnd(-3,3);s.b0=rnd(-3,3);s.c0=rnd(-3,3);
+      s.d=(s.c/s.n)*.55+Math.random()*.17;
+      col.copy(pal[Math.floor(Math.random()*pal.length)]).multiplyScalar(s.ch?1.25:rnd(.85,1.08)*(s.tone===2?.9:1));
+      mesh.setColorAt(i,col);
+    });
+    var instColor=mesh.instanceColor;
+    var m4=new T.Matrix4(),pos=new T.Vector3(),q=new T.Quaternion(),e=new T.Euler(0,0,0,'YXZ'),sc=new T.Vector3();
+    var lastP=-1,placedEl=$('#encN');
+    function build(p){
+      var placed=0;
+      for(var i=0;i<N;i++){var s=P[i],k=clamp((p-s.d)/.28,0,1);k=1-Math.pow(1-k,3);if(k>.985)placed++;
+        pos.set(lerp(s.x0,s.x,k),lerp(s.y0,s.y,k),lerp(s.z0,s.z,k));e.set(lerp(s.a0,0,k),lerp(s.b0,s.ry,k),lerp(s.c0,s.rz,k));q.setFromEuler(e);sc.set(s.sx,s.sy,s.sz);m4.compose(pos,q,sc);mesh.setMatrixAt(i,m4)}
+      mesh.instanceMatrix.needsUpdate=true;placedEl.textContent=placed.toLocaleString('en-GB');
+    }
+    var W=0,H=0;
+    function size(){var r=sec.getBoundingClientRect();W=r.width;H=r.height;R.setSize(W,H,false);C.aspect=W/H;C.updateProjectionMatrix()}
+    size();addEventListener('resize',size);
+    var drag=0,dragT=0,down=false,lastX=0,spin=!reduce,ang=0,vis=false;
+    cv.addEventListener('pointerdown',function(ev){down=true;lastX=ev.clientX;cv.setPointerCapture&&cv.setPointerCapture(ev.pointerId)});
+    cv.addEventListener('pointermove',function(ev){if(!down)return;dragT+=(ev.clientX-lastX)*.006;lastX=ev.clientX});
+    ['pointerup','pointercancel','pointerleave'].forEach(function(n){cv.addEventListener(n,function(){down=false})});
+    var wb=$('#wireBtn'),sb=$('#spinBtn');
+    wb.addEventListener('click',function(){var on=wb.getAttribute('aria-pressed')!=='true';wb.setAttribute('aria-pressed',String(on));mesh.material=on?wire:mat;mesh.instanceColor=on?null:instColor;grid.material.opacity=on?.9:.5;render()});
+    sb.addEventListener('click',function(){spin=sb.getAttribute('aria-pressed')!=='true';sb.setAttribute('aria-pressed',String(spin))});
+    ENC.toggleWire=function(){wb.click()};
+    var lt=performance.now();
+    function render(){
+      var p=ENC.p;
+      if(Math.abs(p-lastP)>.0005){build(p);lastP=p}
+      drag+=(dragT-drag)*.08;
+      var rad=mob?27:23,hgt=lerp(14,7.5,p);
+      var a=-.55+p*1.1+drag+ang;
+      C.position.set(Math.sin(a)*rad,hgt,Math.cos(a)*rad);C.lookAt(0,lerp(.5,2.2,p),-.6);
+      R.render(S,C);
+    }
+    ENC.setP=function(v){ENC.p=clamp(v,0,1)};
+    if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting},{rootMargin:'100px'}).observe(sec);else vis=true;
+    if(reduce||!ok){ENC.p=1;render();addEventListener('resize',function(){render()});
+      cv.addEventListener('pointermove',function(){if(down)render()});return}
+    (function loop(now){var dt=Math.min(.05,(now-lt)/1000);lt=now;if(vis&&!document.hidden){if(spin)ang+=dt*.06;render()}requestAnimationFrame(loop)})(performance.now());
+  })();
+
+  /* ---------- Terminal ---------- */
+  (function term(){
+    var out=$('#tout'),inp=$('#tin'),form=$('#tform'),hist=[],hp=-1,booted=false;
+    function line(txt,cls){var d=document.createElement('div');d.className='tl'+(cls?' '+cls:'');d.textContent=txt;out.appendChild(d);out.scrollTop=out.scrollHeight;return d}
+    function lines(arr,cls){arr.forEach(function(t){line(t,cls)})}
+    function link(prefix,label,cmd){var d=line(prefix);var b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',function(){run(cmd)});d.appendChild(b);out.scrollTop=out.scrollHeight}
+    function go(id){var el=document.querySelector(id);if(!el)return;if(lenis)lenis.scrollTo(el,{duration:1.4});else el.scrollIntoView({behavior:reduce?'auto':'smooth'})}
+    function find(q){q=q.toLowerCase().trim();if(CASES[q])return q;for(var i=0;i<ORDER.length;i++){var k=ORDER[i],c=CASES[k];if((c.t.join(' ')+' '+c.client).toLowerCase().indexOf(q)>-1)return k}return null}
+    var C2={
+      help:function(){lines(['Available commands:','  whoami          who is this','  ls              list every project','  open <name>     open a project (try: open soul)','  clients         everyone I have worked with','  cv              experience and education','  skills          disciplines and tools','  nhaka           the watch and the 3D enclosure','  football        my favourite thing to design','  neofetch        system info, designer edition','  wireframe       toggle the 3D wireframe','  contact         how to reach me','  copy email      copy my email address','  time            the time in Harare','  hello           say hello','  clear           clear the screen','  sudo hire levi  you know you want to'],'dim')},
+      whoami:function(){lines(['Levison Murombo. Designer and art director, Harare, Zimbabwe.','Chemical and process systems engineer by training (HIT, 2020).','Leads digital media and advertising at AURA Technologies.','Designs identities, campaigns, 3D and product for brands in nine countries.'])},
+      ls:function(){line(ORDER.length+' projects. Select one, or run open <name>.','dim');ORDER.forEach(function(k,i){link('  '+String(i+1).padStart(2,'0')+'  ',CASES[k].t.join(' '),'open '+k)})},
+      open:function(a){if(!a){line('usage: open <name>   e.g. open nhaka','dim');return}var k=find(a);if(!k){line('open: no project matches "'+a+'". Run ls to see them all.');return}line('Opening '+CASES[k].t.join(' ')+'...','acc');setTimeout(function(){openCase(k)},350)},
+      clients:function(){lines(['Axis Solutions · AURA · Wakosha Cosmetics · Alberta Black Therapist Network','MultiLink Cargo · Max Unisex Salon · Distributed Power Africa · Hurungwe Pharmacy','The Jaha Tribe · Pub Choir · 263 Culture Fest · Proactive Finance · Shasha Logistics','Ofama Construction · Kleen Up · Eva Marie Libraries · GGF Africa · Insburg','NIC · NASRIA · SkyStar Airlines'])},
+      cv:function(){lines(['2024 → now   Digital Media and Advertising Manager, AURA Technologies','2025         ZITF Best First-Time Exhibitor, first runner-up (with AURA)','2024         Senior Creative Lead, GGF Africa','2023         Senior Graphic Designer, Imperium Branding','2020         BTech Honours, Chemical and Process Systems Engineering, HIT','2021         Research paper published in Materials Today'])},
+      skills:function(){lines(['Disciplines  brand strategy, identity, campaigns, art direction, 3D, motion, UI/UX','Tools        Illustrator, Photoshop, Figma, Blender, After Effects, Lightroom','This site    GLSL, three.js, GSAP, Lenis, plain JavaScript'])},
+      nhaka:function(){lines(['NHAKA means heritage. The Enclosure is the first watch:','the Great Enclosure in relief on a teal dial, stonework on the caseback.','Scrolling you to the live 3D model...'],'');setTimeout(function(){go('#enclosure')},500)},
+      football:function(){lines(['Matchday posters are my favourite thing to design.','Crest, gradient, big name wordmark, stat block, crowd texture, light leak.','Taking you to the wall...']);setTimeout(function(){go('#wall')},500)},
+      neofetch:function(){lines(['        ▲▲▲          levi@harare','       ▲▲▲▲▲         -----------','      ▲▲▲▲▲▲▲        OS: levi.os build 26.11','     ▲▲▲▲▲▲▲▲▲       Host: Harare, Zimbabwe (UTC+2)','                     Kernel: chemical engineering','                     Uptime: '+up.textContent,'                     Shell: Big Shoulders + Instrument Serif','                     Projects: '+ORDER.length+'   Clients: 20+   Countries: 9','                     GPU: whatever is rendering '+fpsNow+' fps for you right now'],'acc')},
+      wireframe:function(){if(ENC.toggleWire){ENC.toggleWire();line('Toggled the 3D wireframe. Run nhaka to go and see it.','dim')}else line('3D view unavailable on this device.','dim')},
+      contact:function(){lines(['email  levimurombo@gmail.com','phone  +263 773 766 393']);link('','Run copy email','copy email')},
+      copy:function(a){var t=/phone/.test(a)?'+263 773 766 393':'levimurombo@gmail.com';copyText(t,null);line('Copied '+t+' to your clipboard (if your browser allowed it).','acc')},
+      time:function(){line('It is '+hre()+' in Harare.')},date:function(){C2.time()},
+      hello:function(){line('Hi, I am Levi. Thanks for stopping by. Type ls to see the work.','acc')},hi:function(){C2.hello()},
+      clear:function(){out.innerHTML=''},
+      echo:function(a){line(a||'')},
+      exit:function(){line('There is no exit. Only more work. Run ls.')},
+      sudo:function(a){if(/hire\s+levi/.test(a)){line('[sudo] password for recruiter: ********','dim');setTimeout(function(){line('Access granted. Excellent decision.','acc');setTimeout(function(){go('#contact')},700)},600)}else line('Nice try. This incident will be reported.','dim')},
+      rm:function(){line('rm: permission denied. The work stays.','dim')}
+    };
+    function run(raw){
+      raw=(raw||'').trim();if(!raw)return;hist.unshift(raw);hp=-1;
+      var d=document.createElement('div');d.className='tl cmd';var b=document.createElement('b');b.textContent='levi@harare ~ % ';d.appendChild(b);d.appendChild(document.createTextNode(raw));out.appendChild(d);
+      var parts=raw.split(/\s+/),c=parts[0].toLowerCase(),a=parts.slice(1).join(' ');
+      if(C2[c])C2[c](a);else line('command not found: '+c+'. Try help.');
+      out.scrollTop=out.scrollHeight;
+    }
+    form.addEventListener('submit',function(e){e.preventDefault();var v=inp.value;inp.value='';run(v)});
+    inp.addEventListener('keydown',function(e){
+      if(e.key==='ArrowUp'){if(hp<hist.length-1){hp++;inp.value=hist[hp]}e.preventDefault()}
+      else if(e.key==='ArrowDown'){if(hp>0){hp--;inp.value=hist[hp]}else{hp=-1;inp.value=''}e.preventDefault()}
+      else if(e.key==='Tab'){var v=inp.value.toLowerCase();if(!v)return;var pool=Object.keys(C2);if(/^open\s/.test(v)){var q=v.slice(5);pool=ORDER.filter(function(k){return k.indexOf(q)===0}).map(function(k){return 'open '+k})}else pool=pool.filter(function(k){return k.indexOf(v)===0});if(pool.length){e.preventDefault();inp.value=pool[0]}}
+    });
+    $('#term').addEventListener('click',function(e){if(!e.target.closest('button'))inp.focus({preventScroll:true})});
+    $$('#chips button').forEach(function(b){b.addEventListener('click',function(){run(b.dataset.run)})});
+    function boot(){if(booted)return;booted=true;var msg=['levi.os build 26.11 · tty1','Welcome. This terminal runs the whole site.','Type help, or tap a command below.'];
+      if(reduce){lines(msg,'dim');return}
+      var li=0;(function nextLine(){if(li>=msg.length)return;var d=line('','dim'),s=msg[li],ci=0;(function typ(){d.textContent=s.slice(0,++ci);if(ci<s.length)setTimeout(typ,14);else{li++;setTimeout(nextLine,120)}})()})()}
+    if('IntersectionObserver' in window)new IntersectionObserver(function(es){if(es[0].isIntersecting)boot()},{threshold:.3}).observe($('#term'));else boot();
+    ENC.run=run;
+  })();
+
+  /* ---------- Command palette ---------- */
+  var cmdk=$('#cmdk'),cq=$('#cmdq'),clist=$('#cmdlist'),csel=0,cshown=[],cret=null;
+  function go2(id){if(lenis)lenis.scrollTo(id,{duration:1.4});else document.querySelector(id).scrollIntoView({behavior:reduce?'auto':'smooth'})}
+  var CM=[
+    {l:'Selected work',h:'Section',a:function(){go2('#work')}},{l:'The Great Enclosure in 3D',h:'Section',a:function(){go2('#enclosure')}},{l:'NHAKA dial',h:'Section',a:function(){go2('#dial')}},{l:'Brand index',h:'Section',a:function(){go2('#index')}},{l:'The wall',h:'Section',a:function(){go2('#wall')}},{l:'Motion',h:'Section',a:function(){go2('#motion')}},{l:'Terminal',h:'Section',a:function(){go2('#terminal');setTimeout(function(){$('#tin').focus({preventScroll:true})},1500)}},{l:'About',h:'Section',a:function(){go2('#about')}},{l:'Contact',h:'Section',a:function(){go2('#contact')}},
+    {l:'Copy email address',h:'Action',a:function(){copyText('levimurombo@gmail.com',null)}},{l:'Copy phone number',h:'Action',a:function(){copyText('+263 773 766 393',null)}},{l:'Toggle 3D wireframe',h:'Action',a:function(){ENC.toggleWire&&ENC.toggleWire();go2('#enclosure')}},{l:'Hire Levi',h:'Action',a:function(){go2('#contact')}}
+  ].concat(ORDER.map(function(k,i){return {l:'Open '+CASES[k].t.join(' '),h:String(i+1).padStart(2,'0'),a:function(){openCase(k)}}}));
+  function crender(){var t=cq.value.trim().toLowerCase();cshown=CM.filter(function(c){return c.l.toLowerCase().indexOf(t)>-1});if(csel>=cshown.length)csel=0;clist.innerHTML='';
+    if(!cshown.length){var e=document.createElement('li');e.className='empty';e.textContent='No matches. Try "work", "soul" or "email".';clist.appendChild(e);return}
+    cshown.forEach(function(c,i){var li=document.createElement('li');li.setAttribute('role','option');li.id='co'+i;li.setAttribute('aria-selected',String(i===csel));var a=document.createElement('b');a.style.fontWeight='500';a.textContent=c.l;var s=document.createElement('span');s.textContent=c.h;li.appendChild(a);li.appendChild(s);li.addEventListener('mouseenter',function(){csel=i;cmark()});li.addEventListener('click',function(){closeCmdk();c.a()});clist.appendChild(li)});cq.setAttribute('aria-activedescendant','co'+csel)}
+  function cmark(){$$('li',clist).forEach(function(li,i){li.setAttribute('aria-selected',String(i===csel))});var s=$('#co'+csel);s&&s.scrollIntoView({block:'nearest'});cq.setAttribute('aria-activedescendant','co'+csel)}
+  function openCmdk(){cret=document.activeElement;cmdk.hidden=false;cq.value='';csel=0;crender();if(lenis)lenis.stop();setTimeout(function(){cq.focus()},0)}
+  function closeCmdk(silent){if(cmdk.hidden)return;cmdk.hidden=true;if(lenis&&caseEl.hidden&&lb.hidden)lenis.start();if(!silent&&cret&&cret.focus)cret.focus({preventScroll:true})}
+  $('#kbtn').addEventListener('click',openCmdk);
+  cmdk.addEventListener('click',function(e){if(e.target===cmdk)closeCmdk()});
+  cq.addEventListener('input',function(){csel=0;crender()});
+
+  /* ---------- Mobile menu ---------- */
+  var mb=$('#menuBtn'),mn=$('#mnav');
+  function setMenu(o){mb.setAttribute('aria-expanded',String(o));mn.hidden=!o;mb.textContent=o?'Close':'Menu';if(lenis){o?lenis.stop():lenis.start()}if(o){var f=mn.querySelector('a');f&&f.focus()}}
+  mb.addEventListener('click',function(){setMenu(mn.hidden)});
+  $$('a',mn).forEach(function(a){a.addEventListener('click',function(e){e.preventDefault();setMenu(false);var id=a.getAttribute('href');setTimeout(function(){go2(id)},30)})});
+
+  /* ---------- Keyboard ---------- */
+  function trap(e,root){var f=$$('button,a[href],input,video[controls]',root).filter(function(x){return !x.disabled&&x.getClientRects().length});if(!f.length)return;var a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}
+  document.addEventListener('keydown',function(e){
+    if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==='k'){e.preventDefault();cmdk.hidden?openCmdk():closeCmdk();return}
+    if(!cmdk.hidden){if(e.key==='Escape'){e.preventDefault();closeCmdk()}else if(e.key==='ArrowDown'){e.preventDefault();if(cshown.length){csel=(csel+1)%cshown.length;cmark()}}else if(e.key==='ArrowUp'){e.preventDefault();if(cshown.length){csel=(csel-1+cshown.length)%cshown.length;cmark()}}else if(e.key==='Enter'){e.preventDefault();var c=cshown[csel];if(c){closeCmdk(true);c.a()}}else if(e.key==='Tab')e.preventDefault();return}
+    if(!lb.hidden){if(e.key==='Escape'){e.preventDefault();lbClose()}else if(e.key==='ArrowRight')lbShow(li+1);else if(e.key==='ArrowLeft')lbShow(li-1);else if(e.key==='Tab')trap(e,lb);return}
+    if(!caseEl.hidden){if(e.key==='Escape'){e.preventDefault();closeCase()}else if(e.key==='Tab')trap(e,caseEl);return}
+    if(!mn.hidden&&e.key==='Escape'){setMenu(false);mb.focus()}
+  });
+
+  /* ---------- Counters ---------- */
+  if('IntersectionObserver' in window&&!reduce){var cio=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)return;cio.unobserve(e.target);var s=e.target.querySelector('span'),to=+e.target.dataset.count,t0=null;(function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/1400);s.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)})(performance.now())})},{threshold:.6});$$('.num b[data-count]').forEach(function(b){cio.observe(b)})}
+
+  function openFromHash(){var k=location.hash.slice(1);if(CASES[k])openCase(k,true)}
+
+  /* ---------- No GSAP or reduced motion: static and done ---------- */
+  if(!ok){if(loader)loader.style.display='none';ENC.setP(1);openFromHash();return}
+
+  G.registerPlugin(ST);
+  if(window.Lenis){
+    lenis=new Lenis({lerp:.09,smoothWheel:true});
+    lenis.on('scroll',ST.update);G.ticker.add(function(t){lenis.raf(t*1000)});G.ticker.lagSmoothing(0);
+    $$('a[href^="#"]').forEach(function(a){if(a.closest('#mnav'))return;a.addEventListener('click',function(e){var id=a.getAttribute('href');if(id==='#top'){e.preventDefault();lenis.scrollTo(0,{duration:1.4})}else if(id.length>1&&document.querySelector(id)){e.preventDefault();lenis.scrollTo(id,{duration:1.4})}})});
+  }
+
+  /* ---------- Loader boot sequence ---------- */
+  var log=$('#ldlog'),LOG=['> boot levi.os build 26.11','> loading 22 brands .............. ok','> compiling glsl shaders .......... ok','> raising the great enclosure ..... ok','> ready.'];
+  var tl=G.timeline(),cnt={v:0},skipped=false;
+  LOG.forEach(function(s,i){tl.call(function(){log.textContent+=(i?'\n':'')+s},null,i*.26)});
+  tl.to(cnt,{v:100,duration:1.45,ease:'power2.inOut',onUpdate:function(){$('#ldc').textContent=String(Math.round(cnt.v)).padStart(3,'0')}},0)
+    .to('#ldb',{scaleX:1,duration:1.45,ease:'power2.inOut'},0)
+    .to(loader,{yPercent:-100,duration:.9,ease:'expo.inOut'},1.6)
+    .set(loader,{display:'none'})
+    .from(heroChars,{yPercent:115,rotate:6,duration:1.1,ease:'expo.out',stagger:.018},1.9)
+    .from('.hero-meta span, .hello, .hero-foot > *, .hint',{y:24,opacity:0,duration:.9,ease:'expo.out',stagger:.06},2.2)
+    .add(openFromHash);
+  loader.addEventListener('click',function(){if(skipped)return;skipped=true;if(tl.time()<1.6)tl.seek(1.6)});
+  setTimeout(function(){if(loader&&getComputedStyle(loader).display!=='none')loader.style.display='none'},5000);
+
+  /* ---------- Scroll scenes ---------- */
+  G.to('#h1',{yPercent:-18,ease:'none',scrollTrigger:{trigger:'#hero',start:'top top',end:'bottom top',scrub:true}});
+  var words=splitWords($('#stmt'));
+  G.fromTo(words,{opacity:.16},{opacity:1,stagger:.1,ease:'none',scrollTrigger:{trigger:'#stmt',start:'top 80%',end:'bottom 45%',scrub:true}});
+  G.fromTo('.pill',{scale:.3,rotate:-10},{scale:1,rotate:0,ease:'back.out(2)',stagger:.15,scrollTrigger:{trigger:'#stmt',start:'top 75%',end:'bottom 55%',scrub:true}});
+  $$('.shead h2').forEach(function(h){var cs=splitChars(h);G.from(cs,{yPercent:100,opacity:0,duration:1,ease:'expo.out',stagger:.02,scrollTrigger:{trigger:h,start:'top 88%'}})});
+
+  var mm=G.matchMedia();
+  mm.add('(min-width: 761px)',function(){
+    var track=$('#track'),pin=$('#reelpin');pin.classList.add('pinned');pin.scrollLeft=0;
+    function dist(){return Math.max(0,track.scrollWidth-innerWidth)}
+    var tw=G.to(track,{x:function(){return -dist()},ease:'none',scrollTrigger:{trigger:pin,start:'center center',end:function(){return '+='+dist()},pin:true,scrub:1,invalidateOnRefresh:true,anticipatePin:1,onUpdate:function(s){$('#reelbar').style.transform='scaleX('+s.progress+')'}}});
+    $$('.card .ph img').forEach(function(img){G.fromTo(img,{xPercent:-6},{xPercent:6,ease:'none',scrollTrigger:{trigger:img.closest('.card'),containerAnimation:tw,start:'left right',end:'right left',scrub:true}})});
+    $$('.card').forEach(function(c){G.from(c.querySelector('.ph'),{clipPath:'inset(12% 8% 12% 8% round 6px)',ease:'none',scrollTrigger:{trigger:c,containerAnimation:tw,start:'left 95%',end:'left 55%',scrub:true}})});
+    return function(){pin.classList.remove('pinned')};
+  });
+
+  /* Enclosure: pinned assembly */
+  ST.create({trigger:'#enclosure',start:'top top',end:'+='+(innerWidth<761?130:170)+'%',pin:true,scrub:true,onUpdate:function(s){ENC.setP(Math.min(1,s.progress*1.18))}});
+
+  /* NHAKA dial zoom */
+  G.timeline({scrollTrigger:{trigger:'#dial',start:'top top',end:'+=150%',pin:true,scrub:1}})
+    .fromTo('#zimg',{clipPath:'circle(18% at 50% 50%)'},{clipPath:'circle(75% at 50% 50%)',ease:'none'},0)
+    .fromTo('#zimg img',{scale:1.35,rotate:-8},{scale:1,rotate:0,ease:'none'},0)
+    .fromTo('.zoom .zt',{scale:1},{scale:.55,yPercent:-60,ease:'none'},0)
+    .from('.zoom .c1',{x:-60,opacity:0,ease:'power2.out',duration:.25},.35)
+    .from('.zoom .c2',{x:60,opacity:0,ease:'power2.out',duration:.25},.5)
+    .from('.zoom .c3',{y:40,opacity:0,ease:'power2.out',duration:.25},.65)
+    .from('.zoom .zbtn',{y:30,opacity:0,ease:'power2.out',duration:.2},.75);
+
+  G.from('#ix li',{y:40,opacity:0,duration:.9,ease:'expo.out',stagger:.05,scrollTrigger:{trigger:'#ix',start:'top 85%'}});
+
+  mm.add('(min-width: 761px)',function(){
+    $$('#wallg .col').forEach(function(col){var sp=parseFloat(col.dataset.speed)||0;G.fromTo(col,{yPercent:-sp},{yPercent:sp,ease:'none',scrollTrigger:{trigger:'#wallg',start:'top bottom',end:'bottom top',scrub:true}})});
+  });
+  var skewTo=G.quickTo(tiles,'skewY',{duration:.6,ease:'power3'});
+  ST.create({trigger:'#wallg',start:'top bottom',end:'bottom top',onUpdate:function(s){skewTo(G.utils.clamp(-6,6,s.getVelocity()/-350))}});
+  G.from(tiles,{scale:.85,opacity:0,duration:1,ease:'expo.out',stagger:{each:.04,from:'random'},scrollTrigger:{trigger:'#wallg',start:'top 85%'}});
+  G.from('.vid',{y:80,opacity:0,duration:1.1,ease:'expo.out',stagger:.06,scrollTrigger:{trigger:'#motion .vids',start:'top 85%'}});
+  G.from('#term',{y:60,opacity:0,rotateX:8,transformPerspective:1200,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'#term',start:'top 85%'}});
+  G.from('.ab .big p, .labcard',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.ab',start:'top 80%'}});
+  G.from('.xp li',{y:30,opacity:0,duration:.9,ease:'expo.out',stagger:.06,scrollTrigger:{trigger:'.xp',start:'top 85%'}});
+  var cch=splitChars($('#ct-h'));
+  G.from(cch,{yPercent:100,rotate:8,duration:1,ease:'expo.out',stagger:.02,scrollTrigger:{trigger:'#contact',start:'top 70%'}});
+  G.from(wmChars,{yPercent:100,ease:'none',stagger:.06,scrollTrigger:{trigger:'footer',start:'top bottom',end:'bottom bottom',scrub:true}});
+  addEventListener('load',function(){ST.refresh()});
+})();
+</script>
+</body>
+</html>
