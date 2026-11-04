@@ -213,19 +213,33 @@ html.js .loader{display:flex;position:fixed;inset:0;z-index:100;background:var(-
 .crosshair::before{left:10px;top:0;width:1px;height:22px}
 .crosshair::after{top:10px;left:0;height:1px;width:22px}
 
-/* NHAKA zoom */
-.zoom{position:relative;height:100svh;min-height:600px;overflow:hidden;display:grid;place-items:center;background:#0b0907}
-.zoom .zimg{position:absolute;inset:0;clip-path:circle(22% at 50% 50%)}
-.zoom .zimg img{width:100%;height:100%;object-fit:cover}
-.zoom .zt{position:relative;z-index:2;text-align:center;pointer-events:none;padding-inline:16px}
-.zoom .zt h2{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(3.6rem,14vw,14rem);line-height:.8;mix-blend-mode:difference;color:#fff}
-.zoom .zt .serif{display:block;font-size:clamp(1.4rem,2.6vw,2.4rem);margin-top:14px;color:#fff;mix-blend-mode:difference}
-.zoom .callout{position:absolute;z-index:3;max-width:250px;background:rgba(14,13,11,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(241,236,226,.15);border-radius:6px;padding:14px 16px;font-size:.92rem}
-.zoom .callout b{display:block;font-family:var(--f-mono);font-weight:500;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--zuva);margin-bottom:6px}
-.zoom .c1{left:max(16px,6vw);top:18%}
-.zoom .c2{right:max(16px,6vw);top:40%}
-.zoom .c3{left:max(16px,10vw);bottom:12%}
-.zoom .zbtn{position:absolute;z-index:3;right:max(16px,6vw);bottom:10%}
+/* NHAKA exploded watch: scroll-scrubbed image sequence */
+.seq{position:relative;height:100svh;min-height:620px;overflow:hidden;background:#0E0B09;color:var(--ink)}
+.seq-stage{position:absolute;inset:0;display:grid;place-items:center}
+.seq-box{position:relative;width:min(88svh,94vw);aspect-ratio:1/1}
+.seq-box canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.seq-poster{position:absolute;inset:0;width:100%;height:100%;object-fit:contain}
+.seq-mk{position:absolute;z-index:2;transform:translate(-50%,-50%);min-width:44px;height:30px;padding:0 9px;display:grid;place-items:center;border:1px solid rgba(241,236,226,.22);background:rgba(24,22,18,.78);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;color:var(--ink);opacity:0;pointer-events:none;transition:border-color .25s,color .25s}
+.seq-mk.on{pointer-events:auto;cursor:default}
+.seq-mk.hot,.seq-mk:hover{border-color:var(--zuva);color:var(--zuva)}
+.seq-top{position:absolute;z-index:3;left:max(16px,4vw);right:max(16px,4vw);top:clamp(84px,11vh,120px);display:flex;justify-content:space-between;align-items:flex-start;gap:24px;pointer-events:none}
+.seq-title h2{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(3.2rem,8vw,7.5rem);line-height:.82;letter-spacing:-.01em}
+.seq-title .serif{display:block;font-size:clamp(1.15rem,1.9vw,1.7rem);margin-top:10px;color:var(--ink)}
+.seq-meta{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);text-align:right;line-height:1.7}
+.seq-legend{position:absolute;z-index:3;right:max(16px,4vw);top:50%;transform:translateY(-50%);list-style:none;margin:0;padding:0;width:min(270px,26vw)}
+.seq-legend li{display:grid;grid-template-columns:44px 1fr;gap:12px;align-items:baseline;padding:11px 0;border-top:1px solid var(--line);opacity:0;transition:color .25s}
+.seq-legend li:last-child{border-bottom:1px solid var(--line)}
+.seq-legend b{font-family:var(--f-mono);font-weight:500;font-size:.72rem;letter-spacing:.06em;color:var(--mute)}
+.seq-legend span{font-size:.95rem}
+.seq-legend small{display:block;color:var(--mute);font-size:.8rem;margin-top:3px}
+.seq-legend li.hot b{color:var(--zuva)}
+.seq-foot{position:absolute;z-index:3;left:max(16px,4vw);right:max(16px,4vw);bottom:clamp(20px,5vh,44px);display:flex;justify-content:space-between;align-items:center;gap:16px}
+.seq-cue{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mute)}
+.seq-bar{position:absolute;left:0;right:0;bottom:0;height:2px;background:var(--line)}
+.seq-bar i{display:block;height:100%;background:var(--zuva);transform-origin:0 50%;transform:scaleX(0)}
+.seq-load{position:absolute;left:50%;bottom:-28px;transform:translateX(-50%);font-family:var(--f-mono);font-size:.66rem;letter-spacing:.08em;color:var(--mute)}
+@media (max-width:900px){.seq-legend{display:none}.seq-box{width:min(100vw,74svh)}.seq-meta{display:none}}
+@media (max-width:760px){.seq-mk{min-width:34px;height:24px;padding:0 6px;font-size:.66rem}.seq-top{top:76px}.seq-foot{flex-direction:column;align-items:flex-start}}
 
 /* Buttons */
 .btn{display:inline-flex;align-items:center;gap:12px;padding:16px 24px;border-radius:999px;border:1px solid var(--ink);font-family:var(--f-mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase;background:transparent;cursor:pointer;position:relative;overflow:hidden;isolation:isolate}
@@ -439,8 +453,6 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
   .vids.tall{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1 * var(--pad));padding-inline:var(--pad);scrollbar-width:none}
   .vids.tall::-webkit-scrollbar{display:none}
   .vids.tall .vid{flex:0 0 58%;scroll-snap-align:start}
-  .zoom .callout{display:none}
-  .zoom .zbtn{left:50%;right:auto;transform:translateX(-50%);bottom:8%}
   .ix button{grid-template-columns:72px minmax(0,1fr);padding:16px 0}
   .ix .no,.ix .rg{display:none}
   .ix .th{display:block;width:72px;aspect-ratio:1;border-radius:4px;overflow:hidden}
@@ -644,13 +656,33 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
   </div>
 </section>
 
-<section class="zoom" id="dial" aria-labelledby="zoom-h">
-  <div class="zimg" id="zimg"><img width="1400" height="1400" src="img/nhaka-dial.webp" alt="Macro render of the NHAKA dial showing Great Zimbabwe stonework" loading="lazy"></div>
-  <div class="zt"><h2 id="zoom-h">Nhaka</h2><span class="serif">Heritage, worn on the wrist.</span></div>
-  <div class="callout c1"><b>Dial</b>The Great Enclosure's stone walls, rendered in relief on a teal sky.</div>
-  <div class="callout c2"><b>Caseback</b>An exposed rotor framed by more stonework and a chevron engraving.</div>
-  <div class="callout c3"><b>Build</b>Brand, blueprints and every 3D render, done by me.</div>
-  <button class="btn solid zbtn" type="button" data-case="nhaka">Open the project <span aria-hidden="true">→</span></button>
+<section class="seq" id="dial" aria-labelledby="zoom-h">
+  <div class="seq-stage">
+    <div class="seq-box" id="seqBox">
+      <img class="seq-poster" id="seqPoster" width="1600" height="1600" src="img/nhaka-seq/d/001.webp" alt="NHAKA The Enclosure watch on a closed cognac leather strap. Scroll to take it apart layer by layer." loading="lazy">
+      <canvas id="seqCv" aria-hidden="true"></canvas>
+      <span class="seq-mk" data-i="0">01</span><span class="seq-mk" data-i="1">02</span><span class="seq-mk" data-i="2">03</span>
+      <span class="seq-mk" data-i="3">04</span><span class="seq-mk" data-i="4">05</span><span class="seq-mk" data-i="5">06</span>
+      <span class="seq-load" id="seqLoad" aria-hidden="true"></span>
+    </div>
+  </div>
+  <div class="seq-top">
+    <div class="seq-title" id="seqTitle"><h2 id="zoom-h">Nhaka</h2><span class="serif">Heritage, worn on the wrist.</span></div>
+    <div class="seq-meta">The Enclosure<br>Edition 01 · N&deg; 001/100<br>Modelled and rendered in Blender</div>
+  </div>
+  <ol class="seq-legend" id="seqLegend">
+    <li data-i="0"><b>[01]</b><span>Sapphire crystal<small>Domed, anti-reflective</small></span></li>
+    <li data-i="1"><b>[02]</b><span>Champagne-gold hands<small>Each on its own plane</small></span></li>
+    <li data-i="2"><b>[03]</b><span>Great Enclosure relief<small>1,099 stones, half a millimetre deep</small></span></li>
+    <li data-i="3"><b>[04]</b><span>40 mm steel case<small>Brushed flanks, polished bevels</small></span></li>
+    <li data-i="4"><b>[05]</b><span>Masonry rotor<small>Stonework and a chevron border</small></span></li>
+    <li data-i="5"><b>[06]</b><span>Engraved caseback<small>Edition 01 · N&deg; 001/100</small></span></li>
+  </ol>
+  <div class="seq-foot">
+    <span class="seq-cue" id="seqCue">Scroll to take it apart</span>
+    <button class="btn solid zbtn" type="button" data-case="nhaka">Open the project <span aria-hidden="true">→</span></button>
+  </div>
+  <div class="seq-bar" aria-hidden="true"><i id="seqBar"></i></div>
 </section>
 
 <section class="index" id="index" aria-labelledby="ix-h">
@@ -1351,6 +1383,41 @@ void main(){
 
   function openFromHash(){var k=location.hash.slice(1);if(CASES[k])openCase(k,true)}
 
+  /* ---------- NHAKA exploded watch: image sequence engine ---------- */
+  var SEQ=(function(){
+    var N=120,box=$('#seqBox'),cv=$('#seqCv'),poster=$('#seqPoster');
+    if(!box)return {set:function(){},start:function(){}};
+    var small=Math.min(innerWidth,innerHeight)<700||saveData;
+    var dir='img/nhaka-seq/'+(small?'m/':'d/');
+    var ctx=cv.getContext('2d'),frames=new Array(N+1),loaded=0,started=false,cur=1,HS=null,p=0;
+    var mks=$$('.seq-mk',box),lis=$$('#seqLegend li'),load=$('#seqLoad');
+    function url(i){return dir+String(i).padStart(3,'0')+'.webp'}
+    function size(){var r=box.getBoundingClientRect(),d=Math.min(2,devicePixelRatio||1);cv.width=Math.round(r.width*d);cv.height=Math.round(r.height*d);draw(true)}
+    function pick(i){for(var k=0;k<N;k++){if(frames[i-k])return frames[i-k];if(frames[i+k])return frames[i+k]}return null}
+    function draw(force){var img=pick(cur);if(!img)return;if(poster&&!poster.hidden&&frames[cur]){poster.hidden=true}ctx.drawImage(img,0,0,cv.width,cv.height)}
+    function marks(){
+      var f=HS&&HS.f[cur-1],a=Math.max(0,Math.min(1,(p-.26)/.08))*Math.max(0,Math.min(1,(.8-p)/.08));
+      mks.forEach(function(m,i){if(!f){m.style.opacity=0;return}m.style.left=(f[i*2]*100)+'%';m.style.top=(f[i*2+1]*100)+'%';m.style.opacity=a;m.classList.toggle('on',a>.5)});
+      lis.forEach(function(li){li.style.opacity=a});
+      var t=$('#seqTitle');if(t)t.style.opacity=Math.max(0,1-p*4.5);
+      var c=$('#seqCue');if(c)c.textContent=p<.2?'Scroll to take it apart':p<.72?'Six parts, one heritage':'Back together';
+    }
+    function set(prog){p=prog;var f=Math.round(1+prog*(N-1));if(f!==cur){cur=f;draw()}marks();var b=$('#seqBar');if(b)b.style.transform='scaleX('+prog+')'}
+    function one(i){return new Promise(function(res){var im=new Image();im.decoding='async';im.onload=function(){frames[i]=im;loaded++;if(load)load.textContent=loaded<N?'Loading '+loaded+' / '+N:'';if(i===cur)draw();res()};im.onerror=res;im.src=url(i)})}
+    function start(){
+      if(started)return;started=true;size();
+      fetch('img/nhaka-seq/hotspots.json').then(function(r){return r.json()}).then(function(j){HS=j;marks()}).catch(function(){});
+      var order=[1],seen={1:1};[32,16,8,4,2,1].forEach(function(st){for(var i=1;i<=N;i+=st)if(!seen[i]){seen[i]=1;order.push(i)}});
+      var q=order.slice(),busy=0;function pump(){while(busy<6&&q.length){busy++;one(q.shift()).then(function(){busy--;pump()})}}pump();
+    }
+    function hot(i,on){mks[i]&&mks[i].classList.toggle('hot',on);lis[i]&&lis[i].classList.toggle('hot',on)}
+    mks.forEach(function(m,i){m.addEventListener('mouseenter',function(){hot(i,true)});m.addEventListener('mouseleave',function(){hot(i,false)})});
+    lis.forEach(function(li,i){li.addEventListener('mouseenter',function(){hot(i,true)});li.addEventListener('mouseleave',function(){hot(i,false)})});
+    addEventListener('resize',function(){if(started)size()});
+    if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){if(es[0].isIntersecting){io.disconnect();start()}},{rootMargin:'150% 0px'});io.observe(box)}else start();
+    return {set:set,start:start};
+  })();
+
   /* ---------- No GSAP or reduced motion: static and done ---------- */
   if(!ok){if(loader)loader.style.display='none';ENC.setP(1);openFromHash();return}
 
@@ -1395,15 +1462,8 @@ void main(){
   /* Enclosure: pinned assembly */
   ST.create({trigger:'#enclosure',start:'top top',end:'+='+(innerWidth<761?130:170)+'%',pin:true,scrub:true,onUpdate:function(s){ENC.setP(Math.min(1,s.progress*1.18))}});
 
-  /* NHAKA dial zoom */
-  G.timeline({scrollTrigger:{trigger:'#dial',start:'top top',end:'+=150%',pin:true,scrub:1}})
-    .fromTo('#zimg',{clipPath:'circle(18% at 50% 50%)'},{clipPath:'circle(75% at 50% 50%)',ease:'none'},0)
-    .fromTo('#zimg img',{scale:1.35,rotate:-8},{scale:1,rotate:0,ease:'none'},0)
-    .fromTo('.zoom .zt',{scale:1},{scale:.55,yPercent:-60,ease:'none'},0)
-    .from('.zoom .c1',{x:-60,opacity:0,ease:'power2.out',duration:.25},.35)
-    .from('.zoom .c2',{x:60,opacity:0,ease:'power2.out',duration:.25},.5)
-    .from('.zoom .c3',{y:40,opacity:0,ease:'power2.out',duration:.25},.65)
-    .from('.zoom .zbtn',{y:30,opacity:0,ease:'power2.out',duration:.2},.75);
+  /* NHAKA exploded watch: pinned scroll scrub */
+  ST.create({trigger:'#dial',start:'top top',end:function(){return '+='+(innerWidth<761?220:300)+'%'},pin:true,scrub:.5,anticipatePin:1,invalidateOnRefresh:true,onEnter:SEQ.start,onUpdate:function(s){SEQ.set(s.progress)}});
 
   G.from('#ix li',{y:40,opacity:0,duration:.9,ease:'expo.out',stagger:.05,scrollTrigger:{trigger:'#ix',start:'top 85%'}});
 
