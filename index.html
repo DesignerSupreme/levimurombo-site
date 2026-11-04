@@ -212,6 +212,17 @@ html.js .loader{display:flex;position:fixed;inset:0;z-index:100;background:var(-
 .crosshair::before,.crosshair::after{content:"";position:absolute;background:var(--zuva)}
 .crosshair::before{left:10px;top:0;width:1px;height:22px}
 .crosshair::after{top:10px;left:0;height:1px;width:22px}
+.enc-iris{position:absolute;inset:0;z-index:3;pointer-events:none;display:grid;place-items:center;opacity:0}
+.enc-iris img{grid-area:1/1;border-radius:50%;object-fit:cover;opacity:0;max-width:none}
+.enc-iris span{grid-area:1/1;align-self:end;margin-bottom:9vh;color:var(--zuva);letter-spacing:.08em;text-transform:uppercase;font-size:.72rem;opacity:0;transition:opacity .4s}
+.enc-iris.on span{opacity:1}
+.enc-note{position:absolute;z-index:4;left:50%;top:50%;transform:translate(-50%,-50%);width:min(460px,calc(100% - 32px));background:rgba(14,13,11,.95);border:1px solid var(--zuva);padding:24px;box-shadow:0 24px 70px rgba(0,0,0,.6)}
+.enc-note .mono{color:var(--mute);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.enc-note .mono b{color:var(--ink);font-weight:500}
+.enc-note h3{margin:10px 0 12px;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(1.9rem,4vw,2.7rem);line-height:.9;color:var(--zuva)}
+.enc-note p{margin:0 0 18px;opacity:.9}
+.enc-note .row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.enc-note .btn{padding:12px 18px}
 
 /* NHAKA exploded watch: scroll-scrubbed image sequence */
 .seq{position:relative;height:100svh;min-height:620px;overflow:hidden;background:#0E0B09;color:var(--ink)}
@@ -629,7 +640,7 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
 </section>
 
 <section class="enc" id="enclosure" aria-labelledby="enc-h">
-  <canvas id="encCanvas" role="img" aria-label="Interactive 3D model of the Great Enclosure at Great Zimbabwe, built from individual stones that assemble as you scroll" data-cursor="Drag"></canvas>
+  <canvas id="encCanvas" tabindex="-1" role="img" aria-label="Interactive 3D model of the Great Enclosure at Great Zimbabwe, laid out to plan from individual stones that assemble as you scroll, ending on the view shown on the NHAKA dial" data-cursor="Drag"></canvas>
   <img width="1400" height="1400" class="enc-fallback" id="encFallback" src="img/nhaka-dial.webp" alt="" hidden>
   <div class="crosshair" aria-hidden="true"></div>
   <div class="hud">
@@ -653,6 +664,13 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
         <button class="tbtn" id="spinBtn" type="button" aria-pressed="true">Auto-orbit</button>
       </div>
     </div>
+  </div>
+  <div class="enc-iris" id="encIris" aria-hidden="true"><img width="720" height="720" src="img/enc-dial.webp" alt="" loading="lazy"><span class="mono">The view on the dial &middot; N&deg; 001/100</span></div>
+  <div class="enc-note" id="encNote" role="dialog" aria-labelledby="encNoteH" hidden>
+    <span class="mono">Stone <b id="encStoneN">0</b> of <b id="encStoneT">0</b></span>
+    <h3 id="encNoteH">You found the marigold stone.</h3>
+    <p>One stone in the whole enclosure is gold, and you found it. NHAKA means heritage: these walls are carried on the dial of The Enclosure, in an edition of 100.</p>
+    <div class="row"><button class="btn solid" id="encNoteDial" type="button">See the dial</button><a class="btn" href="mailto:levimurombo@gmail.com?subject=I%20found%20the%20marigold%20stone">Tell me you found it</a><button class="tbtn" id="encNoteX" type="button">Close</button></div>
   </div>
 </section>
 
@@ -1197,6 +1215,12 @@ void main(){
   weightField(wmChars,200,900,320);
 
   /* ---------- three.js Great Enclosure ---------- */
+  /* Laid out from published descriptions of the Great Enclosure. 1 unit = 5 m, north is -z, east is +x.
+     Outer wall about 250 m round, lowest at the north-west end and rising to about 10 m high and 5 m thick
+     on the south-east arc, faces leaning inward; double chevron band near the top of that arc for about 80 m;
+     north, north-west and west entrances; Parallel Passage from the north entrance to the Conical Tower
+     (about 10 m high, 5.5 m across the base) with the small tower, the old wall and its stepped platform;
+     Enclosure 1 about 21 m across, and lower rubble walls between the courtyards. */
   var ENC={p:0,setP:function(){}};
   (function enclosure(){
     var cv=$('#encCanvas'),sec=$('#enclosure');
@@ -1205,90 +1229,177 @@ void main(){
     var R;try{R=new T.WebGLRenderer({canvas:cv,antialias:!mob,powerPreference:'high-performance'})}catch(e){cv.style.display='none';$('#encFallback').hidden=false;return}
     R.setPixelRatio(Math.min(devicePixelRatio||1,mob?1.5:1.75));R.setClearColor(0x0b0a08,1);R.outputEncoding=T.sRGBEncoding;
     function lin(h){return new T.Color(h).convertSRGBToLinear()}
-    var S=new T.Scene();S.fog=new T.Fog(lin(0x0b0a08),20,46);
-    var C=new T.PerspectiveCamera(mob?44:36,1,.1,120);
-    S.add(new T.HemisphereLight(0xf1ece2,0x1a140c,.85));
-    var key=new T.DirectionalLight(0xf4b52c,1.9);key.position.set(-9,12,7);S.add(key);
-    var rim=new T.DirectionalLight(0x9fb3c8,.55);rim.position.set(10,7,-9);S.add(rim);
-    var glow=new T.PointLight(0xf4b52c,1.4,16,2);glow.position.set(2.2,3.2,-2.2);S.add(glow);
-    var ground=new T.Mesh(new T.CircleGeometry(19,80),new T.MeshStandardMaterial({color:lin(0x17140f),roughness:1,metalness:0}));ground.rotation.x=-Math.PI/2;S.add(ground);
-    var grid=new T.PolarGridHelper(18,24,16,80,lin(0x8a6a2c),lin(0x3a3022));grid.position.y=.01;grid.material.transparent=true;grid.material.opacity=.5;S.add(grid);
+    var S=new T.Scene();S.fog=new T.Fog(lin(0x0b0a08),30,70);
+    var C=new T.PerspectiveCamera(mob?44:36,1,.1,160);
+    S.add(new T.HemisphereLight(0xf1ece2,0x1a140c,.8));
+    var key=new T.DirectionalLight(0xf7d9a8,1.75);key.position.set(-12,16,9);S.add(key);
+    var rim=new T.DirectionalLight(0x9fb3c8,.55);rim.position.set(13,9,-12);S.add(rim);
+    var ground=new T.Mesh(new T.CircleGeometry(26,96),new T.MeshStandardMaterial({color:lin(0x17140f),roughness:1,metalness:0}));ground.rotation.x=-Math.PI/2;S.add(ground);
+    var grid=new T.PolarGridHelper(24,24,18,96,lin(0x8a6a2c),lin(0x3a3022));grid.position.y=.01;grid.material.transparent=true;grid.material.opacity=.45;S.add(grid);
 
-    var P=[],h=.3;
-    function rnd(a,b){return a+Math.random()*(b-a)}
-    function angDiff(a,b){var d=a-b;while(d>Math.PI)d-=2*Math.PI;while(d<-Math.PI)d+=2*Math.PI;return d}
-    function wall(rx,rz,cx,cz,courses,t0,t1,L,D,gapAt,gapW,chev,tone){
-      for(var c=0;c<courses;c++){
-        var t=t0+(c%2)*(L*.5)/((rx+rz)/2);
-        while(t<t1){
-          var dx=-rx*Math.sin(t),dz=rz*Math.cos(t),sp=Math.sqrt(dx*dx+dz*dz),len=L*rnd(.82,1.15),tc=t+(len*.5)/sp;
-          if(tc<t1&&!(gapAt!==null&&Math.abs(angDiff(tc,gapAt))<gapW)){
-            var isChev=chev&&c>=courses-3&&c<courses-0&&tc>chev[0]&&tc<chev[1];
-            P.push({x:cx+rx*Math.cos(tc),y:c*h+h*.5,z:cz+rz*Math.sin(tc),ry:Math.atan2(-dz,dx),rz:isChev?((Math.floor((tc-chev[0])/(L/sp))%2?1:-1)*.5):rnd(-.03,.03),sx:len*.93,sy:h*rnd(.84,.96),sz:D*rnd(.88,1.1),c:c,n:courses,ch:isChev,tone:tone});
+    var P=[],CH=mob?.13:.1,SL=mob?.38:.3,maxCourses=0;
+    var seed=20261104;function srand(){seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296}
+    function rnd(a,b){return a+srand()*(b-a)}
+    var OA=9,OB=6.7;
+    function bul(t){return 1+.035*Math.cos(t-.6)}
+    function outerH(t){return (7.25-2.75*Math.cos(t-.6))/5}            /* 4.5 m at the north-west, 10 m on the south-east */
+    function outerW(t){return outerH(t)*.5}                              /* about 5 m thick where it is 10 m high */
+    function outer(t){var k=bul(t);return [OA*k*Math.cos(t),OB*k*Math.sin(t)]}
+    function offsetPt(t,d){var q=outer(t),e=1e-3,q2=outer(t+e),tx=q2[0]-q[0],tz=q2[1]-q[1],l=Math.hypot(tx,tz);return [q[0]-tz/l*d,q[1]+tx/l*d]}
+    function arc(cx,cz,rx,rz){return function(t){return [cx+rx*Math.cos(t),cz+rz*Math.sin(t)]}}
+    /* one wall: stones laid course by course along a centreline */
+    function wall(fn,t0,t1,o){
+      var M=700,ts=[],xs=[],zs=[],sa=[0],i;
+      for(i=0;i<=M;i++){var t=t0+(t1-t0)*i/M,q=fn(t);ts.push(t);xs.push(q[0]);zs.push(q[1]);if(i)sa.push(sa[i-1]+Math.hypot(xs[i]-xs[i-1],zs[i]-zs[i-1]))}
+      var L=sa[M];
+      function at(s){var lo=0,hi=M;while(hi-lo>1){var m=(lo+hi)>>1;if(sa[m]<s)lo=m;else hi=m}var f=(s-sa[lo])/((sa[hi]-sa[lo])||1);return {t:lerp(ts[lo],ts[hi],f),x:lerp(xs[lo],xs[hi],f),z:lerp(zs[lo],zs[hi],f),dx:xs[hi]-xs[lo],dz:zs[hi]-zs[lo]}}
+      function sOf(t){return sa[Math.round(clamp((t-t0)/(t1-t0),0,1)*M)]}
+      var gaps=(o.gaps||[]).map(function(g){return [sOf(g[0]),g[1]]});
+      var hmax=0;for(i=0;i<=M;i+=10)hmax=Math.max(hmax,o.h(ts[i]));
+      var nC=Math.ceil(hmax/CH),sl=SL*(o.len||1);maxCourses=Math.max(maxCourses,nC);
+      for(var c=0;c<nC;c++){
+        var s=(c%2)*sl*.5,k=0;
+        while(s<L){
+          var len=sl*(o.rough?rnd(.55,1.4):rnd(.82,1.15)),sc=s+len*.5;if(sc>L)break;
+          var q=at(sc),n=Math.max(1,Math.round(o.h(q.t)/CH)),gap=false;
+          for(var g=0;g<gaps.length;g++)if(Math.abs(sc-gaps[g][0])<gaps[g][1]+len*.5)gap=true;
+          if(c<n&&!gap){
+            var u=(c+.5)/n,th=o.w(q.t)*lerp(1,o.top||.4,u),ry=Math.atan2(-q.dz,q.dx);
+            var inCh=o.chev&&q.t>o.chev[0]&&q.t<o.chev[1],chv=inCh&&(c===n-3||c===n-5),line=inCh&&c===n-4;
+            var tone=o.tone;if(o.dark&&Math.abs(sc-o.dark[0])<o.dark[1]&&c<n-1)tone=3;
+            P.push({x:q.x+(o.rough?rnd(-.03,.03):0),y:c*CH+CH*.5,z:q.z+(o.rough?rnd(-.03,.03):0),ry:ry+(o.rough?rnd(-.12,.12):0),rz:chv?((k%2?1:-1)*(c===n-3?.55:-.55)):(o.rough?rnd(-.08,.08):rnd(-.02,.02)),
+              sx:(chv?len*.62:len)*.94,sy:CH*(o.rough?rnd(.7,.98):rnd(.84,.96)),sz:th*rnd(.93,1.02),c:c,n:n,ch:chv||line,tone:tone,w:o.id,t:q.t});
+            k++;
           }
-          t+=len/sp;
+          s+=chv?len*.66:len;
         }
       }
     }
-    function tower(cx,cz,courses,r0,r1){
-      for(var c=0;c<courses;c++){var r=lerp(r0,r1,c/courses),n=Math.max(8,Math.floor(2*Math.PI*r/.42)),off=(c%2)*.5;
-        for(var i=0;i<n;i++){var tc=(i+off)/n*Math.PI*2,dx=-r*Math.sin(tc),dz=r*Math.cos(tc);
-          P.push({x:cx+r*Math.cos(tc),y:c*h+h*.5,z:cz+r*Math.sin(tc),ry:Math.atan2(-dz,dx),rz:0,sx:(2*Math.PI*r/n)*.92,sy:h*rnd(.86,.96),sz:.5,c:c*.62,n:courses,ch:false,tone:1})}}
+    /* solid dry-stone tower: rings of stones, slightly swelling sides */
+    function tower(cx,cz,H,r0,r1,swell,id){
+      var n=Math.round(H/CH);maxCourses=Math.max(maxCourses,n);
+      for(var c=0;c<n;c++){var u=c/n,r=lerp(r0,r1,u)+swell*Math.sin(Math.PI*u),rings=c===n-1?[r,r*.55]:[r];
+        rings.forEach(function(rr){var m=Math.max(7,Math.floor(2*Math.PI*rr/(SL*.75))),off=(c%2)*.5;
+          for(var i=0;i<m;i++){var a=(i+off)/m*Math.PI*2;
+            P.push({x:cx+rr*Math.cos(a),y:c*CH+CH*.5,z:cz+rr*Math.sin(a),ry:-a+Math.PI/2,rz:rnd(-.015,.015),sx:(2*Math.PI*rr/m)*.93,sy:CH*rnd(.86,.96),sz:Math.min(rr,.42),c:c*.7,n:n,ch:false,tone:1,w:id})}})}
     }
-    var courses=mob?11:14,L=.62;
-    if(mob){wall(7.2,5.4,0,0,courses,-Math.PI,Math.PI,L,.8,Math.PI/2+.25,.16,[-2.3,-.9],0)}
-    else{wall(7.42,5.62,0,0,courses,-Math.PI,Math.PI,L,.5,Math.PI/2+.25,.16,[-2.3,-.9],0);wall(6.98,5.18,0,0,courses-1,-Math.PI,Math.PI,L,.5,Math.PI/2+.25,.17,null,2)}
-    wall(6.1,4.3,0,0,Math.round(courses*.72),-2.1,-.4,L,.55,null,0,null,2);
-    tower(2.3,-2.3,mob?16:20,1.2,.62);
+    /* stepped platform against the old wall */
+    function platform(cx,cz,r){
+      for(var c=0;c<4;c++){var rr=r*(1-c*.2);
+        for(var ring=rr;ring>.12;ring-=.24){var m=Math.max(6,Math.floor(2*Math.PI*ring/SL));
+          for(var i=0;i<m;i++){var a=i/m*Math.PI*2;P.push({x:cx+ring*Math.cos(a),y:c*CH+CH*.5,z:cz+ring*Math.sin(a),ry:-a+Math.PI/2,rz:0,sx:(2*Math.PI*ring/m)*.92,sy:CH*.9,sz:.22,c:c,n:4,ch:false,tone:2,w:'platform'})}}}
+    }
+    function hc(v){return function(){return v}}
+    var gE=.17;
+    /* outer wall with its three entrances */
+    wall(outer,-Math.PI,Math.PI,{id:'outer',h:outerH,w:outerW,top:.32,gaps:[[-1.62,gE],[-2.32,gE],[3.02,gE]],chev:[-.35,1.55],tone:0});
+    /* Parallel Passage: the inner wall runs beside the outer wall from the north entrance to the Conical Tower */
+    var PW=.22;
+    function pdist(t){return outerW(t)*.5+PW+.25}
+    wall(function(t){return offsetPt(t,pdist(t))},-1.68,.36,{id:'passage',h:function(t){return outerH(t)*.82},w:hc(.5),top:.55,tone:1});
+    var TC=offsetPt(.6,1.45),TS=offsetPt(.86,1.2);
+    tower(TC[0],TC[1],2.0,.55,.3,.05,'tower');
+    tower(TS[0],TS[1],.72,.26,.17,.015,'small');
+    /* the old wall behind the towers, with its doorway flanked by dark courses */
+    wall(function(t){return offsetPt(t,2.45)},.22,1.12,{id:'old',h:hc(1.15),w:hc(.42),top:.6,gaps:[[.66,.18]],dark:[0,0],tone:1});
+    (function(){var g=P.filter(function(s){return s.w==='old'}),mid=offsetPt(.66,2.45);g.forEach(function(s){if(Math.hypot(s.x-mid[0],s.z-mid[1])<.5&&s.c<s.n-1)s.tone=3})})();
+    var PL=offsetPt(1.0,3.35);platform(PL[0],PL[1],.76);
+    /* Enclosure 1 and the lower rubble walls between the courtyards */
+    wall(arc(-5.3,-1.5,2.1,2.1),-Math.PI,Math.PI,{id:'enc1',h:hc(.36),w:hc(.32),top:.8,gaps:[[.15,.22]],rough:true,tone:2,len:.8});
+    wall(arc(-1.0,1.9,2.9,2.0),-.35,2.65,{id:'court',h:hc(.3),w:hc(.3),top:.8,rough:true,tone:2,len:.8});
+    wall(arc(2.4,-2.1,1.9,1.5),1.55,4.4,{id:'court',h:hc(.32),w:hc(.3),top:.8,gaps:[[3.1,.2]],rough:true,tone:2,len:.8});
+    wall(arc(-5.4,3.0,1.6,1.1),-1.25,1.9,{id:'court',h:hc(.26),w:hc(.28),top:.8,rough:true,tone:2,len:.8});
     var N=P.length;
-    $('#encT').textContent=N.toLocaleString('en-GB');$('#encC').textContent=courses;
-    $('#encCopy').textContent='The walls on NHAKA\'s dial belong to the Great Enclosure at Great Zimbabwe. Here they are again, rebuilt live in your browser from '+N.toLocaleString('en-GB')+' stones, chevron frieze and conical tower included. Scroll to raise the walls. Drag to look around.';
+
+    /* the marigold stone: one stone, second course of the outer wall on the south-west arc */
+    var gi=-1,bd=1e9;P.forEach(function(s,i){if(s.w==='outer'&&s.c===1&&!s.ch){var d=Math.abs(s.t-2.3);if(d<bd){bd=d;gi=i}}});
+    var gold=P[gi];
+    $('#encT').textContent=N.toLocaleString('en-GB');$('#encC').textContent=Math.ceil(2/CH);
+    $('#encCopy').textContent='The walls on NHAKA\'s dial belong to the Great Enclosure at Great Zimbabwe: about 250 metres of dry-stone wall, up to 10 metres high, laid without mortar. Rebuilt here from '+N.toLocaleString('en-GB')+' stones, laid out from published descriptions of the site, with the Parallel Passage, the Conical Tower and the chevron band. Scroll to raise the walls and find the view on the dial. Drag to look around.';
     var geo=new T.BoxGeometry(1,1,1);
     var mat=new T.MeshStandardMaterial({color:0xffffff,roughness:.92,metalness:.02});
     var wire=new T.MeshBasicMaterial({color:lin(0xf4b52c),wireframe:true,transparent:true,opacity:.6});
     var mesh=new T.InstancedMesh(geo,mat,N);mesh.instanceMatrix.setUsage(T.DynamicDrawUsage);S.add(mesh);
-    var pal=[lin(0x8a8072),lin(0xa89a84),lin(0xbfae92),lin(0x766c60),lin(0x9a8c78)],col=new T.Color();
+    var pal=[lin(0x8e8a82),lin(0xa39e94),lin(0x7c7870),lin(0xb4ada0),lin(0x97928a)],col=new T.Color();
+    var toneK=[1,1.04,.86,.42];
     P.forEach(function(s,i){
-      var th=Math.random()*Math.PI*2,ph=rnd(.2,1.3),rad=rnd(10,24);
-      s.x0=s.x+Math.cos(th)*Math.sin(ph)*rad;s.y0=s.y+rnd(5,16);s.z0=s.z+Math.sin(th)*Math.sin(ph)*rad;
+      var th=srand()*Math.PI*2,ph=rnd(.2,1.3),rad=rnd(12,28);
+      s.x0=s.x+Math.cos(th)*Math.sin(ph)*rad;s.y0=s.y+rnd(6,18);s.z0=s.z+Math.sin(th)*Math.sin(ph)*rad;
       s.a0=rnd(-3,3);s.b0=rnd(-3,3);s.c0=rnd(-3,3);
-      s.d=(s.c/s.n)*.55+Math.random()*.17;
-      col.copy(pal[Math.floor(Math.random()*pal.length)]).multiplyScalar(s.ch?1.25:rnd(.85,1.08)*(s.tone===2?.9:1));
-      mesh.setColorAt(i,col);
+      s.d=(s.c/Math.max(s.n,1))*.44+(s.w==='outer'||s.w==='passage'?0:.1)+srand()*.14;
+      col.copy(pal[Math.floor(srand()*pal.length)]).multiplyScalar((s.ch?1.22:rnd(.85,1.08))*toneK[s.tone]);
+      mesh.setColorAt(i,i===gi?lin(0x17140f):col);
     });
     var instColor=mesh.instanceColor;
+    /* the gold stone is its own mesh so it can glow and be clicked */
+    var gm=new T.MeshStandardMaterial({color:lin(0xf4b52c),emissive:lin(0xf4b52c),emissiveIntensity:.35,roughness:.5,metalness:.3});
+    var gMesh=new T.Mesh(geo,gm);S.add(gMesh);var gGold=lin(0xf4b52c),gStone=lin(0x97928a);
+    ENC.stone=function(){var v=gMesh.position.clone().project(C);return [(v.x+1)/2*W,(1-v.y)/2*H]};
+    /* two trees by the Conical Tower */
+    var trees=new T.Group(),leaf=new T.MeshStandardMaterial({color:lin(0x3b4628),roughness:1,flatShading:true}),bark=new T.MeshStandardMaterial({color:lin(0x3a2c1e),roughness:1});
+    [[.42,1.1],[.82,2.0]].forEach(function(tp){var q=offsetPt(tp[0],tp[1]+2.6),g=new T.Group(),tr=new T.Mesh(new T.CylinderGeometry(.05,.08,1.4,6),bark);tr.position.y=.7;g.add(tr);
+      [[0,1.7,0,.62],[.34,1.5,.14,.46],[-.3,1.55,-.18,.46]].forEach(function(b){var cp=new T.Mesh(new T.IcosahedronGeometry(b[3],0),leaf);cp.position.set(b[0],b[1],b[2]);cp.scale.y=.62;g.add(cp)});
+      g.position.set(q[0],0,q[1]);g.scale.setScalar(.78);g.rotation.y=srand()*6;trees.add(g)});
+    S.add(trees);
+
     var m4=new T.Matrix4(),pos=new T.Vector3(),q=new T.Quaternion(),e=new T.Euler(0,0,0,'YXZ'),sc=new T.Vector3();
-    var lastP=-1,placedEl=$('#encN');
+    var lastA=-1,placedEl=$('#encN');
     function build(p){
       var placed=0;
       for(var i=0;i<N;i++){var s=P[i],k=clamp((p-s.d)/.28,0,1);k=1-Math.pow(1-k,3);if(k>.985)placed++;
-        pos.set(lerp(s.x0,s.x,k),lerp(s.y0,s.y,k),lerp(s.z0,s.z,k));e.set(lerp(s.a0,0,k),lerp(s.b0,s.ry,k),lerp(s.c0,s.rz,k));q.setFromEuler(e);sc.set(s.sx,s.sy,s.sz);m4.compose(pos,q,sc);mesh.setMatrixAt(i,m4)}
+        pos.set(lerp(s.x0,s.x,k),lerp(s.y0,s.y,k),lerp(s.z0,s.z,k));e.set(lerp(s.a0,0,k),lerp(s.b0,s.ry,k),lerp(s.c0,s.rz,k));q.setFromEuler(e);sc.set(s.sx,s.sy,s.sz);m4.compose(pos,q,sc);mesh.setMatrixAt(i,m4);
+        if(i===gi){gMesh.position.copy(pos);gMesh.quaternion.copy(q);gMesh.scale.copy(sc).multiplyScalar(1.01)}}
       mesh.instanceMatrix.needsUpdate=true;placedEl.textContent=placed.toLocaleString('en-GB');
+      var tk=clamp((p-.72)/.28,0,1);trees.scale.setScalar(Math.max(.001,1-Math.pow(1-tk,3)));
     }
     var W=0,H=0;
     function size(){var r=sec.getBoundingClientRect();W=r.width;H=r.height;R.setSize(W,H,false);C.aspect=W/H;C.updateProjectionMatrix()}
     size();addEventListener('resize',size);
-    var drag=0,dragT=0,down=false,lastX=0,spin=!reduce,ang=0,vis=false;
-    cv.addEventListener('pointerdown',function(ev){down=true;lastX=ev.clientX;cv.setPointerCapture&&cv.setPointerCapture(ev.pointerId)});
+    var drag=0,dragT=0,down=false,lastX=0,sx0=0,sy0=0,spin=!reduce,ang=0,vis=false;
+    cv.addEventListener('pointerdown',function(ev){down=true;lastX=sx0=ev.clientX;sy0=ev.clientY;cv.setPointerCapture&&cv.setPointerCapture(ev.pointerId)});
     cv.addEventListener('pointermove',function(ev){if(!down)return;dragT+=(ev.clientX-lastX)*.006;lastX=ev.clientX});
-    ['pointerup','pointercancel','pointerleave'].forEach(function(n){cv.addEventListener(n,function(){down=false})});
+    ['pointercancel','pointerleave'].forEach(function(n){cv.addEventListener(n,function(){down=false})});
+    var ray=new T.Raycaster(),mv=new T.Vector2(),note=$('#encNote');
+    cv.addEventListener('pointerup',function(ev){down=false;if(Math.hypot(ev.clientX-sx0,ev.clientY-sy0)>6||ENC.v>.02)return;
+      var r=cv.getBoundingClientRect();mv.set((ev.clientX-r.left)/r.width*2-1,-(ev.clientY-r.top)/r.height*2+1);ray.setFromCamera(mv,C);
+      if(gMesh.visible&&ray.intersectObject(gMesh).length)openNote()});
+    function openNote(){if(!note.hidden)return;note.hidden=false;sec.classList.add('found');$('#encNoteX').focus({preventScroll:true});try{localStorage.setItem('nhaka-stone','1')}catch(err){}}
+    function closeNote(){note.hidden=true;sec.classList.remove('found');cv.focus&&cv.focus({preventScroll:true})}
+    $('#encNoteX').addEventListener('click',closeNote);
+    note.addEventListener('keydown',function(ev){if(ev.key==='Escape'){ev.stopPropagation();closeNote()}});
+    $('#encNoteDial').addEventListener('click',function(){note.hidden=true;sec.classList.remove('found');var el=$('#dial');if(lenis)lenis.scrollTo(el,{duration:1.4});else el.scrollIntoView({behavior:reduce?'auto':'smooth'})});
+    $('#encStoneN').textContent=(gi+1).toLocaleString('en-GB');$('#encStoneT').textContent=N.toLocaleString('en-GB');
     var wb=$('#wireBtn'),sb=$('#spinBtn');
-    wb.addEventListener('click',function(){var on=wb.getAttribute('aria-pressed')!=='true';wb.setAttribute('aria-pressed',String(on));mesh.material=on?wire:mat;mesh.instanceColor=on?null:instColor;grid.material.opacity=on?.9:.5;render()});
+    wb.addEventListener('click',function(){var on=wb.getAttribute('aria-pressed')!=='true';wb.setAttribute('aria-pressed',String(on));mesh.material=on?wire:mat;mesh.instanceColor=on?null:instColor;gMesh.visible=!on;grid.material.opacity=on?.9:.45;render()});
     sb.addEventListener('click',function(){spin=sb.getAttribute('aria-pressed')!=='true';sb.setAttribute('aria-pressed',String(spin))});
     ENC.toggleWire=function(){wb.click()};
+    ENC.v=0;
+    /* the dial view: outside the south-east arc, looking over the chevron band to the Conical Tower */
+    var DVc=mob?[1.0,-6.8,4.5,1.0,.9]:[1.0,-5.0,3.4,1.4,.9],DV=offsetPt(DVc[0],DVc[1]),dvx=TC[0]-DV[0],dvz=TC[1]-DV[1],dvl=Math.hypot(dvx,dvz),DT=new T.Vector3(TC[0]+dvz/dvl*DVc[3],DVc[4],TC[1]-dvx/dvl*DVc[3]),DPos=new T.Vector3(DV[0],DVc[2],DV[1]);
+    var cpos=new T.Vector3(),ctgt=new T.Vector3(),opos=new T.Vector3(),otgt=new T.Vector3();
+    var iris=$('#encIris'),hud=$('#enclosure .hud'),irisImg=iris.querySelector('img');
     var lt=performance.now();
     function render(){
-      var p=ENC.p;
-      if(Math.abs(p-lastP)>.0005){build(p);lastP=p}
+      var a0=ENC.a,u=ENC.u,v=ENC.v;
+      if(Math.abs(a0-lastA)>.0005){build(a0);lastA=a0}
       drag+=(dragT-drag)*.08;
-      var rad=mob?27:23,hgt=lerp(14,7.5,p);
-      var a=-.55+p*1.1+drag+ang;
-      C.position.set(Math.sin(a)*rad,hgt,Math.cos(a)*rad);C.lookAt(0,lerp(.5,2.2,p),-.6);
+      var rad=mob?31:25,hgt=lerp(18,7.2,a0),a=-.55+a0*1.1+drag*(1-u)+ang*(1-u);
+      opos.set(Math.sin(a)*rad,hgt,Math.cos(a)*rad);otgt.set(0,lerp(.3,1.1,a0),0);
+      var w=u*u*(3-2*u);cpos.copy(opos).lerp(DPos,w);ctgt.copy(otgt).lerp(DT,w);
+      C.position.copy(cpos);C.lookAt(ctgt);
+      var gk=clamp((a0-.92)/.08,0,1);gm.color.copy(gStone).lerp(gGold,gk);gm.emissive.copy(gGold).multiplyScalar(gk);gm.emissiveIntensity=.3+.25*Math.sin(performance.now()/420);
       R.render(S,C);
+      if(v>0){var mn=Math.min(W,H),rEnd=mn*(mob?.42:.36),rStart=Math.hypot(W,H)*.6,k=v*v*(3-2*v),rr=lerp(rStart,rEnd,k);
+        cv.style.clipPath='circle('+rr.toFixed(1)+'px at 50% 50%)';iris.style.opacity='1';irisImg.style.width=irisImg.style.height=(rEnd*2).toFixed(0)+'px';
+        irisImg.style.opacity=String(clamp((v-.45)/.45,0,1));hud.style.opacity=String(1-clamp(v/.4,0,1));iris.classList.toggle('on',v>.9)}
+      else if(cv.style.clipPath){cv.style.clipPath='';iris.style.opacity='0';hud.style.opacity='';iris.classList.remove('on')}
     }
-    ENC.setP=function(v){ENC.p=clamp(v,0,1)};
+    ENC.a=0;ENC.u=0;
+    /* p is the pinned scroll progress: assemble, travel to the dial view, then close onto the dial */
+    ENC.setP=function(p){p=clamp(p,0,1);ENC.p=p;ENC.a=clamp(p/.56,0,1);ENC.u=clamp((p-.6)/.24,0,1);ENC.v=clamp((p-.86)/.12,0,1)};
+    if(window.console&&console.log)console.log('%cNHAKA%c  One stone in the Great Enclosure is gold. Find it.','color:#F4B52C;font-weight:700','color:inherit');
     if('IntersectionObserver' in window)new IntersectionObserver(function(es){vis=es[0].isIntersecting},{rootMargin:'100px'}).observe(sec);else vis=true;
-    if(reduce||!ok){ENC.p=1;render();addEventListener('resize',function(){render()});
+    if(reduce||!ok){ENC.setP(.58);render();addEventListener('resize',function(){render()});
       cv.addEventListener('pointermove',function(){if(down)render()});return}
     (function loop(now){var dt=Math.min(.05,(now-lt)/1000);lt=now;if(vis&&!document.hidden){if(spin)ang+=dt*.06;render()}requestAnimationFrame(loop)})(performance.now());
   })();
@@ -1309,7 +1420,7 @@ void main(){
       clients:function(){lines(['Axis Solutions · AURA · Wakosha Cosmetics · Alberta Black Therapist Network','MultiLink Cargo · Max Unisex Salon · Distributed Power Africa · Hurungwe Pharmacy','The Jaha Tribe · Pub Choir · 263 Culture Fest · Proactive Finance · Shasha Logistics','Ofama Construction · Kleen Up · Eva Marie Libraries · GGF Africa · Insburg','NIC · NASRIA · SkyStar Airlines'])},
       cv:function(){lines(['2024 → now   Digital Media and Advertising Manager, AURA Technologies','2025         ZITF Best First-Time Exhibitor, first runner-up (with AURA)','2024         Senior Creative Lead, GGF Africa','2023         Senior Graphic Designer, Imperium Branding','2020         BTech Honours, Chemical and Process Systems Engineering, HIT','2021         Research paper published in Materials Today'])},
       skills:function(){lines(['Disciplines  brand strategy, identity, campaigns, art direction, 3D, motion, UI/UX','Tools        Illustrator, Photoshop, Figma, Blender, After Effects, Lightroom','This site    GLSL, three.js, GSAP, Lenis, plain JavaScript'])},
-      nhaka:function(){lines(['NHAKA means heritage. The Enclosure is the first watch:','the Great Enclosure in relief on a teal dial, stonework on the caseback.','Scrolling you to the live 3D model...'],'');setTimeout(function(){go('#enclosure')},500)},
+      nhaka:function(){lines(['NHAKA means heritage. The Enclosure is the first watch:','the Great Enclosure in relief on a teal dial, stonework on the caseback.','One stone in the model is gold. Scrolling you to it...'],'');setTimeout(function(){go('#enclosure')},500)},
       football:function(){lines(['Matchday posters are my favourite thing to design.','Crest, gradient, big name wordmark, stat block, crowd texture, light leak.','Taking you to the wall...']);setTimeout(function(){go('#wall')},500)},
       neofetch:function(){lines(['        ▲▲▲          levi@harare','       ▲▲▲▲▲         -----------','      ▲▲▲▲▲▲▲        OS: levi.os build 26.11','     ▲▲▲▲▲▲▲▲▲       Host: Harare, Zimbabwe (UTC+2)','                     Kernel: chemical engineering','                     Uptime: '+up.textContent,'                     Shell: Big Shoulders + Instrument Serif','                     Projects: '+ORDER.length+'   Clients: 20+   Countries: 9','                     GPU: whatever is rendering '+fpsNow+' fps for you right now'],'acc')},
       wireframe:function(){if(ENC.toggleWire){ENC.toggleWire();line('Toggled the 3D wireframe. Run nhaka to go and see it.','dim')}else line('3D view unavailable on this device.','dim')},
@@ -1419,7 +1530,7 @@ void main(){
   })();
 
   /* ---------- No GSAP or reduced motion: static and done ---------- */
-  if(!ok){if(loader)loader.style.display='none';ENC.setP(1);openFromHash();return}
+  if(!ok){if(loader)loader.style.display='none';ENC.setP(.58);openFromHash();return}
 
   G.registerPlugin(ST);
   if(window.Lenis){
@@ -1460,7 +1571,7 @@ void main(){
   });
 
   /* Enclosure: pinned assembly */
-  ST.create({trigger:'#enclosure',start:'top top',end:'+='+(innerWidth<761?130:170)+'%',pin:true,scrub:true,onUpdate:function(s){ENC.setP(Math.min(1,s.progress*1.18))}});
+  ST.create({trigger:'#enclosure',start:'top top',end:'+='+(innerWidth<761?230:290)+'%',pin:true,scrub:true,onUpdate:function(s){ENC.setP(s.progress)}});
 
   /* NHAKA exploded watch: pinned scroll scrub */
   ST.create({trigger:'#dial',start:'top top',end:function(){return '+='+(innerWidth<761?220:300)+'%'},pin:true,scrub:.5,anticipatePin:1,invalidateOnRefresh:true,onEnter:SEQ.start,onUpdate:function(s){SEQ.set(s.progress)}});
