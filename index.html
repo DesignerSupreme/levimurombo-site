@@ -444,6 +444,7 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
 }
 @media (max-width:760px){
   body{font-size:16px}
+  .hero{min-height:0;justify-content:flex-start;padding-top:calc(128px + env(safe-area-inset-top,0px));padding-bottom:34px}
   .hint{display:none}
   .hero-foot{grid-template-columns:minmax(0,1fr)}
   .scroll-cue{display:none}
@@ -1064,7 +1065,6 @@ void main(){
       G.set(im,{x:x,y:y,xPercent:-50,yPercent:-50,opacity:1,scale:.4,rotate:(Math.random()-.5)*14});
       G.to(im,{scale:1,duration:.6,ease:'expo.out'});G.to(im,{opacity:0,scale:.85,y:y+40,duration:.8,ease:'power2.in',delay:.55})}
     if(fine){hero.addEventListener('mousemove',function(e){var r=hero.getBoundingClientRect(),x=e.clientX-r.left,y=e.clientY-r.top;if(Math.hypot(x-lx,y-ly)>100){lx=x;ly=y;spawn(x,y)}})}
-    else setInterval(function(){var r=hero.getBoundingClientRect();if(r.bottom<0||document.hidden)return;spawn(r.width*(.15+Math.random()*.7),r.height*(.2+Math.random()*.45))},900);
   }
 
   /* ---------- Marquees with scroll velocity ---------- */
