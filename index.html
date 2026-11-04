@@ -640,7 +640,7 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
 </section>
 
 <section class="enc" id="enclosure" aria-labelledby="enc-h">
-  <canvas id="encCanvas" role="img" aria-label="Interactive 3D model of the Great Enclosure at Great Zimbabwe, laid out to plan from individual stones that assemble as you scroll, ending on the view shown on the NHAKA dial" data-cursor="Drag"></canvas>
+  <canvas id="encCanvas" tabindex="-1" role="img" aria-label="Interactive 3D model of the Great Enclosure at Great Zimbabwe, laid out to plan from individual stones that assemble as you scroll, ending on the view shown on the NHAKA dial" data-cursor="Drag"></canvas>
   <img width="1400" height="1400" class="enc-fallback" id="encFallback" src="img/nhaka-dial.webp" alt="" hidden>
   <div class="crosshair" aria-hidden="true"></div>
   <div class="hud">
@@ -1238,7 +1238,8 @@ void main(){
     var grid=new T.PolarGridHelper(24,24,18,96,lin(0x8a6a2c),lin(0x3a3022));grid.position.y=.01;grid.material.transparent=true;grid.material.opacity=.45;S.add(grid);
 
     var P=[],CH=mob?.13:.1,SL=mob?.38:.3,maxCourses=0;
-    function rnd(a,b){return a+Math.random()*(b-a)}
+    var seed=20261104;function srand(){seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return ((t^t>>>14)>>>0)/4294967296}
+    function rnd(a,b){return a+srand()*(b-a)}
     var OA=9,OB=6.7;
     function bul(t){return 1+.035*Math.cos(t-.6)}
     function outerH(t){return (7.25-2.75*Math.cos(t-.6))/5}            /* 4.5 m at the north-west, 10 m on the south-east */
@@ -1314,7 +1315,7 @@ void main(){
     var gi=-1,bd=1e9;P.forEach(function(s,i){if(s.w==='outer'&&s.c===1&&!s.ch){var d=Math.abs(s.t-2.3);if(d<bd){bd=d;gi=i}}});
     var gold=P[gi];
     $('#encT').textContent=N.toLocaleString('en-GB');$('#encC').textContent=Math.ceil(2/CH);
-    $('#encCopy').textContent='The walls on NHAKA\'s dial belong to the Great Enclosure at Great Zimbabwe: about 250 metres of dry-stone wall, up to 10 metres high, laid without mortar. Rebuilt here to plan from '+N.toLocaleString('en-GB')+' stones, with the Parallel Passage, the Conical Tower and the chevron band. Scroll to raise the walls and find the view on the dial. Drag to look around.';
+    $('#encCopy').textContent='The walls on NHAKA\'s dial belong to the Great Enclosure at Great Zimbabwe: about 250 metres of dry-stone wall, up to 10 metres high, laid without mortar. Rebuilt here from '+N.toLocaleString('en-GB')+' stones, laid out from published descriptions of the site, with the Parallel Passage, the Conical Tower and the chevron band. Scroll to raise the walls and find the view on the dial. Drag to look around.';
     var geo=new T.BoxGeometry(1,1,1);
     var mat=new T.MeshStandardMaterial({color:0xffffff,roughness:.92,metalness:.02});
     var wire=new T.MeshBasicMaterial({color:lin(0xf4b52c),wireframe:true,transparent:true,opacity:.6});
@@ -1322,11 +1323,11 @@ void main(){
     var pal=[lin(0x8e8a82),lin(0xa39e94),lin(0x7c7870),lin(0xb4ada0),lin(0x97928a)],col=new T.Color();
     var toneK=[1,1.04,.86,.42];
     P.forEach(function(s,i){
-      var th=Math.random()*Math.PI*2,ph=rnd(.2,1.3),rad=rnd(12,28);
+      var th=srand()*Math.PI*2,ph=rnd(.2,1.3),rad=rnd(12,28);
       s.x0=s.x+Math.cos(th)*Math.sin(ph)*rad;s.y0=s.y+rnd(6,18);s.z0=s.z+Math.sin(th)*Math.sin(ph)*rad;
       s.a0=rnd(-3,3);s.b0=rnd(-3,3);s.c0=rnd(-3,3);
-      s.d=(s.c/Math.max(s.n,1))*.44+(s.w==='outer'||s.w==='passage'?0:.1)+Math.random()*.14;
-      col.copy(pal[Math.floor(Math.random()*pal.length)]).multiplyScalar((s.ch?1.22:rnd(.85,1.08))*toneK[s.tone]);
+      s.d=(s.c/Math.max(s.n,1))*.44+(s.w==='outer'||s.w==='passage'?0:.1)+srand()*.14;
+      col.copy(pal[Math.floor(srand()*pal.length)]).multiplyScalar((s.ch?1.22:rnd(.85,1.08))*toneK[s.tone]);
       mesh.setColorAt(i,i===gi?lin(0x17140f):col);
     });
     var instColor=mesh.instanceColor;
@@ -1338,7 +1339,7 @@ void main(){
     var trees=new T.Group(),leaf=new T.MeshStandardMaterial({color:lin(0x3b4628),roughness:1,flatShading:true}),bark=new T.MeshStandardMaterial({color:lin(0x3a2c1e),roughness:1});
     [[.42,1.1],[.82,2.0]].forEach(function(tp){var q=offsetPt(tp[0],tp[1]+2.6),g=new T.Group(),tr=new T.Mesh(new T.CylinderGeometry(.05,.08,1.4,6),bark);tr.position.y=.7;g.add(tr);
       [[0,1.7,0,.62],[.34,1.5,.14,.46],[-.3,1.55,-.18,.46]].forEach(function(b){var cp=new T.Mesh(new T.IcosahedronGeometry(b[3],0),leaf);cp.position.set(b[0],b[1],b[2]);cp.scale.y=.62;g.add(cp)});
-      g.position.set(q[0],0,q[1]);g.scale.setScalar(.78);g.rotation.y=Math.random()*6;trees.add(g)});
+      g.position.set(q[0],0,q[1]);g.scale.setScalar(.78);g.rotation.y=srand()*6;trees.add(g)});
     S.add(trees);
 
     var m4=new T.Matrix4(),pos=new T.Vector3(),q=new T.Quaternion(),e=new T.Euler(0,0,0,'YXZ'),sc=new T.Vector3();
@@ -1361,13 +1362,15 @@ void main(){
     var ray=new T.Raycaster(),mv=new T.Vector2(),note=$('#encNote');
     cv.addEventListener('pointerup',function(ev){down=false;if(Math.hypot(ev.clientX-sx0,ev.clientY-sy0)>6||ENC.v>.02)return;
       var r=cv.getBoundingClientRect();mv.set((ev.clientX-r.left)/r.width*2-1,-(ev.clientY-r.top)/r.height*2+1);ray.setFromCamera(mv,C);
-      if(ray.intersectObject(gMesh).length)openNote()});
+      if(gMesh.visible&&ray.intersectObject(gMesh).length)openNote()});
     function openNote(){if(!note.hidden)return;note.hidden=false;sec.classList.add('found');$('#encNoteX').focus({preventScroll:true});try{localStorage.setItem('nhaka-stone','1')}catch(err){}}
-    $('#encNoteX').addEventListener('click',function(){note.hidden=true;sec.classList.remove('found')});
+    function closeNote(){note.hidden=true;sec.classList.remove('found');cv.focus&&cv.focus({preventScroll:true})}
+    $('#encNoteX').addEventListener('click',closeNote);
+    note.addEventListener('keydown',function(ev){if(ev.key==='Escape'){ev.stopPropagation();closeNote()}});
     $('#encNoteDial').addEventListener('click',function(){note.hidden=true;sec.classList.remove('found');var el=$('#dial');if(lenis)lenis.scrollTo(el,{duration:1.4});else el.scrollIntoView({behavior:reduce?'auto':'smooth'})});
     $('#encStoneN').textContent=(gi+1).toLocaleString('en-GB');$('#encStoneT').textContent=N.toLocaleString('en-GB');
     var wb=$('#wireBtn'),sb=$('#spinBtn');
-    wb.addEventListener('click',function(){var on=wb.getAttribute('aria-pressed')!=='true';wb.setAttribute('aria-pressed',String(on));mesh.material=on?wire:mat;mesh.instanceColor=on?null:instColor;grid.material.opacity=on?.9:.45;render()});
+    wb.addEventListener('click',function(){var on=wb.getAttribute('aria-pressed')!=='true';wb.setAttribute('aria-pressed',String(on));mesh.material=on?wire:mat;mesh.instanceColor=on?null:instColor;gMesh.visible=!on;grid.material.opacity=on?.9:.45;render()});
     sb.addEventListener('click',function(){spin=sb.getAttribute('aria-pressed')!=='true';sb.setAttribute('aria-pressed',String(spin))});
     ENC.toggleWire=function(){wb.click()};
     ENC.v=0;
