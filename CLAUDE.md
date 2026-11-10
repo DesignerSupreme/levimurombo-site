@@ -26,7 +26,7 @@ Ask before anything that publishes, deletes or spends. Previous versions live in
 
 ## Map of index.html
 
-Sections in page order: loader (boot log), nav, `#hero` (GLSL contour field, image trail, variable-weight headline), client marquees, statement, `#work` (pinned horizontal reel, 10 cards), `#enclosure` (three.js Great Enclosure that assembles on scroll), `#dial` (NHAKA dial zoom), `#index` (12 more brands with hover preview), `#wall` (poster wall + lightbox), `#motion` (videos), `#terminal`, numbers, `#about` (bio, lab notes, timeline, tools), `#contact`, footer wordmark. Overlays: `#case` (case study), `#lb` (lightbox), `#cmdk` (command palette, Ctrl/Cmd K).
+Sections in page order: loader (boot log), nav (blur backing once scrolled), `#hero` (GLSL contour field, image trail, variable-weight headline sized to the viewport height, Start a project and View CV buttons), client marquees, `#motion` (showreel: seven clips, four seconds each, driven by the `CL` list), statement, `#work` (five featured projects: `#lead` is the pinned AURA expo stands feature with the ZITF award, then a pinned horizontal reel of 4 cards), `#enclosure` (three.js Great Enclosure that assembles on scroll), `#dial` (NHAKA dial zoom), `#index` (17 more brands with hover preview), `#wall` (poster wall + lightbox), `#terminal`, numbers, `#about` (bio, lab notes, timeline, tools), `#contact`, footer wordmark. Overlays: `#case` (case study), `#lb` (lightbox), `#cmdk` (command palette, Ctrl/Cmd K).
 
 Key JS objects:
 
@@ -37,6 +37,7 @@ Key JS objects:
 - `C2`: terminal commands. `CM`: command palette entries.
 - Reel cards: `<button class="card" data-case="<key>">`. Index rows: `<button data-case="<key>" data-img="img/<slug>.webp">`.
 - Deep links: `levimurombo.space/#<case-key>` opens that case study.
+- `cv.html` (served at `/cv`): one-page CV that prints to PDF. Every fact on it must already be on the main site. Swap for Levi's own PDF when he supplies one.
 
 ## Adding work
 

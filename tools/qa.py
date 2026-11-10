@@ -3,8 +3,8 @@
     python3 tools/qa.py
 
 Checks: missing image references, em dashes, page errors, failed requests,
-horizontal overflow at 1440 / 768 / 390 px, every project card and index row
-opening the right case study, terminal and command palette, reduced motion.
+horizontal overflow at 1440 / 768 / 390 px, hero fits above the fold, showreel
+advances, every project card and index row opening the right case study, terminal and command palette, reduced motion.
 Exits with code 1 if anything fails. Screenshots go to tools/out/.
 """
 import asyncio, os, re, subprocess, sys, time
@@ -74,8 +74,24 @@ async def main():
             check(not errs, '%dpx no page errors %s' % (w, errs[:2] or ''))
             check(not bad, '%dpx no failed requests %s' % (w, bad[:3] or ''))
             if w == 1440:
+                for vw, vh in ((1440, 900), (1366, 660)):
+                    await pg.set_viewport_size({'width': vw, 'height': vh})
+                    await pg.evaluate('window.scrollTo(0,0)')
+                    await pg.wait_for_timeout(700)
+                    fb = await pg.evaluate("document.querySelector('.hero-foot').getBoundingClientRect().bottom")
+                    check(fb <= vh, 'hero headline and buttons fit above the fold at %dx%d (bottom %d)' % (vw, vh, fb))
+                await pg.set_viewport_size({'width': w, 'height': h})
+                cta = await pg.evaluate("[...document.querySelectorAll('.hero-cta a')].map(a=>a.getAttribute('href'))")
+                check(cta == ['#contact', 'cv.html'] and os.path.exists(os.path.join(ROOT, 'cv.html')), 'hero has Start a project and View CV buttons %s' % cta)
+                n5 = await pg.evaluate("document.querySelectorAll('.lead-stage, #track .card').length")
+                check(n5 == 5, 'five featured projects, expo stands first (%d)' % n5)
+                await pg.evaluate("document.getElementById('srStage').scrollIntoView({block:'center'})")
+                await pg.wait_for_timeout(6500)
+                sr = await pg.evaluate("[document.querySelectorAll('#srSegs button').length, document.getElementById('srN').textContent, document.getElementById('srBtn').getAttribute('aria-pressed')]")
+                check(sr[0] == 7 and sr[1] != '01 / 07' and sr[2] == 'true', 'showreel plays and advances to the next film %s' % sr)
+            if w == 1440:
                 res = []
-                for sel in ('#track .card', '#ix button'):
+                for sel in ('.lead-stage', '#track .card', '#ix button'):
                     n = await pg.locator(sel).count()
                     for i in range(n):
                         k = await pg.locator(sel).nth(i).get_attribute('data-case')

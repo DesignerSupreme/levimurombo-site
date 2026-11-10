@@ -86,7 +86,9 @@ html.js .loader{display:flex;position:fixed;inset:0;z-index:100;background:var(-
 .ld-skip{opacity:.6}
 
 /* Nav */
-.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:60;mix-blend-mode:difference;color:#fff;pointer-events:none;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:60;color:var(--ink);pointer-events:none;transition:transform .55s cubic-bezier(.2,.8,.2,1)}
+.nav::before{content:"";position:absolute;inset:0;z-index:-1;background:rgba(14,13,11,.66);-webkit-backdrop-filter:blur(16px) saturate(1.3);backdrop-filter:blur(16px) saturate(1.3);border-bottom:1px solid rgba(241,236,226,.08);opacity:0;transition:opacity .4s}
+.nav.solid::before{opacity:1}
 .nav.up{transform:translateY(-115%)}.nav:focus-within{transform:none}
 .nav .wrap{display:flex;justify-content:space-between;align-items:center;gap:20px;padding-block:16px;max-width:none}
 .nav a,.nav button{pointer-events:auto}
@@ -134,6 +136,13 @@ html.js .loader{display:flex;position:fixed;inset:0;z-index:100;background:var(-
 .hero h1 .ch{display:inline-block;will-change:transform}
 .hero h1 .serif{font-size:.86em;color:var(--zuva);letter-spacing:-.03em;padding-right:.05em}
 .hero h1 .r{text-align:right}
+/* Desktop: three rows sized to the viewport height so the whole line lands above the fold */
+@media (min-width:761px){
+  .hero h1{font-size:clamp(3.6rem,min(11.2vw,calc((100svh - 392px) / 2.64)),15rem)}
+  .hero h1 .ln:nth-child(-n+2){display:inline-block;vertical-align:top}
+}
+.hero-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.hero-cta .btn{padding:13px 20px}
 .hero-foot{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:20px;align-items:end;margin-top:clamp(20px,3vw,36px)}
 .hero-foot p{max-width:40ch;font-size:1.05rem;margin:0}
 .scroll-cue{display:flex;flex-direction:column;align-items:center;gap:10px}
@@ -171,6 +180,21 @@ html.js .loader{display:flex;position:fixed;inset:0;z-index:100;background:var(-
 
 /* Reel */
 .reel{padding-top:clamp(40px,6vw,80px)}
+.lead{padding:0 var(--padr) 0 var(--pad);margin-bottom:clamp(24px,4vw,60px)}
+.lead-stage{position:relative;display:block;width:100%;height:min(84svh,54vw);min-height:440px;border:0;padding:0;border-radius:8px;overflow:hidden;background:var(--bg-2);color:var(--ink);text-align:left;cursor:pointer;isolation:isolate}
+.lead-imgs img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 38%;opacity:0;will-change:opacity,transform}
+.lead-imgs img.on{opacity:1}
+.lead-shade{position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(14,13,11,.86) 0%,rgba(14,13,11,.4) 40%,rgba(14,13,11,0) 64%),linear-gradient(0deg,rgba(14,13,11,.78),rgba(14,13,11,0) 46%),linear-gradient(180deg,rgba(14,13,11,.55),rgba(14,13,11,0) 22%)}
+.lead-top{position:absolute;z-index:2;top:18px;left:20px;right:20px;display:flex;justify-content:space-between;gap:12px}
+.lead-copy{position:absolute;z-index:2;left:clamp(16px,2.4vw,40px);bottom:clamp(24px,3vw,46px);max-width:min(52ch,56%)}
+.lead-t{display:block;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(3.1rem,7.6vw,8.4rem);line-height:.84;letter-spacing:-.01em}
+.lead-d{display:block;margin-top:16px;max-width:46ch;opacity:.86}
+.lead-award{position:absolute;z-index:2;right:clamp(16px,2.4vw,40px);bottom:clamp(24px,3vw,46px);display:grid;gap:6px;justify-items:end;text-align:right}
+.lead-award b{font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(2.5rem,5.4vw,5.8rem);line-height:.86;color:var(--zuva)}
+.lead-award b .serif{font-size:.8em}
+.lead-aw{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}
+.lead-bar{position:absolute;z-index:2;left:0;right:0;bottom:0;height:3px;background:rgba(241,236,226,.16)}
+.lead-bar i{position:absolute;inset:0;background:var(--zuva);transform-origin:left;transform:scaleX(0)}
 .reel-pin{overflow-x:auto;scrollbar-width:none}
 .reel-pin::-webkit-scrollbar{display:none}
 .reel-pin.pinned{overflow:hidden}
@@ -293,16 +317,22 @@ html.js .loader{display:flex;position:fixed;inset:0;z-index:100;background:var(-
 .tile:hover img{transform:scale(1.04)}
 
 /* Motion */
-.motion{padding-block:clamp(90px,12vw,170px);border-top:1px solid var(--line)}
-.vids{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:clamp(10px,1.4vw,20px)}
-.vids.tall{grid-template-columns:repeat(5,minmax(0,1fr));margin-top:clamp(10px,1.4vw,20px)}
-.vid{margin:0;position:relative;border-radius:6px;overflow:hidden;background:var(--bg-2)}
-.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.vid.w{grid-column:span 3;aspect-ratio:16/9}
-.vid.s{grid-column:span 2;aspect-ratio:1/1}
-.vid.t{aspect-ratio:9/16}
-.vid figcaption{position:absolute;left:12px;bottom:12px;right:62px;pointer-events:none}
-.vid figcaption span{display:inline-block;background:var(--bg);padding:6px 10px;border-radius:999px}
+.showreel{padding-top:clamp(70px,9vw,130px);padding-bottom:clamp(30px,5vw,70px)}
+.sr-stage{position:relative;width:100%;aspect-ratio:16/9;max-height:88svh;overflow:hidden;background:#000;isolation:isolate}
+.sr-bg{position:absolute;inset:-8%;z-index:0;background:center/cover no-repeat;filter:blur(42px) brightness(.5) saturate(1.2)}
+.sr-v{position:absolute;inset:0;z-index:1;width:100%;height:100%;object-fit:contain;opacity:0;transition:opacity .55s var(--ease)}
+.sr-v.cover{object-fit:cover}
+.sr-v.on{opacity:1}
+.sr-ui{position:absolute;z-index:3;left:var(--pad);right:var(--padr);bottom:36px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px}
+.sr-cap{display:flex;gap:10px;align-items:center;background:var(--bg);padding:8px 12px;border-radius:999px;min-width:0}
+.sr-cap span{color:var(--zuva);flex:none}
+.sr-cap b{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sr-ui .vbtn{position:static;flex:none;width:48px;height:48px}
+.sr-segs{position:absolute;z-index:3;left:var(--pad);right:var(--padr);bottom:10px;display:flex;gap:6px}
+.sr-segs button{position:relative;flex:1;height:18px;padding:0;border:0;background:none;cursor:pointer}
+.sr-segs button::before,.sr-segs button i{content:"";position:absolute;left:0;right:0;top:8px;height:2px;border-radius:2px}
+.sr-segs button::before{background:rgba(241,236,226,.3)}
+.sr-segs button i{background:var(--zuva);transform-origin:left;transform:scaleX(0)}
 .vbtn{position:absolute;right:12px;bottom:12px;width:40px;height:40px;border-radius:50%;border:1px solid rgba(241,236,226,.4);background:rgba(14,13,11,.72);cursor:pointer;display:grid;place-items:center}
 .vbtn::before{content:"";width:0;height:0;border-left:11px solid var(--ink);border-top:7px solid transparent;border-bottom:7px solid transparent;margin-left:3px}
 .vbtn[aria-pressed="true"]::before{width:10px;height:12px;border:0;margin:0;background:linear-gradient(90deg,var(--ink) 0 35%,transparent 35% 65%,var(--ink) 65%)}
@@ -458,13 +488,12 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
   .wall{display:block;columns:2;column-gap:10px}
   .col{display:contents}
   .tile{margin-bottom:10px;break-inside:avoid}
-  .vids{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .vid.w{grid-column:span 2}
-  .vid.s{grid-column:span 1}
-  .vid.s:last-child{grid-column:span 2;aspect-ratio:2/1}
-  .vids.tall{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;margin-inline:calc(-1 * var(--pad));padding-inline:var(--pad);scrollbar-width:none}
-  .vids.tall::-webkit-scrollbar{display:none}
-  .vids.tall .vid{flex:0 0 58%;scroll-snap-align:start}
+  .sr-stage{aspect-ratio:4/5}
+  .sr-ui{bottom:32px}
+  .lead-stage{height:auto;min-height:0;aspect-ratio:4/5}
+  .lead-copy{max-width:none;right:16px}
+  .lead-d{display:none}
+  .lead-award{top:52px;bottom:auto}
   .ix button{grid-template-columns:72px minmax(0,1fr);padding:16px 0}
   .ix .no,.ix .rg{display:none}
   .ix .th{display:block;width:72px;aspect-ratio:1;border-radius:4px;overflow:hidden}
@@ -507,10 +536,10 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
   <div class="wrap">
     <a class="brand" href="#top" data-scr>Levison Murombo</a>
     <ul id="navl">
+      <li><a href="#motion" data-scr>Reel</a></li>
       <li><a href="#work" data-scr>Work</a></li>
       <li><a href="#enclosure" data-scr>3D</a></li>
       <li><a href="#index" data-scr>Brands</a></li>
-      <li><a href="#motion" data-scr>Motion</a></li>
       <li><a href="#terminal" data-scr>Terminal</a></li>
       <li><a href="#about" data-scr>About</a></li>
       <li><a href="#contact" data-scr>Contact</a></li>
@@ -525,7 +554,7 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
   </div>
 </header>
 <nav class="mnav" id="mnav" hidden aria-label="Mobile">
-  <a href="#work"><span>01</span>Work</a><a href="#enclosure"><span>02</span>3D</a><a href="#index"><span>03</span>Brands</a><a href="#motion"><span>04</span>Motion</a><a href="#terminal"><span>05</span>Terminal</a><a href="#about"><span>06</span>About</a><a href="#contact"><span>07</span>Contact</a>
+  <a href="#motion"><span>01</span>Reel</a><a href="#work"><span>02</span>Work</a><a href="#enclosure"><span>03</span>3D</a><a href="#index"><span>04</span>Brands</a><a href="#terminal"><span>05</span>Terminal</a><a href="#about"><span>06</span>About</a><a href="#contact"><span>07</span>Contact</a>
 </nav>
 
 <main id="top">
@@ -548,7 +577,10 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
       <span class="ln r"><span>past.</span></span>
     </h1>
     <div class="hero-foot">
-      <p>Identities, campaigns, 3D and product. Trained as a chemical engineer, so I build brands like systems: designed to hold up everywhere they show up.</p>
+      <div class="hero-lead">
+        <p>Identities, campaigns, 3D and product. Trained as a chemical engineer, so I build brands like systems: designed to hold up everywhere they show up.</p>
+        <div class="hero-cta"><a class="btn solid" href="#contact">Start a project <span aria-hidden="true">→</span></a><a class="btn" href="cv.html">View CV <span aria-hidden="true">↗</span></a></div>
+      </div>
       <div class="scroll-cue mono mute" aria-hidden="true"><i></i>Scroll</div>
       <div class="roles"><span class="mono mute">Currently</span><b id="role">Brand designer</b></div>
     </div>
@@ -565,6 +597,25 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
   </div>
 </section>
 
+<section class="showreel" id="motion" aria-labelledby="mo-h">
+  <div class="wrap">
+    <div class="shead">
+      <div><span class="eb mono mute" data-scr>01 / Showreel</span><h2 id="mo-h">Show<span class="serif">reel</span></h2></div>
+      <p>Seven films in 28 seconds: launch films, brand loops, explainers and product spots. Silent web cut. Tap a bar to jump to a film.</p>
+    </div>
+  </div>
+  <div class="sr-stage" id="srStage">
+    <div class="sr-bg" id="srBg" aria-hidden="true"></div>
+    <video class="sr-v on cover" id="srA" muted loop playsinline preload="none" poster="img/poster-soul.jpg" aria-label="Showreel film"></video>
+    <video class="sr-v" id="srB" muted loop playsinline preload="none" aria-hidden="true"></video>
+    <div class="sr-ui">
+      <div class="sr-cap mono"><span id="srN">01 / 07</span><b id="srT">Soul Avenue 300 · Intro film</b></div>
+      <button class="vbtn" id="srBtn" type="button" aria-pressed="false" aria-label="Play showreel"></button>
+    </div>
+    <div class="sr-segs" id="srSegs" role="group" aria-label="Showreel films"></div>
+  </div>
+</section>
+
 <section class="statement" aria-label="Introduction">
   <div class="wrap">
     <p id="stmt">Engineer by training. <span class="serif">Designer</span> by obsession. I build identities <span class="pill"><img width="1000" height="1000" src="img/hurungwe-logo.webp" alt=""></span> campaigns <span class="pill"><img width="1000" height="962" src="img/axis-pw.webp" alt=""></span> 3D spaces <span class="pill"><img width="1600" height="900" src="img/dpa-reception.webp" alt=""></span> and products <span class="pill"><img width="1400" height="1400" src="img/nhaka-dial.webp" alt=""></span> for brands from Harare to Alberta.</p>
@@ -575,64 +626,52 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
 <section class="reel" id="work" aria-labelledby="work-h">
   <div class="wrap">
     <div class="shead">
-      <div><span class="eb mono mute" data-scr>01 / Selected work</span><h2 id="work-h">Selected <span class="serif">work</span></h2></div>
-      <p>Ten projects across identity, campaigns, 3D and product. Open any of them for the full set.</p>
+      <div><span class="eb mono mute" data-scr>02 / Selected work</span><h2 id="work-h">Selected <span class="serif">work</span></h2></div>
+      <p>Five projects across 3D, product, identity and campaigns. Open any of them for the full set.</p>
     </div>
+  </div>
+  <div class="lead" id="lead">
+    <button class="lead-stage" type="button" data-case="stands" data-cursor="Open" aria-label="Open the AURA expo stands project">
+      <span class="lead-imgs" aria-hidden="true">
+        <img class="on" width="1600" height="900" src="img/zitf-angle.webp" alt="">
+        <img width="1600" height="900" src="img/zitf-front.webp" alt="" loading="lazy">
+        <img width="1600" height="900" src="img/zitf-angle2.webp" alt="" loading="lazy">
+        <img width="1600" height="900" src="img/zitf-close.webp" alt="" loading="lazy">
+      </span>
+      <span class="lead-shade" aria-hidden="true"></span>
+      <span class="lead-top mono"><span>01 · 3D spatial</span><span id="leadV">View 01 / 04</span></span>
+      <span class="lead-copy">
+        <span class="lead-t">AURA expo stands</span>
+        <span class="lead-d">Two exhibition stands for the Zimbabwe International Trade Fair, modelled and rendered in 3D for sign-off and the build crew. Scroll to walk around the stand.</span>
+      </span>
+      <span class="lead-award"><span class="mono">ZITF 2025</span><b>1st <span class="serif">runner-up</span></b><span class="lead-aw">Best First-Time Exhibitor</span></span>
+      <span class="lead-bar" aria-hidden="true"><i id="leadBar"></i></span>
+    </button>
   </div>
   <div class="reel-pin" id="reelpin">
     <div class="track" id="track">
       <button class="card" type="button" data-case="nhaka" data-cursor="Open">
-        <span class="ph"><img width="1254" height="1254" src="img/nhaka-approved.webp" alt="NHAKA The Enclosure watch with a Great Zimbabwe stonework dial"><span class="glare"></span><span class="tagl mono">Self-initiated</span></span>
-        <span class="row"><span class="n">01</span><h3>NHAKA · The Enclosure</h3><span class="k">2026</span></span>
+        <span class="ph"><img width="1254" height="1254" src="img/nhaka-approved.webp" alt="NHAKA The Enclosure watch with a Great Zimbabwe stonework dial" loading="lazy"><span class="glare"></span><span class="tagl mono">Self-initiated</span></span>
+        <span class="row"><span class="n">02</span><h3>NHAKA · The Enclosure</h3><span class="k">2026</span></span>
         <span class="d">A Zimbabwean watch brand, with the stonework of Great Zimbabwe set into the dial.</span>
-      </button>
-      <button class="card" type="button" data-case="hurungwe" data-cursor="Open">
-        <span class="ph"><img width="1600" height="1067" src="img/hurungwe-store.webp" alt="Hurungwe Pharmacy storefront branding" loading="lazy"><span class="glare"></span><span class="tagl mono">Identity</span></span>
-        <span class="row"><span class="n">02</span><h3>Hurungwe Pharmacy</h3><span class="k">Identity</span></span>
-        <span class="d">A cross mark, a pattern system and a storefront that reads from across the street.</span>
-      </button>
-      <button class="card" type="button" data-case="jaha" data-cursor="Open">
-        <span class="ph"><img width="1600" height="1600" src="img/jaha-headphones.webp" alt="The Jaha Tribe emblem on headphones" loading="lazy"><span class="glare"></span><span class="tagl mono">Identity</span></span>
-        <span class="row"><span class="n">03</span><h3>The Jaha Tribe</h3><span class="k">Music brand</span></span>
-        <span class="d">A masked emblem built for vinyl, stage screens, merch and gold-foil cards.</span>
       </button>
       <button class="card" type="button" data-case="soul" data-cursor="Open">
         <span class="ph"><img width="1403" height="1121" src="img/soul2-selfie.webp" alt="Soul Avenue 300 by Pub Choir campaign image" loading="lazy"><span class="glare"></span><span class="tagl mono">Event brand</span></span>
-        <span class="row"><span class="n">04</span><h3>Soul Avenue 300</h3><span class="k">Pub Choir</span></span>
+        <span class="row"><span class="n">03</span><h3>Soul Avenue 300</h3><span class="k">Pub Choir</span></span>
         <span class="d">A retro soul identity, campaign, merch and two films for Pub Choir.</span>
       </button>
       <button class="card" type="button" data-case="myaura" data-cursor="Open">
         <span class="ph"><img width="1000" height="1000" src="img/myaura-3.webp" alt="MyAURA mobile app campaign" loading="lazy"><span class="glare"></span><span class="tagl mono">App and launch</span></span>
-        <span class="row"><span class="n">05</span><h3>MyAURA app</h3><span class="k">UI/UX</span></span>
+        <span class="row"><span class="n">04</span><h3>MyAURA app</h3><span class="k">UI/UX</span></span>
         <span class="d">A self-service app for Starlink subscribers, with the launch film and campaign around it.</span>
       </button>
       <button class="card" type="button" data-case="wakosha" data-cursor="Open">
         <span class="ph"><img width="1600" height="900" src="img/wakosha-main.webp" alt="Wakosha Cosmetics brand imagery" loading="lazy"><span class="glare"></span><span class="tagl mono">Skincare</span></span>
-        <span class="row"><span class="n">06</span><h3>Wakosha Cosmetics</h3><span class="k">Identity</span></span>
+        <span class="row"><span class="n">05</span><h3>Wakosha Cosmetics</h3><span class="k">Identity</span></span>
         <span class="d">A crowned wordmark, packaging and campaign imagery for a skincare brand.</span>
       </button>
-      <button class="card" type="button" data-case="aura" data-cursor="Open">
-        <span class="ph"><img width="1600" height="1067" src="img/aura-bb-vpn.webp" alt="AURA Technologies Layer 2 VPN billboard" loading="lazy"><span class="glare"></span><span class="tagl mono">Campaigns</span></span>
-        <span class="row"><span class="n">07</span><h3>AURA Technologies</h3><span class="k">Starlink</span></span>
-        <span class="d">Billboards, social, fleet branding and event films for Africa's second-largest Starlink reseller.</span>
-      </button>
-      <button class="card" type="button" data-case="dpa" data-cursor="Open">
-        <span class="ph"><img width="1600" height="900" src="img/dpa-reception.webp" alt="3D render of the Distributed Power Africa office reception" loading="lazy"><span class="glare"></span><span class="tagl mono">3D interior</span></span>
-        <span class="row"><span class="n">08</span><h3>Distributed Power Africa</h3><span class="k">3D</span></span>
-        <span class="d">Reception, feature walls, lounge and boardroom, visualised in 3D before a single wall went up.</span>
-      </button>
-      <button class="card" type="button" data-case="stands" data-cursor="Open">
-        <span class="ph"><img width="1600" height="900" src="img/zitf-angle.webp" alt="3D render of the AURA Technologies expo stand" loading="lazy"><span class="glare"></span><span class="tagl mono">3D spatial</span></span>
-        <span class="row"><span class="n">09</span><h3>AURA expo stands</h3><span class="k">ZITF</span></span>
-        <span class="d">Two exhibition stands, modelled and rendered for sign-off and the build crew.</span>
-      </button>
-      <button class="card" type="button" data-case="max" data-cursor="Open">
-        <span class="ph"><img width="1600" height="1200" src="img/max-lightbox.webp" alt="Max Unisex Salon lightbox sign" loading="lazy"><span class="glare"></span><span class="tagl mono">Identity</span></span>
-        <span class="row"><span class="n">10</span><h3>Max Unisex Salon</h3><span class="k">Identity</span></span>
-        <span class="d">Signage, uniforms and salon merch with one confident monogram.</span>
-      </button>
       <div class="reel-end">
-        <b>Twelve more in the <span class="serif" style="color:var(--zuva)">index</span></b>
+        <b>Seventeen more in the <span class="serif" style="color:var(--zuva)">index</span></b>
         <a class="btn" href="#index">See every brand <span aria-hidden="true">↓</span></a>
       </div>
     </div>
@@ -707,10 +746,15 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
 <section class="index" id="index" aria-labelledby="ix-h">
   <div class="wrap">
     <div class="shead">
-      <div><span class="eb mono mute" data-scr>02 / Brand index</span><h2 id="ix-h">Brand <span class="serif">index</span></h2></div>
-      <p>Twelve more identities and campaigns. Hover a name to preview it, select it to open.</p>
+      <div><span class="eb mono mute" data-scr>03 / Brand index</span><h2 id="ix-h">Brand <span class="serif">index</span></h2></div>
+      <p>Seventeen more identities, campaigns and 3D spaces. Hover a name to preview it, select it to open.</p>
     </div>
     <ul class="ix" id="ix">
+      <li><button type="button" data-case="hurungwe" data-img="img/hurungwe-store.webp" data-cursor="Open"><span class="th"><img width="1600" height="1067" src="img/hurungwe-store.webp" alt="" loading="lazy"></span><span class="no">06</span><span class="nm">Hurungwe Pharmacy</span><span class="ds">Identity, pattern system, signage</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="jaha" data-img="img/jaha-headphones.webp" data-cursor="Open"><span class="th"><img width="1600" height="1600" src="img/jaha-headphones.webp" alt="" loading="lazy"></span><span class="no">07</span><span class="nm">The Jaha Tribe</span><span class="ds">Emblem, identity, merch</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="aura" data-img="img/aura-bb-vpn.webp" data-cursor="Open"><span class="th"><img width="1600" height="1067" src="img/aura-bb-vpn.webp" alt="" loading="lazy"></span><span class="no">08</span><span class="nm">AURA Technologies</span><span class="ds">Campaigns, billboards, films</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="dpa" data-img="img/dpa-reception.webp" data-cursor="Open"><span class="th"><img width="1600" height="900" src="img/dpa-reception.webp" alt="" loading="lazy"></span><span class="no">09</span><span class="nm">Distributed Power Africa</span><span class="ds">3D interior visualisation</span><span class="rg">Zimbabwe</span></button></li>
+      <li><button type="button" data-case="max" data-img="img/max-lightbox.webp" data-cursor="Open"><span class="th"><img width="1600" height="1200" src="img/max-lightbox.webp" alt="" loading="lazy"></span><span class="no">10</span><span class="nm">Max Unisex Salon</span><span class="ds">Logo, signage, uniforms</span><span class="rg">Zimbabwe</span></button></li>
       <li><button type="button" data-case="pfs" data-img="img/pfs-billboard.webp" data-cursor="Open"><span class="th"><img width="1600" height="1067" src="img/pfs-billboard.webp" alt="" loading="lazy"></span><span class="no">11</span><span class="nm">Proactive Finance</span><span class="ds">Identity, billboards, stationery</span><span class="rg">Zimbabwe</span></button></li>
       <li><button type="button" data-case="shasha" data-img="img/shasha-truck.webp" data-cursor="Open"><span class="th"><img width="1000" height="693" src="img/shasha-truck.webp" alt="" loading="lazy"></span><span class="no">12</span><span class="nm">Shasha Logistics</span><span class="ds">Logo, fleet, uniforms</span><span class="rg">Zimbabwe</span></button></li>
       <li><button type="button" data-case="abtn" data-img="img/abtn-5.webp" data-cursor="Open"><span class="th"><img width="1000" height="1000" src="img/abtn-5.webp" alt="" loading="lazy"></span><span class="no">13</span><span class="nm">Alberta Black Therapist Network</span><span class="ds">Logo system</span><span class="rg">Canada</span></button></li>
@@ -731,7 +775,7 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
 <section class="wall-sec" id="wall" aria-labelledby="wall-h">
   <div class="wrap">
     <div class="shead">
-      <div><span class="eb mono mute" data-scr>03 / The wall</span><h2 id="wall-h">The <span class="serif">wall</span></h2></div>
+      <div><span class="eb mono mute" data-scr>04 / The wall</span><h2 id="wall-h">The <span class="serif">wall</span></h2></div>
       <p>Posters, social and print. Football posters are my favourite thing to make. Select any piece to see it full size.</p>
     </div>
   </div>
@@ -764,29 +808,6 @@ footer{padding-top:40px;padding-bottom:calc(24px + env(safe-area-inset-bottom,0p
       <button class="tile" type="button" data-cursor="View"><img width="1000" height="962" src="img/axis-care.webp" alt="Axis customer care post" loading="lazy"></button>
       <button class="tile" type="button" data-cursor="View"><img width="1000" height="962" src="img/axis-africa.webp" alt="Axis Africa Day post" loading="lazy"></button>
       <button class="tile" type="button" data-cursor="View"><img width="1000" height="560" src="img/eva-girl.webp" alt="Eva Marie Libraries campaign image" loading="lazy"></button>
-    </div>
-  </div>
-</section>
-
-<section class="motion" id="motion" aria-labelledby="mo-h">
-  <div class="wrap">
-    <div class="shead">
-      <div><span class="eb mono mute" data-scr>04 / Motion</span><h2 id="mo-h">In <span class="serif">motion</span></h2></div>
-      <p>Launch films, ads, brand loops and explainers. They play while on screen. Silent web cuts, each with its own play and pause.</p>
-    </div>
-    <div class="vids">
-      <figure class="vid w"><video src="img/vid-soul.mp4" poster="img/poster-soul.jpg" muted loop playsinline preload="none" aria-label="Soul Avenue 300 intro film"></video><figcaption class="mono"><span>Soul Avenue 300 · Intro film</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Soul Avenue 300 intro film"></button></figure>
-      <figure class="vid w"><video src="img/vid-zimmap.mp4" poster="img/poster-zimmap.jpg" muted loop playsinline preload="none" aria-label="Zimbabwe map infographic animation"></video><figcaption class="mono"><span>Zimbabwe map · Infographic</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Zimbabwe map infographic"></button></figure>
-      <figure class="vid s"><video src="img/vid-axis.mp4" poster="img/poster-axis.jpg" muted loop playsinline preload="none" aria-label="Axis Solutions brand promise animation"></video><figcaption class="mono"><span>Axis · Brand promise</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Axis brand promise"></button></figure>
-      <figure class="vid s"><video src="img/vid-ggf.mp4" poster="img/poster-ggf.jpg" muted loop playsinline preload="none" aria-label="GGF Africa carbon credits explainer"></video><figcaption class="mono"><span>GGF Africa · Carbon credits</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play GGF Africa carbon credits explainer"></button></figure>
-      <figure class="vid s"><video src="img/vid-iphone.mp4" poster="img/poster-iphone.jpg" muted loop playsinline preload="none" aria-label="iPhone 15 product animation"></video><figcaption class="mono"><span>iPhone 15 · Product spot</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play iPhone 15 product spot"></button></figure>
-    </div>
-    <div class="vids tall">
-      <figure class="vid t"><video src="img/vid-myaura.mp4" poster="img/poster-vid-myaura.jpg" muted loop playsinline preload="none" aria-label="MyAURA app launch film"></video><figcaption class="mono"><span>MyAURA · Launch film</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play MyAURA launch film"></button></figure>
-      <figure class="vid t"><video src="img/vid-infinity.mp4" poster="img/poster-vid-infinity.jpg" muted loop playsinline preload="none" aria-label="AURA Infinity Plus advert"></video><figcaption class="mono"><span>Infinity Plus · Ad</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Infinity Plus advert"></button></figure>
-      <figure class="vid t"><video src="img/vid-roaming.mp4" poster="img/poster-vid-roaming.jpg" muted loop playsinline preload="none" aria-label="AURA roaming packages advert"></video><figcaption class="mono"><span>AURA Roaming · Ad</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play AURA Roaming advert"></button></figure>
-      <figure class="vid t"><video src="img/vid-culture1.mp4" poster="img/poster-vid-culture1.jpg" muted loop playsinline preload="none" aria-label="AURA at 263 Culture Fest social film"></video><figcaption class="mono"><span>263 Culture Fest</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play 263 Culture Fest film"></button></figure>
-      <figure class="vid t"><video src="img/vid-soulrelaunch.mp4" poster="img/poster-vid-soulrelaunch.jpg" muted loop playsinline preload="none" aria-label="Soul Avenue 300 relaunch film"></video><figcaption class="mono"><span>Soul Avenue · Relaunch</span></figcaption><button class="vbtn" type="button" aria-pressed="false" aria-label="Play Soul Avenue relaunch film"></button></figure>
     </div>
   </div>
 </section>
@@ -977,7 +998,7 @@ void main(){
   var prog=$('#prog');
   var navEl=$('.nav'),navY=scrollY;
   function onScroll(){var y=scrollY,h=document.documentElement.scrollHeight-innerHeight;prog.style.transform='scaleX('+(h>0?y/h:0)+')';
-    var d=y-navY;if(Math.abs(d)>8){navEl.classList.toggle('up',d>0&&y>innerHeight*.7&&$('#mnav').hidden);navY=y}}
+    navEl.classList.toggle('solid',y>24);var d=y-navY;if(Math.abs(d)>8){navEl.classList.toggle('up',d>0&&y>innerHeight*.7&&$('#mnav').hidden);navY=y}}
   addEventListener('scroll',onScroll,{passive:true});onScroll();
   var navLinks=$$('#navl a');
   if('IntersectionObserver' in window){
@@ -1082,14 +1103,45 @@ void main(){
     ph.addEventListener('mouseleave',function(){ph.style.transform=''});
   })}
 
-  /* ---------- Videos ---------- */
-  $$('.vid').forEach(function(f){
-    var v=f.querySelector('video'),btn=f.querySelector('.vbtn'),label=btn.getAttribute('aria-label').replace(/^Play /,'');f._p=false;
-    function sync(){var on=!v.paused;btn.setAttribute('aria-pressed',String(on));btn.setAttribute('aria-label',(on?'Pause ':'Play ')+label)}
-    v.addEventListener('play',sync);v.addEventListener('pause',sync);
-    btn.addEventListener('click',function(){if(v.paused){f._p=false;v.preload='auto';var p=v.play();p&&p.catch&&p.catch(function(){})}else{f._p=true;v.pause()}});
-  });
-  if('IntersectionObserver' in window){var vio=new IntersectionObserver(function(es){es.forEach(function(e){var f=e.target,v=f.querySelector('video');if(e.isIntersecting){if(!reduce&&!saveData&&!f._p){v.preload='auto';var p=v.play();p&&p.catch&&p.catch(function(){})}}else v.pause()})},{threshold:.35});$$('.vid').forEach(function(f){vio.observe(f)})}
+  /* ---------- Showreel: seven films, four seconds each ---------- */
+  (function(){
+    var stage=$('#srStage');if(!stage)return;
+    var CL=[
+      {s:'vid-soul',p:'poster-soul',t:'Soul Avenue 300 · Intro film',at:1,cover:1},
+      {s:'vid-myaura',p:'poster-vid-myaura',t:'MyAURA · Launch film',at:4},
+      {s:'vid-zimmap',p:'poster-zimmap',t:'Zimbabwe map · Infographic',at:1,cover:1},
+      {s:'vid-axis',p:'poster-axis',t:'Axis · Brand promise',at:0},
+      {s:'vid-soulrelaunch',p:'poster-vid-soulrelaunch',t:'Soul Avenue · Relaunch',at:3},
+      {s:'vid-ggf',p:'poster-ggf',t:'GGF Africa · Carbon credits',at:0},
+      {s:'vid-iphone',p:'poster-iphone',t:'iPhone 15 · Product spot',at:.5}
+    ],DUR=4000;
+    var vs=[$('#srA'),$('#srB')],act=0,idx=0,gen=0,on=false,started=false,pending=false,userPaused=false,inView=false,t0=0,held=0,raf=0,segs=[];
+    var btn=$('#srBtn'),segBox=$('#srSegs');
+    function two(n){return String(n).padStart(2,'0')}
+    CL.forEach(function(c,i){var b=document.createElement('button');b.type='button';b.setAttribute('aria-label','Play film '+(i+1)+' of '+CL.length+': '+c.t);var bar=document.createElement('i');b.appendChild(bar);b.addEventListener('click',function(){userPaused=false;show(i)});segBox.appendChild(b);segs.push(bar)});
+    function label(i){$('#srN').textContent=two(i+1)+' / '+two(CL.length);$('#srT').textContent=CL[i].t;$('#srBg').style.backgroundImage='url(img/'+CL[i].p+'.jpg)';segs.forEach(function(s,j){s.style.transform='scaleX('+(j<i?1:0)+')'})}
+    function state(v){on=v;btn.setAttribute('aria-pressed',String(v));btn.setAttribute('aria-label',(v?'Pause':'Play')+' showreel')}
+    function show(i){
+      idx=(i+CL.length)%CL.length;started=true;var c=CL[idx],my=++gen,first=!vs[act].getAttribute('src');
+      var v=first?vs[act]:vs[1-act],old=first?null:vs[act];
+      label(idx);on=false;pending=true;
+      v.className='sr-v'+(c.cover?' cover':'')+(first?' on':'');v.poster='img/'+c.p+'.jpg';v.preload='auto';v.src='img/'+c.s+'.mp4';
+      v.addEventListener('loadedmetadata',function(){if(my!==gen)return;try{v.currentTime=c.at}catch(e){}var p=v.play();p&&p.catch&&p.catch(function(){if(my===gen)state(false)})},{once:true});
+      v.addEventListener('playing',function(){if(my!==gen)return;
+        if(old){v.classList.add('on');old.classList.remove('on');act=1-act;setTimeout(function(){if(vs[act]!==old){old.pause();old.removeAttribute('src');old.load()}},700)}
+        t0=performance.now();held=0;pending=false;state(true)},{once:true});
+      v.load();
+    }
+    function pause(){if(pending){gen++;started=false}else if(on)held=performance.now()-t0;state(false);vs[act].pause()}
+    function play(){if(pending)return;if(!started){show(idx);return}var v=vs[act];if(!v.getAttribute('src')){show(idx);return}t0=performance.now()-held;var p=v.play();p&&p.catch&&p.catch(function(){});state(true)}
+    function loop(now){raf=requestAnimationFrame(loop);if(!on)return;var k=(now-t0)/DUR;segs[idx].style.transform='scaleX('+Math.min(1,k)+')';if(k>=1)show(idx+1)}
+    btn.addEventListener('click',function(){if(on){userPaused=true;pause()}else{userPaused=false;play()}});
+    label(0);
+    if('IntersectionObserver' in window)new IntersectionObserver(function(es){inView=es[0].isIntersecting;
+      if(inView){if(!raf)raf=requestAnimationFrame(loop);if(!reduce&&!saveData&&!userPaused)play()}
+      else{cancelAnimationFrame(raf);raf=0;if(on)pause()}},{threshold:.35}).observe(stage);
+    else raf=requestAnimationFrame(loop);
+  })();
 
   /* ---------- Cases ---------- */
   var CASES={
@@ -1116,7 +1168,7 @@ void main(){
     godingo:{t:['Godingo'],client:'Godingo',scope:'Food packaging',region:'Zimbabwe',desc:'Packaging design for a soya chunks product.',img:[['godingo','full']]},
     culture:{t:['263 Culture','Fest'],client:'AURA Technologies at 263 Culture Fest',scope:'Sponsorship campaign, social films',region:'Zimbabwe',desc:'AURA was the connectivity partner for 263 Culture Fest. I made the campaign and the social films that ran before and during the festival.',img:[['aura-culture'],['vid-culture1','','v','poster-vid-culture1'],['vid-culture2','','v','poster-vid-culture2']]}
   };
-  var ORDER=['nhaka','hurungwe','jaha','soul','myaura','wakosha','aura','dpa','stands','max','pfs','shasha','abtn','axis','smart','eva','kleen','ofama','tesha','thabitha','godingo','culture'];
+  var ORDER=['stands','nhaka','soul','myaura','wakosha','hurungwe','jaha','aura','dpa','max','pfs','shasha','abtn','axis','smart','eva','kleen','ofama','tesha','thabitha','godingo','culture'];
   var caseEl=$('#case'),gal=$('#case-gal'),cur=null,lastFocus=null;
   function esc(s){return s.replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
   function fillCase(k){
@@ -1460,8 +1512,8 @@ void main(){
   var cmdk=$('#cmdk'),cq=$('#cmdq'),clist=$('#cmdlist'),csel=0,cshown=[],cret=null;
   function go2(id){if(lenis)lenis.scrollTo(id,{duration:1.4});else document.querySelector(id).scrollIntoView({behavior:reduce?'auto':'smooth'})}
   var CM=[
-    {l:'Selected work',h:'Section',a:function(){go2('#work')}},{l:'The Great Enclosure in 3D',h:'Section',a:function(){go2('#enclosure')}},{l:'NHAKA dial',h:'Section',a:function(){go2('#dial')}},{l:'Brand index',h:'Section',a:function(){go2('#index')}},{l:'The wall',h:'Section',a:function(){go2('#wall')}},{l:'Motion',h:'Section',a:function(){go2('#motion')}},{l:'Terminal',h:'Section',a:function(){go2('#terminal');setTimeout(function(){$('#tin').focus({preventScroll:true})},1500)}},{l:'About',h:'Section',a:function(){go2('#about')}},{l:'Contact',h:'Section',a:function(){go2('#contact')}},
-    {l:'Copy email address',h:'Action',a:function(){copyText('levimurombo@gmail.com',null)}},{l:'Copy phone number',h:'Action',a:function(){copyText('+263 773 766 393',null)}},{l:'Toggle 3D wireframe',h:'Action',a:function(){ENC.toggleWire&&ENC.toggleWire();go2('#enclosure')}},{l:'Hire Levi',h:'Action',a:function(){go2('#contact')}}
+    {l:'Selected work',h:'Section',a:function(){go2('#work')}},{l:'The Great Enclosure in 3D',h:'Section',a:function(){go2('#enclosure')}},{l:'NHAKA dial',h:'Section',a:function(){go2('#dial')}},{l:'Brand index',h:'Section',a:function(){go2('#index')}},{l:'The wall',h:'Section',a:function(){go2('#wall')}},{l:'Showreel',h:'Section',a:function(){go2('#motion')}},{l:'Terminal',h:'Section',a:function(){go2('#terminal');setTimeout(function(){$('#tin').focus({preventScroll:true})},1500)}},{l:'About',h:'Section',a:function(){go2('#about')}},{l:'Contact',h:'Section',a:function(){go2('#contact')}},
+    {l:'Copy email address',h:'Action',a:function(){copyText('levimurombo@gmail.com',null)}},{l:'Copy phone number',h:'Action',a:function(){copyText('+263 773 766 393',null)}},{l:'Toggle 3D wireframe',h:'Action',a:function(){ENC.toggleWire&&ENC.toggleWire();go2('#enclosure')}},{l:'Hire Levi',h:'Action',a:function(){go2('#contact')}},{l:'View CV',h:'Action',a:function(){location.href='cv.html'}}
   ].concat(ORDER.map(function(k,i){return {l:'Open '+CASES[k].t.join(' '),h:String(i+1).padStart(2,'0'),a:function(){openCase(k)}}}));
   function crender(){var t=cq.value.trim().toLowerCase();cshown=CM.filter(function(c){return c.l.toLowerCase().indexOf(t)>-1});if(csel>=cshown.length)csel=0;clist.innerHTML='';
     if(!cshown.length){var e=document.createElement('li');e.className='empty';e.textContent='No matches. Try "work", "soul" or "email".';clist.appendChild(e);return}
@@ -1560,7 +1612,22 @@ void main(){
   G.fromTo('.pill',{scale:.3,rotate:-10},{scale:1,rotate:0,ease:'back.out(2)',stagger:.15,scrollTrigger:{trigger:'#stmt',start:'top 75%',end:'bottom 55%',scrub:true}});
   $$('.shead h2').forEach(function(h){var cs=splitChars(h);G.from(cs,{yPercent:100,opacity:0,duration:1,ease:'expo.out',stagger:.02,scrollTrigger:{trigger:h,start:'top 88%'}})});
 
+  G.fromTo('#srStage',{clipPath:'inset(7% 10% 7% 10% round 18px)'},{clipPath:'inset(0% 0% 0% 0% round 0px)',ease:'none',scrollTrigger:{trigger:'#srStage',start:'top 95%',end:'top 18%',scrub:true}});
+
   var mm=G.matchMedia();
+  /* Lead project: pinned walk around the expo stand, four renders cross-dissolved on scroll */
+  mm.add('(min-width: 761px)',function(){
+    var limgs=$$('.lead-imgs img'),lv=$('#leadV'),lb=$('#leadBar'),ln=limgs.length;
+    limgs.forEach(function(im){im.loading='eager'});
+    G.set(limgs,{opacity:0});G.set(limgs[0],{opacity:1});
+    var ltl=G.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'#lead',start:'center center',end:'+=170%',pin:true,scrub:.6,anticipatePin:1,invalidateOnRefresh:true,onUpdate:function(s){lv.textContent='View 0'+Math.min(ln,1+Math.floor(s.progress*ln))+' / 0'+ln;lb.style.transform='scaleX('+s.progress+')'}}});
+    limgs.forEach(function(im,i){
+      var st=Math.max(0,i-.3);
+      ltl.fromTo(im,{scale:1.13,xPercent:2.2},{scale:1.05,xPercent:-2.2,duration:i+1-st},st);
+      if(i)ltl.to(im,{opacity:1,duration:.3},i-.3);
+    });
+    G.from('.lead-t, .lead-d, .lead-award > *',{y:40,opacity:0,duration:1,ease:'expo.out',stagger:.07,scrollTrigger:{trigger:'#lead',start:'top 70%'}});
+  });
   mm.add('(min-width: 761px)',function(){
     var track=$('#track'),pin=$('#reelpin');pin.classList.add('pinned');pin.scrollLeft=0;
     function dist(){return Math.max(0,track.scrollWidth-innerWidth)}
@@ -1584,7 +1651,6 @@ void main(){
   var skewTo=G.quickTo(tiles,'skewY',{duration:.6,ease:'power3'});
   ST.create({trigger:'#wallg',start:'top bottom',end:'bottom top',onUpdate:function(s){skewTo(G.utils.clamp(-6,6,s.getVelocity()/-350))}});
   G.from(tiles,{scale:.85,opacity:0,duration:1,ease:'expo.out',stagger:{each:.04,from:'random'},scrollTrigger:{trigger:'#wallg',start:'top 85%'}});
-  G.from('.vid',{y:80,opacity:0,duration:1.1,ease:'expo.out',stagger:.06,scrollTrigger:{trigger:'#motion .vids',start:'top 85%'}});
   G.from('#term',{y:60,opacity:0,rotateX:8,transformPerspective:1200,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'#term',start:'top 85%'}});
   G.from('.ab .big p, .labcard',{y:50,opacity:0,duration:1,ease:'expo.out',stagger:.1,scrollTrigger:{trigger:'.ab',start:'top 80%'}});
   G.from('.xp li',{y:30,opacity:0,duration:.9,ease:'expo.out',stagger:.06,scrollTrigger:{trigger:'.xp',start:'top 85%'}});
