@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0E0D0B">
+<meta name="color-scheme" content="dark">
+<link rel="canonical" href="https://www.levimurombo.space/cv">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<title>CV · Levison Murombo</title>
+<meta name="description" content="CV of Levison T. Murombo, designer and art director in Harare: experience, education, disciplines and tools.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* One-page CV. Every fact here is already on the main site. Prints as a clean light A4 page (Save as PDF). */
+:root{--bg:#0E0D0B;--bg-2:#181612;--ink:#F1ECE2;--mute:#9A9488;--line:#2B2823;--zuva:#F4B52C;--on-zuva:#14110A;
+  --f-display:"Big Shoulders Display","Arial Narrow",Impact,sans-serif;--f-serif:"Instrument Serif",Georgia,serif;--f-body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--zuva);outline-offset:4px}
+.mono{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.06em;text-transform:uppercase}
+.mute{color:var(--mute)}
+.serif{font-family:var(--f-serif);font-style:italic;font-weight:400;text-transform:none;color:var(--zuva)}
+.bar{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px max(16px,env(safe-area-inset-right,0px)) 14px max(16px,env(safe-area-inset-left,0px));background:rgba(14,13,11,.72);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:11px 18px;border-radius:999px;border:1px solid var(--ink);font-family:var(--f-mono);font-size:.74rem;letter-spacing:.08em;text-transform:uppercase;background:transparent;color:var(--ink);cursor:pointer;transition:background .3s,color .3s,border-color .3s}
+.btn:hover,.btn.solid{background:var(--zuva);color:var(--on-zuva);border-color:var(--zuva)}
+.btn.solid:hover{background:var(--ink);border-color:var(--ink)}
+.page{max-width:980px;margin:0 auto;padding:clamp(32px,6vw,72px) 16px 80px}
+h1{margin:0;font-family:var(--f-display);font-weight:900;text-transform:uppercase;font-size:clamp(3.4rem,11vw,7.5rem);line-height:.84;letter-spacing:-.01em}
+.sub{margin:14px 0 0;font-size:1.15rem;max-width:56ch}
+.meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.meta a:hover{color:var(--zuva)}
+.grid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:clamp(28px,5vw,64px);margin-top:clamp(34px,5vw,60px)}
+h2{margin:0 0 14px;font-family:var(--f-mono);font-size:.74rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--zuva)}
+section+section{margin-top:34px}
+.xp{list-style:none;margin:0;padding:0}
+.xp li{display:grid;grid-template-columns:104px minmax(0,1fr);gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.xp li:last-child{border-bottom:1px solid var(--line)}
+.xp .y{font-family:var(--f-mono);font-size:.74rem;color:var(--mute);padding-top:4px}
+.xp h3{margin:0;font-size:1.02rem;font-weight:600}
+.xp p{margin:2px 0 0;color:var(--mute)}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.tags li{border:1px solid var(--line);border-radius:999px;padding:6px 12px;font-size:.9rem}
+.plain{margin:0;color:var(--mute)}
+.plain b{color:var(--ink);font-weight:500}
+@media (max-width:760px){.grid{grid-template-columns:minmax(0,1fr)}.xp li{grid-template-columns:86px minmax(0,1fr)}}
+@media print{
+  @page{size:A4;margin:14mm}
+  :root{--bg:#fff;--bg-2:#fff;--ink:#111;--mute:#555;--line:#d8d8d8;--zuva:#8a5b00;color-scheme:light}
+  body{font-size:10.5pt}
+  .bar{display:none}
+  .page{padding:0;max-width:none}
+  h1{font-size:44pt}
+  .grid{grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:9mm;margin-top:8mm}
+  section+section{margin-top:6mm}
+  .xp li{padding:2.6mm 0;break-inside:avoid}
+}
+</style>
+</head>
+<body>
+<div class="bar">
+  <a class="btn" href="/">← Portfolio</a>
+  <button class="btn solid" type="button" id="save">Save as PDF</button>
+</div>
+<main class="page">
+  <header>
+    <span class="mono mute">Curriculum vitae</span>
+    <h1>Levison T. <span class="serif">Murombo</span></h1>
+    <p class="sub">Designer and art director in Harare. Identities, campaigns, 3D and product for brands in nine countries, built with an engineer's systems thinking.</p>
+    <div class="meta mono">
+      <a href="mailto:levimurombo@gmail.com">levimurombo@gmail.com</a>
+      <a href="tel:+263773766393">+263 773 766 393</a>
+      <a href="https://www.levimurombo.space/">levimurombo.space</a>
+      <span>Harare, Zimbabwe</span>
+    </div>
+  </header>
+  <div class="grid">
+    <div>
+      <section aria-labelledby="xp-h">
+        <h2 id="xp-h">Experience</h2>
+        <ul class="xp">
+          <li><span class="y">2024 to now</span><div><h3>Digital Media and Advertising Manager</h3><p>AURA Technologies. Leads digital media and advertising: campaigns, billboards, social, fleet and office branding, films, 3D expo stands and the MyAURA app launch.</p></div></li>
+          <li><span class="y">2024</span><div><h3>Senior Creative Lead</h3><p>GGF Africa</p></div></li>
+          <li><span class="y">2023</span><div><h3>Senior Graphic Designer</h3><p>Imperium Branding</p></div></li>
+        </ul>
+      </section>
+      <section aria-labelledby="ed-h">
+        <h2 id="ed-h">Education and recognition</h2>
+        <ul class="xp">
+          <li><span class="y">2025</span><div><h3>ZITF Best First-Time Exhibitor, first runner-up</h3><p>With AURA Technologies, for the expo stands designed and rendered in 3D.</p></div></li>
+          <li><span class="y">2021</span><div><h3>Research paper published in Materials Today</h3></div></li>
+          <li><span class="y">2020</span><div><h3>BTech Honours, Chemical and Process Systems Engineering</h3><p>Harare Institute of Technology</p></div></li>
+        </ul>
+      </section>
+    </div>
+    <div>
+      <section aria-labelledby="di-h">
+        <h2 id="di-h">Disciplines</h2>
+        <ul class="tags"><li>Brand strategy</li><li>Identity</li><li>Campaigns</li><li>Art direction</li><li>3D</li><li>Motion</li><li>UI/UX</li></ul>
+      </section>
+      <section aria-labelledby="to-h">
+        <h2 id="to-h">Tools</h2>
+        <ul class="tags"><li>Illustrator</li><li>Photoshop</li><li>Figma</li><li>Blender</li><li>After Effects</li><li>Lightroom</li></ul>
+      </section>
+      <section aria-labelledby="cl-h">
+        <h2 id="cl-h">Selected clients</h2>
+        <p class="plain">Axis Solutions, AURA, Wakosha Cosmetics, Alberta Black Therapist Network, MultiLink Cargo, Max Unisex Salon, Distributed Power Africa, Hurungwe Pharmacy, The Jaha Tribe, Pub Choir, 263 Culture Fest, Proactive Finance, Shasha Logistics.</p>
+      </section>
+      <section aria-labelledby="mo-h">
+        <h2 id="mo-h">More</h2>
+        <p class="plain"><b>Languages:</b> English, Shona<br><b>Studying:</b> Project Management Professional (PMP)<br><b>Own projects:</b> NHAKA watch brand, a 3D digital twin of Harare</p>
+      </section>
+    </div>
+  </div>
+</main>
+<script>document.getElementById('save').addEventListener('click',function(){window.print()});</script>
+</body>
+</html>
