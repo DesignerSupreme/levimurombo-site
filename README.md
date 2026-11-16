@@ -2,7 +2,7 @@
 
 Portfolio and CV of Levison T. Murombo, designer and art director, Harare.
 
-Static single-page site: GLSL hero, three.js Great Enclosure, 22 case studies, a working terminal and a command palette. No build step.
+Static single-page site: a three.js bust hero that follows the cursor, a captioned work strip, On Brief / Off Brief, a hall of fame, films, 22 case studies and a hidden terminal. No build step.
 
 ## Run locally
 

@@ -21,12 +21,13 @@ Ask before anything that publishes, deletes or spends. Previous versions live in
 
 - Single `index.html`: all CSS in `<head>`, all JS at the end of `<body>`. No framework, no npm, no bundler.
 - CDN libraries pinned to exact versions: GSAP 3.12.5 + ScrollTrigger (cdnjs), Lenis 1.1.13 (jsdelivr), three.js r128 (cdnjs).
-- Raw WebGL hero shader in `<script type="x-shader/x-fragment" id="fs-hero">`.
-- Fonts from Google Fonts: Big Shoulders Display (variable 100..900), Instrument Sans, Instrument Serif, JetBrains Mono.
+- The hero bust is built in three.js inside the `bust()` function (contour rings plus a dark occluder, head and torso groups).
+  It is a stand-in. When Levi's scan exists as `img/bust.glb`, set `BUST_GLB` and add GLTFLoader r128.
+- Fonts from Google Fonts: Big Shoulders Display (variable 100..900), Instrument Sans, Instrument Serif, JetBrains Mono, Mrs Saint Delafield (stand-in signature).
 
 ## Map of index.html
 
-Sections in page order: loader (boot log), nav (blur backing once scrolled), `#hero` (GLSL contour field, image trail, variable-weight headline sized to the viewport height, Start a project and View CV buttons), client marquees, `#motion` (showreel: seven clips, four seconds each, driven by the `CL` list), statement, `#work` (five featured projects: `#lead` is the pinned AURA expo stands feature with the ZITF award, then a pinned horizontal reel of 4 cards), `#enclosure` (three.js Great Enclosure that assembles on scroll), `#dial` (NHAKA dial zoom), `#index` (17 more brands with hover preview), `#wall` (poster wall + lightbox), `#terminal`, numbers, `#about` (bio, lab notes, timeline, tools), `#contact`, footer wordmark. Overlays: `#case` (case study), `#lb` (lightbox), `#cmdk` (command palette, Ctrl/Cmd K).
+v2 layout (Nov 2026), modelled on the structure of landonorris.com. Sections in page order: loader (counter), nav, `#hero` (name LEVI / MUROMBO behind a 3D contour bust that turns to follow the cursor; `#lockBtn` "tap to lock"; "now building" status; Start a project and View CV), client marquee, note (bold key words + signature that draws itself), `#strip` (captioned work strip, pinned horizontal on wide screens, with the ZITF award marker and pull lines), On Brief / Off Brief split, `#onbrief` (index of 21 client projects with hover preview, built from `INDEX`), `#offbrief` (NHAKA, Harare 3D, poster wall), `#hall` (hall of fame, mark then mark in use on hover, built from `HOF`), `#films` (six films, play on select, built from `FILMS`), `#contact` (work with me), footer wordmark. Overlays: `#case` (case study), `#lb` (poster lightbox), `#termx` (hidden terminal: lock the bust three times, or type "levi").
 
 Key JS objects:
 
@@ -34,8 +35,8 @@ Key JS objects:
   Gallery item formats: `['slug']` image, `['slug','full']` full-width image, `['slug','','v','poster-slug']` video.
   Slugs map to files in `img/` (`img/<slug>.webp`, videos `img/<slug>.mp4`).
 - `ORDER`: the order of the 22 cases (drives numbering "01 / 22" and the terminal `ls`).
-- `C2`: terminal commands. `CM`: command palette entries.
-- Reel cards: `<button class="card" data-case="<key>">`. Index rows: `<button data-case="<key>" data-img="img/<slug>.webp">`.
+- `C2`: terminal commands. `INDEX`, `HOF`, `FILMS`: data for the On Brief index, hall of fame and films.
+- Any `<button data-case="<key>">` opens that case study.
 - Deep links: `levimurombo.space/#<case-key>` opens that case study.
 - `cv.html` (served at `/cv`): one-page CV that prints to PDF. Every fact on it must already be on the main site. Swap for Levi's own PDF when he supplies one.
 
@@ -43,7 +44,7 @@ Key JS objects:
 
 - Images: WebP, long edge 1600 to 2000 px, ideally under 350 KB. Give every `<img>` width and height attributes.
 - Videos: H.264 MP4, silent web cut, under about 6 MB, with a poster image.
-- New case study: add it to `CASES` and `ORDER`, then add a reel card or an index row with a matching `data-case`.
+- New case study: add it to `CASES` and `ORDER`, then add it to `INDEX` (and optionally the strip or `HOF`).
 
 ## Content rules from Levi (non-negotiable)
 
