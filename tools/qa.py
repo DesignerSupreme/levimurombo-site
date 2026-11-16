@@ -3,8 +3,9 @@
     python3 tools/qa.py
 
 Checks: missing image references, em dashes, page errors, failed requests,
-horizontal overflow at 1440 / 768 / 390 px, hero fits above the fold, showreel
-advances, every project card and index row opening the right case study, terminal and command palette, reduced motion.
+horizontal overflow at 1440 / 768 / 390 px, hero fits above the fold, 3D bust renders and
+locks, captioned strip, On/Off Brief split, hall of fame hover swap, films, every project link
+opening the right case study, poster lightbox, hidden terminal, reduced motion.
 Exits with code 1 if anything fails. Screenshots go to tools/out/.
 """
 import asyncio, os, re, subprocess, sys, time
@@ -79,56 +80,85 @@ async def main():
                     await pg.evaluate('window.scrollTo(0,0)')
                     await pg.wait_for_timeout(700)
                     fb = await pg.evaluate("document.querySelector('.hero-foot').getBoundingClientRect().bottom")
-                    check(fb <= vh, 'hero headline and buttons fit above the fold at %dx%d (bottom %d)' % (vw, vh, fb))
+                    check(fb <= vh, 'hero name and buttons fit above the fold at %dx%d (bottom %d)' % (vw, vh, fb))
                 await pg.set_viewport_size({'width': w, 'height': h})
                 cta = await pg.evaluate("[...document.querySelectorAll('.hero-cta a')].map(a=>a.getAttribute('href'))")
                 check(cta == ['#contact', 'cv.html'] and os.path.exists(os.path.join(ROOT, 'cv.html')), 'hero has Start a project and View CV buttons %s' % cta)
-                n5 = await pg.evaluate("document.querySelectorAll('.lead-stage, #track .card').length")
-                check(n5 == 5, 'five featured projects, expo stands first (%d)' % n5)
-                await pg.evaluate("document.getElementById('srStage').scrollIntoView({block:'center'})")
-                await pg.wait_for_timeout(6500)
-                sr = await pg.evaluate("[document.querySelectorAll('#srSegs button').length, document.getElementById('srN').textContent, document.getElementById('srBtn').getAttribute('aria-pressed')]")
-                check(sr[0] == 7 and sr[1] != '01 / 07' and sr[2] == 'true', 'showreel plays and advances to the next film %s' % sr)
-            if w == 1440:
-                res = []
-                for sel in ('.lead-stage', '#track .card', '#ix button'):
-                    n = await pg.locator(sel).count()
-                    for i in range(n):
-                        k = await pg.locator(sel).nth(i).get_attribute('data-case')
-                        await pg.wait_for_function("document.getElementById('case').hidden", timeout=5000)
-                        await pg.wait_for_timeout(200)
-                        await pg.evaluate("document.querySelectorAll('%s')[%d].click()" % (sel, i))
-                        try:
-                            await pg.wait_for_function("location.hash==='#%s' && !document.getElementById('case').hidden" % k, timeout=4000)
-                            res.append((k, True))
-                        except Exception:
-                            res.append((k, False))
-                        await pg.keyboard.press('Escape')
-                badk = [k for k, ok in res if not ok]
-                check(res and not badk, 'all %d cards and index rows open their case study %s' % (len(res), badk[:6] or ''))
-                await pg.evaluate("document.getElementById('terminal').scrollIntoView()")
+                bs = await pg.evaluate("[!!(window.BUST&&BUST.ready), (window.BUST&&BUST.frames)||0]")
+                check(bs[0] and bs[1] > 0, '3D bust renders (frames %d)' % bs[1])
+                await pg.evaluate("window.scrollTo(0,0)")
+                await pg.wait_for_timeout(400)
+                await pg.click('#lockBtn')
+                lk = await pg.evaluate("[document.getElementById('lockBtn').getAttribute('aria-pressed'), BUST.locked]")
+                await pg.click('#lockBtn')
+                lk2 = await pg.evaluate("document.getElementById('lockBtn').getAttribute('aria-pressed')")
+                check(lk == ['true', True] and lk2 == 'false', 'tap to lock toggles the bust %s %s' % (lk, lk2))
+                fg = await pg.evaluate("[...document.querySelectorAll('#track figure')].filter(f=>f.querySelector('img')&&f.querySelector('figcaption b')).length")
+                check(fg >= 8, 'captioned work strip has 8+ captioned images (%d)' % fg)
+                sp = await pg.evaluate("[...document.querySelectorAll('.split a')].map(a=>a.getAttribute('href'))")
+                check(sp == ['#onbrief', '#offbrief'], 'On Brief / Off Brief split links %s' % sp)
+                nix = await pg.evaluate("document.querySelectorAll('#ix button').length")
+                check(nix == 21, 'On Brief index lists every client project except NHAKA (%d)' % nix)
+                hc = await pg.evaluate("[...document.querySelectorAll('.hc')].filter(c=>c.querySelectorAll('.ph img').length===2).length")
+                check(hc >= 8, 'hall of fame has 8+ cards with a hover pair (%d)' % hc)
+                await pg.evaluate("document.getElementById('hall').scrollIntoView()")
                 await pg.wait_for_timeout(1500)
+                await pg.hover('.hc >> nth=0')
+                await pg.wait_for_timeout(900)
+                op = await pg.evaluate("+getComputedStyle(document.querySelector('.hc .ph img.b')).opacity")
+                check(op > .9, 'hall of fame hover swaps to the in-use image (opacity %.2f)' % op)
+                fl = await pg.evaluate("[...document.querySelectorAll('.film video')].filter(v=>v.getAttribute('poster')&&v.dataset.src).length")
+                check(fl == 6, 'six films with posters (%d)' % fl)
+                await pg.evaluate("document.querySelector('.film').click()")
+                await pg.wait_for_timeout(300)
+                fs = await pg.evaluate("!!document.querySelector('.film video').getAttribute('src')")
+                check(fs, 'selecting a film loads it')
+                await pg.evaluate("document.querySelector('.film[data-on=true]')&&document.querySelector('.film[data-on=true]').click()")
+                res = []
+                n = await pg.locator('main [data-case]').count()
+                for i in range(n):
+                    k = await pg.locator('main [data-case]').nth(i).get_attribute('data-case')
+                    await pg.wait_for_function("document.getElementById('case').hidden", timeout=5000)
+                    await pg.wait_for_timeout(150)
+                    await pg.evaluate("document.querySelectorAll('main [data-case]')[%d].click()" % i)
+                    try:
+                        await pg.wait_for_function("location.hash==='#%s' && !document.getElementById('case').hidden" % k, timeout=4000)
+                        res.append((k, True))
+                    except Exception:
+                        res.append((k, False))
+                    await pg.keyboard.press('Escape')
+                badk = [k for k, ok in res if not ok]
+                check(len(res) >= 30 and not badk, 'all %d project links open their case study %s' % (len(res), badk[:6] or ''))
+                await pg.wait_for_function("document.getElementById('case').hidden", timeout=5000)
+                await pg.evaluate("document.getElementById('posterBtn').click()")
+                await pg.wait_for_timeout(300)
+                check(await pg.evaluate("!document.getElementById('lb').hidden && document.getElementById('lbImg').naturalWidth>=0"), 'poster wall opens the lightbox')
+                await pg.keyboard.press('Escape')
+                await pg.evaluate("window.scrollTo(0,0)")
+                await pg.wait_for_timeout(500)
+                for _ in range(3):
+                    await pg.click('#lockBtn')
+                    await pg.wait_for_timeout(120)
+                await pg.wait_for_timeout(300)
+                check(await pg.evaluate("!document.getElementById('termx').hidden"), 'locking the bust three times opens the hidden terminal')
                 await pg.fill('#tin', 'open soul')
                 await pg.press('#tin', 'Enter')
                 await pg.wait_for_timeout(1200)
-                check(await pg.evaluate("location.hash==='#soul'"), 'terminal "open soul" opens Soul Avenue')
+                check(await pg.evaluate("location.hash==='#soul' && document.getElementById('termx').hidden"), 'terminal "open soul" opens Soul Avenue')
                 await pg.keyboard.press('Escape')
                 await pg.wait_for_timeout(1000)
-                await pg.keyboard.press('Control+k')
-                await pg.wait_for_timeout(300)
-                await pg.keyboard.type('hurungwe')
+                await pg.keyboard.type('levi')
                 await pg.wait_for_timeout(200)
-                await pg.keyboard.press('Enter')
-                await pg.wait_for_timeout(1200)
-                check(await pg.evaluate("location.hash==='#hurungwe'"), 'command palette opens Hurungwe')
+                check(await pg.evaluate("!document.getElementById('termx').hidden"), 'typing "levi" opens the hidden terminal')
                 await pg.keyboard.press('Escape')
             await pg.close()
         ctx = await b.new_context(viewport={'width': 1440, 'height': 900}, reduced_motion='reduce')
         pg = await ctx.new_page()
         await pg.goto(URL)
         await pg.wait_for_timeout(1200)
-        st = await pg.evaluate("[getComputedStyle(document.getElementById('loader')).display, document.getElementById('encN').textContent===document.getElementById('encT').textContent]")
-        check(st[0] == 'none' and st[1], 'reduced motion: no loader, 3D shown fully built')
+        st = await pg.evaluate("[getComputedStyle(document.getElementById('loader')).display, !!(window.BUST&&BUST.static&&BUST.frames>0)]")
+        check(st[0] == 'none' and st[1], 'reduced motion: no loader, bust shown fully built and still %s' % st)
+        await pg.screenshot(path=os.path.join(OUT, 'reduced-1440.png'))
         await b.close()
 
 try:
